@@ -223,7 +223,7 @@ let passLength = trimedPassword.length;
 console.log(trimedPassword);
 console.log(passLength);
 
-console.log(trimedPassword.includes('#'))
+console.log(trimedPassword.includes('#'));
 
 // if (password.length < 16) {
 //   console.log('Slaptažodis yra per trumpas. Jis privalo būti bent 16 simbolių ilgumo.');
