@@ -216,7 +216,47 @@ if (personAge < 18) {
 // 2.1. Patikrinti ar jis yra ilgesnis už 20 simbolių. Jeigu ilgesnis, tai parašyti: „Slaptažodis tinkamas".
 // 2.2. Jeigu jis nėra ilgesnis už 20 simbolių, tai parašyti jog: „Slaptažodis yra tinkamas. Tačiau rekomenduojama jog jis būtų bent 21 simbolio ilgumo."
 
-let password = '            a                    ';
+let originalPassword = '    aask         ';
+let trimedPassword = originalPassword.trim();
+let passLength = trimedPassword.length;
 
-console.log(password);
-console.log(password.length);
+console.log(trimedPassword);
+console.log(passLength);
+
+console.log(trimedPassword.includes('#'))
+
+// if (password.length < 16) {
+//   console.log('Slaptažodis yra per trumpas. Jis privalo būti bent 16 simbolių ilgumo.');
+// } else {
+//   if (password.length > 20) {
+//     console.log('Slaptažodis tinkamas');
+//   } else {
+//     console.log('Slaptažodis yra tinkamas. Tačiau rekomenduojama jog jis būtų bent 21 simbolio ilgumo.');
+//   }
+// }
+
+// if (!trimedPassword.includes('#')) {
+//   console.log('Slaptažodis privalo turėti grotažymes (#)');
+// } else {
+//   if (passLength >= 16) {
+//     if (passLength > 20) {
+//       console.log('Slaptažodis tinkamas');
+//     } else {
+//       console.log('Slaptažodis yra tinkamas. Tačiau rekomenduojama jog jis būtų bent 21 simbolio ilgumo.');
+//     }
+//   } else {
+//     console.log('Slaptažodis yra per trumpas. Jis privalo būti bent 16 simbolių ilgumo.');
+//   }
+// }
+
+if (!trimedPassword.includes('#')) {
+  console.log('Slaptažodis privalo turėti grotažymes (#)');
+} else if (passLength >= 16) {
+  if (passLength > 20) {
+    console.log('Slaptažodis tinkamas');
+  } else {
+    console.log('Slaptažodis yra tinkamas. Tačiau rekomenduojama jog jis būtų bent 21 simbolio ilgumo.');
+  }
+} else {
+  console.log('Slaptažodis yra per trumpas. Jis privalo būti bent 16 simbolių ilgumo.');
+}
