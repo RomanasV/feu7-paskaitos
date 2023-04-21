@@ -310,3 +310,34 @@ if (isNaN(age) || age === '') {
 } else {
   console.log('Amžius yra per didelis');
 }
+
+
+
+// UŽDUOTIS: sukurti galvosūkį su keletu klausimu
+// PIRMAS LYGIS:
+// 1. Norint patekti į kitą lygį, reikia atsakyti bent į vieną klausimą iš dviejų:
+// 2. Jeigu atsakytas tik vienas klausimas, tai papildomai reikia parašyti kuris klausimas buvo neteisingas.
+
+// 1. Patekai i kita lygi: abu atsakymai teisingi.
+// 2. Patekai i kita lygi: pirmas atsakymas buvo neteisingas, o antras buvo teisingas.
+// 3. Patekai i kita lygi: antras atsakymas buvo neteisingas, o pirmas buvo teisingas.
+// 4. Nepatekai i kita lygi: abu atsakymai buvo neteisingi.
+
+// Kiek bus 123 + 456? Ats. 579
+let correctAnswer11 = 579;
+
+// Kaip vadinasi arčiausiai Žemės esanti žvaigždė? sun
+let correctAnswer12 = 'sun';
+
+let playerAnswer11 = 444;
+let playerAnswer12 = 'moon';
+
+if (correctAnswer11 === playerAnswer11 && correctAnswer12 === playerAnswer12) {
+  console.log('Patekai i kita lygi: abu atsakymai teisingi.')
+} else if (correctAnswer11 === playerAnswer11) {
+  console.log('Patekai i kita lygi: antras atsakymas buvo neteisingas, o pirmas buvo teisingas.')
+} else if (correctAnswer12 === playerAnswer12) {
+  console.log('Patekai i kita lygi: pirmas atsakymas buvo neteisingas, o antras buvo teisingas.');
+} else {
+  console.log('Nepatekai i kita lygi: abu atsakymai buvo neteisingi.');
+}
