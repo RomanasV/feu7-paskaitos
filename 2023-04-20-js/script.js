@@ -267,3 +267,46 @@ if (!trimedPassword.includes('#')) {
 // 3. 11-14 metų eina į pagrindinę.
 // 4. 15-18 metų eina į gimnaziją.
 // 5. 19+ mokyklą baigė.
+
+// 6.1. Jeigu amžius yra mažiau nei 0, tai parašyti jog įvestas amžius yra per mažas.
+// 6.2. Jeigu amžius yra daugau nei 120, tai parašyti jog įvestas amžius yra per didelis.
+
+// 7.1. Jeigu amžius yra 6 metai, tai parašyti: "Į mokyklą tikriausiai neina, tačiau gali būti ir pirmokas."
+// 7.2. Jeigu amžius yra 10 metai, tai parašyti: "Tikriausiai mokosi pradinėje, tačiau gali būti ir penktokas."
+// 7.3. Jeigu amžius yra 14 metai, tai parašyti: "Tikriausiai mokosi pagrindinėje, tačiau gali būti ir devintokas."
+// 7.3. Jeigu amžius yra 18 metai, tai parašyti: "Tikriausiai mokosi gimnazijoje, tačiau mokyklą gali būti ir baigęs."
+
+// 8. Jeigu įvestas ne amžius (t.y. ne skaičius), tai parašyti: "Netinkamai nurodytas amžius, amžius privalo būti skaičius."
+// 9. Panaudoti prompt funkciją amžiui įvesti.
+
+// let age = prompt('Įveskite savo amžių');
+let age = 4;
+
+console.log(age);
+console.log(isNaN(age));
+
+if (isNaN(age) || age === '') {
+  console.log('Reikia įvesti skaičių');
+} else if (age < 0) {
+  console.log('Amžius privalo būti teigiamas skaičius');
+} else if (age < 6) {
+  console.log('Į mokyklą neina');
+} else if (age < 7) {
+  console.log('Į mokyklą tikriausiai neina, tačiau gali būti ir pirmokas.');
+} else if (age < 10) {
+  console.log('Pradinukas');
+} else if (age < 11) {
+  console.log('Tikriausiai mokosi pradinėje, tačiau gali būti ir penktokas.');
+} else if (age < 14) {
+  console.log('Pagrindinė');
+} else if (age < 15) {
+  console.log('Tikriausiai mokosi pagrindinėje, tačiau gali būti ir devintokas.');
+} else if (age < 18) {
+  console.log('Gimnazija');
+} else if (age < 19) {
+  console.log('Tikriausiai mokosi gimnazijoje, tačiau mokyklą gali būti ir baigęs.');
+} else if (age < 120) {
+  console.log('Mokyklą baigė');
+} else {
+  console.log('Amžius yra per didelis');
+}
