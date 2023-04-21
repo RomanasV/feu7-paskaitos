@@ -1,0 +1,19 @@
+@use 'variables/spacing';
+@use 'variables/responsive';
+
+.container {
+  width: 50%;
+  margin: spacing.$large auto;
+
+  @include responsive.lg {
+    width: 70%;
+  }
+
+  @include responsive.md {
+    width: 80%;
+  }
+
+  @include responsive.sm {
+    width: 100%;
+  }
+}

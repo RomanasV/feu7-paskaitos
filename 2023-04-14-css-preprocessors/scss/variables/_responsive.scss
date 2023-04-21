@@ -1,0 +1,21 @@
+$large: 850px;
+$medium: 500px;
+$small: 400px;
+
+@mixin lg {
+  @media (max-width: $large) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: $medium) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media (max-width: $small) {
+    @content;
+  }
+}

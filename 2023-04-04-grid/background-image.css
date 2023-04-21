@@ -1,0 +1,14 @@
+.container {
+  background-color: #081640;
+  padding: 167px 20px;
+  background-image: url(https://cdn.pixabay.com/photo/2016/11/13/12/52/kuala-lumpur-1820944__340.jpg);
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+  color: white;
+  text-align: right;
+}
+
+h1 {
+  font-size: 50px;
+}

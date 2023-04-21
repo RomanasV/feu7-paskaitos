@@ -1,0 +1,112 @@
+.blue {
+  background-color: blue;
+}
+
+.orange {
+  background-color: orange;
+}
+
+.green {
+  background-color: green;
+}
+
+.pink {
+  background-color: pink;
+}
+
+.purple {
+  background-color: purple;
+}
+
+.red {
+  background-color: red;
+}
+
+.container {
+  background-color: lightgray;
+  width: 600px;
+  height: 600px;
+  margin-bottom: 30px;
+}
+
+.container-1 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* .container-1 .child {
+  height: 200px;
+} */
+
+/* .container-1 .child.blue,
+.container-1 .child.pink,
+.container-1 .child.purple {
+  width: 200px;
+}
+
+.container-1 .child.green,
+.container-1 .child.orange,
+.container-1 .child.red {
+  width: 400px;
+} */
+
+.container-1 .child:nth-child(1),
+.container-1 .child:nth-child(4),
+.container-1 .child:nth-child(5) {
+  width: 200px;
+  height: 200px;
+}
+
+.container-1 .child:nth-child(2),
+.container-1 .child:nth-child(3),
+.container-1 .child:nth-child(6) {
+  width: 400px;
+  height: 200px;
+}
+
+
+.container-3 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* .container-3 .child:nth-child(1) {
+  width: 400px;
+  height: 400px;
+}
+
+.container-3 .child:nth-child(2) {
+  width: 200px;
+  height: 400px;
+}
+
+.container-3 .child:nth-child(3),
+.container-3 .child:nth-child(4),
+.container-3 .child:nth-child(5) {
+  width: 200px;
+  height: 200px;
+} */
+
+.container-3 > .child {
+  width: 200px;
+  height: 200px;
+}
+
+.container-3 .child:nth-child(1) {
+  width: 400px;
+  height: 400px;
+}
+
+.container-3 .inner-container {
+  height: 400px;
+}
+/* 
+.container-3 .inner-container .child {
+  width: 200px;
+  height: 200px;
+} */
+
+.container-3 .inner-container .inner-child {
+  width: 200px;
+  height: 200px;
+}

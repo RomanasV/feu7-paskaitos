@@ -1,0 +1,61 @@
+:root {
+  --shops-list-gap: 15px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  max-width: 1270px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.content {
+  display: flex;
+  column-gap: 30px;
+}
+
+.shops-wrapper {
+  width: 50%;
+}
+
+.map-wrapper {
+  width: 50%;
+}
+
+.map-wrapper iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.shops-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--shops-list-gap);
+}
+
+.shops-list .shop-item {
+  background-color: white;
+  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  width: calc((100% - var(--shops-list-gap)) / 2);
+}
+
+.shops-list .shop-item ul.shop-address-list {
+  list-style-type: none;
+  padding-left: 0;
+  font-weight: 700;
+}
+
+.shops-list .shop-item ul.shop-address-list a {
+  font-weight: 400;
+  text-decoration: none;
+}

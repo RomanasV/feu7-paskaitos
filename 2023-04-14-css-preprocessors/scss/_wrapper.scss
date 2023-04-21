@@ -1,0 +1,63 @@
+@use 'variables/colors';
+@use 'variables/spacing';
+@use 'variables/responsive';
+
+.wrapper {
+  padding: spacing.$large;
+
+  &.full-width {
+    width: 100%;
+  }
+
+  &.half-width {
+    width: 50%;
+  }
+
+  &.bg-dark {
+    background-color: colors.$dark;
+  }
+
+  h2 {
+    font-size: 40px;
+    
+    @include responsive.md {
+      font-size: 30px;
+      background-color: orange;
+    }
+
+    @include responsive.sm {
+      font-size: 20px;
+    }
+
+    &.color-red {
+      color: colors.$red;
+      cursor: pointer;
+      transition: color 0.5s;
+
+      &:hover {
+        color: colors.$green;
+      }
+    }
+  }
+
+  p {
+    &:first-of-type {
+      font-size: 2em;
+    }
+
+    &:not(.empty) {
+      &::before {
+        content: '- ';
+        color: colors.$green;
+        
+        @include responsive.md {
+          content: 'Labas ';
+        }
+
+        @include responsive.sm {
+          content: '';
+        }
+      }
+    }
+  }
+}

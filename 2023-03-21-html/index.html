@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mano pirmasis puslapis</title>
+  <style>
+    h3 {
+      color: red;
+      background-color: aquamarine;
+    }
+
+    /* h1 {
+      color: green;
+    } */
+  </style>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Block Type Elements -->
+
+  <!-- 
+    Block Tipo HTML elementai:
+    1. Prasideda naujoje eilutėje.
+    2. Užima pilną tėvinio elemto plotį.
+  -->
+
+  <h1>Heading 1</h1>
+
+  <h2 style="color: rgb(18, 18, 101); text-transform: uppercase;">Heading 2</h2>
+  
+  <h3>Heading 3</h3>
+  <h4>Heading 4</h4>
+  <h5 class="primary-color">Heading 5</h5>
+  <h6>Heading 6</h6>
+
+  <div id="headers">
+    <h1>Heading 1</h1>
+    <h2 style="color: rgb(18, 18, 101); text-transform: uppercase;">Heading 2</h2>
+    <h3>Heading 3</h3>
+    <h4 class="primary-color" style="font-size: 40px;">Heading 4</h4>
+    <h5 class="paragraph">Heading 5</h5>
+    <h6>Heading 6</h6>
+  </div>
+
+  <div>
+    <p class="paragraph size-large">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi nam explicabo impedit inventore quae deleniti veniam quasi ipsam saepe dolore incidunt in recusandae, provident ut amet accusantium quaerat hic a.</p>
+      
+    <p class="size-large">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate iste beatae itaque ab facilis perferendis dignissimos ea deserunt praesentium sequi veritatis pariatur, ipsum consequatur nihil quod provident maiores? Ea, amet.</p>
+  </div>
+    
+  <p><dfn style="color: purple; font-style: normal; background-color: pink;">Lorem ipsum</dfn> dolor sit amet <i id="i-id"><b><mark>consectetur adipisicing</mark></b></i> elit. Aspernatur, ad quaerat expedita cupiditate debitis facere minima, <span>rem voluptas architecto consequuntur</span>, consectetur vitae exercitationem id. Dolore labore modi explicabo culpa harum <span>laudantium eius aut nihil officiis.</span></p>
+
+  <p class="paragraph">Lorem <i>ipsum dolor</i>, sit amet <strong>consectetur adipisicing</strong> elit. Rem facere laborum ab <em>aspernatur voluptate</em>? Deserunt minima, <a href="#">aperiam eum quibusdam</a>, <b>distinctio voluptate</b> ad incidunt similique, <mark>repudiandae rem</mark> ducimus. <cite>Debitis</cite>, autem sit?</p>
+
+  <!-- 
+    1. Visi ol ir ul elementų vaikiniai elementai privalo būti li elementai.
+    2. li elementai yra naudojami TIK kaip ul arba ol elementų vaikiniai elementai.
+   -->
+
+  <!-- Unordered list - nenumeruotas sąrašas -->
+  <ul>
+    <li id="first-li-element">Pirmas</li>
+    <li>Antras</li>
+    <li>Trečias</li>
+    <li>Ketvirtas</li>
+  </ul>
+
+  <!-- Ordered list - numeruotas sąrašas -->
+  <ol>
+    <li>Vienas</li>
+    <li>Du</li>
+    <li>Trys</li>
+    <li>Keturi</li>
+  </ol>
+
+  <!-- Inline Type Elements -->
+
+  <button>Click Me</button>
+  <a href="https://www.google.com" target="_blank">Google (išorinė nuoroda)</a>
+  <a href="/kontaktai.html">Kontaktai (vidinė nuoroda)</a>
+  <a href="mailto:info@musuparduotuve.lt">Susisiekti el. paštu</a>
+  <a href="tel:+37045643154">Susisiekti telefonu</a>
+  <a href="#headers">Back to headers</a>
+
+  <img src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg" width="500" alt="Two puppies on the grass">
+  
+  <a href="#">
+    <div>
+      <h2>Dog Images</h2>
+      <img src="/images/dog.jpg" width="500" alt="Puppy">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur a aperiam rerum accusantium</p>
+    </div>
+  </a>
+
+  <input type="checkbox">
+  <input type="color">
+  <input type="date">
+  <input type="password">
+  <input type="text">
+  <input type="number">
+
+  <textarea></textarea>
+
+  <select>
+    <option>Vienas</option>
+    <option>Du</option>
+    <option>Trys</option>
+  </select>
+
+</body>
+</html>

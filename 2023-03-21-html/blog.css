@@ -1,0 +1,527 @@
+:root {
+  --color-primary: purple;
+  --color-primary-active: rgb(77, 12, 77);
+  --color-secondary: rgb(128, 115, 0);
+  --color-secondary-active: rgb(78, 71, 11);
+  --color-success: green;
+  --color-success-active: rgb(16, 80, 16);
+  --color-danger: red;
+  --color-danger-active: rgb(149, 17, 17);
+}
+
+/* .color-primary {
+  color: purple
+} */
+
+.page-title {
+  color: var(--color-primary);
+}
+
+.post {
+  width: 50%;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 15px;
+  transition: box-shadow 0.3s;
+}
+
+.post:hover {
+  box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  background-color: burlywood;
+  /* padding-right: 20px; */
+  /* transition: color 0.3s, padding-left 0.3s, padding-right 0.3s; */
+  transition-property: color, padding-left, padding-right;
+  transition-duration: 0.3s;
+}
+
+.post:hover h2 {
+  color: var(--color-primary);
+  /* padding-left: 20px; */
+  padding-right: 0;
+}
+
+/* PIRMAS VARIANTAS */
+/* button {
+  background-color: purple;
+  color: white;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 2px solid purple;
+  margin-bottom: 5px;
+
+  cursor: pointer;
+}
+
+a {
+  background-color: purple;
+  color: white;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 2px solid purple;
+  margin-bottom: 5px;
+
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  display: inline-block;
+  text-align: center;
+}
+
+button.button-outline {
+  background-color: transparent;
+  color: purple;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 2px solid purple;
+  margin-bottom: 5px;
+
+  cursor: pointer;
+}
+
+a.button-outline {
+  background-color: transparent;
+  color: purple;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 2px solid purple;
+  margin-bottom: 5px;
+  
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  display: inline-block;
+  text-align: center;
+} */
+
+
+/* ANTRAS VARIANTAS */
+
+/* button.button-fill, a.button-fill {
+  background-color: purple;
+  color: white;
+
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 2px solid purple;
+  margin-bottom: 5px;
+  
+  cursor: pointer;
+
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  display: inline-block;
+  text-align: center;
+}
+
+button.button-outline, a.button-outline {
+  background-color: transparent;
+  color: purple;
+
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 2px solid purple;
+  margin-bottom: 5px;
+
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  display: inline-block;
+  text-align: center;
+} */
+
+
+/* TREČIAS VARIANTAS */
+
+/* .button-fill {
+  background-color: var(--color-primary);
+  color: white;
+
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 2px solid var(--color-primary);
+  margin-bottom: 5px;
+  
+  cursor: pointer;
+
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  display: inline-block;
+  text-align: center;
+
+  transition-property: background-color, color;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.3s;
+  transition-delay: 1s;
+
+  transition: background-color .3s ease-in-out, color .3s ease-in-out;
+}
+
+.button-fill:hover {
+  background-color: transparent;
+  color: var(--color-primary);
+
+}
+
+.button-outline {
+  background-color: transparent;
+  color: var(--color-primary);
+
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 2px solid var(--color-primary);
+  margin-bottom: 5px;
+
+  cursor: pointer;
+
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  display: inline-block;
+  text-align: center;
+
+  transition: background-color .3s ease-in-out, color .3s ease-in-out;
+}
+
+.button-outline:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.button-fill-secondary {
+  background-color: var(--color-secondary);
+  color: white;
+
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 2px solid var(--color-secondary);
+  margin-bottom: 5px;
+  
+  cursor: pointer;
+
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  display: inline-block;
+  text-align: center;
+
+  transition: background-color .3s ease-in-out, color .3s ease-in-out;
+}
+
+.button-fill-secondary:hover {
+  background-color: transparent;
+  color: var(--color-secondary);
+}
+
+.button-outline-secondary {
+  background-color: transparent;
+  color: var(--color-secondary);
+
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 2px solid var(--color-secondary);
+  margin-bottom: 5px;
+
+  cursor: pointer;
+
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  display: inline-block;
+  text-align: center;
+
+  transition: background-color .3s ease-in-out, color .3s ease-in-out;
+}
+
+.button-outline-secondary:hover {
+  background-color: var(--color-secondary);
+  color: white;
+} */
+
+
+
+/* KETVIRTAS VARIANTAS */
+/* 
+.button-fill {
+  color: white;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+  margin-bottom: 5px;
+  
+  cursor: pointer;
+
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  display: inline-block;
+  text-align: center;
+
+  transition: background-color .3s ease-in-out, color .3s ease-in-out;
+}
+
+.button-fill.button-primary {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.button-fill.button-primary:hover {
+  color: var(--color-primary);
+}
+
+.button-fill.button-secondary {
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+
+.button-fill.button-secondary:hover {
+  color: var(--color-secondary);
+}
+
+.button-fill.button-success {
+  background-color: var(--color-success);
+  border-color: var(--color-success);
+}
+
+.button-fill.button-success:hover {
+  color: var(--color-success);
+}
+
+.button-fill:hover {
+  background-color: transparent;
+}
+
+.button-outline {
+  background-color: transparent;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+  margin-bottom: 5px;
+
+  cursor: pointer;
+
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  display: inline-block;
+  text-align: center;
+
+  transition: background-color .3s ease-in-out, color .3s ease-in-out;
+}
+
+.button-outline.button-primary {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.button-outline.button-primary:hover {
+  background-color: var(--color-primary);
+}
+
+.button-outline.button-secondary {
+  color: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+
+.button-outline.button-secondary:hover {
+  background-color: var(--color-secondary);
+}
+
+.button-outline.button-success {
+  color: var(--color-success);
+  border-color: var(--color-success);
+}
+
+.button-outline.button-success:hover {
+  background-color: var(--color-success);
+}
+
+.button-outline:hover {
+  color: white;
+} */
+
+
+/* PENKTAS VARIANTAS */
+
+/* .button {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+  margin-bottom: 5px;
+  
+  cursor: pointer;
+
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  display: inline-block;
+  text-align: center;
+
+  transition: background-color .3s ease-in-out, color .3s ease-in-out;
+}
+
+.button-primary {
+  border-color: var(--color-primary);
+}
+
+.button-fill.button-primary,
+.button-outline.button-primary:hover {
+  background-color: var(--color-primary);
+}
+
+.button-outline.button-primary,
+.button-fill.button-primary:hover {
+  color: var(--color-primary);
+}
+
+.button-secondary {
+  border-color: var(--color-secondary);
+}
+
+.button-fill.button-secondary,
+.button-outline.button-secondary:hover {
+  background-color: var(--color-secondary);
+}
+
+.button-outline.button-secondary,
+.button-fill.button-secondary:hover {
+  color: var(--color-secondary);
+}
+
+.button-success {
+  border-color: var(--color-success);
+}
+
+.button-fill.button-success,
+.button-outline.button-success:hover {
+  background-color: var(--color-success);
+}
+
+.button-outline.button-success,
+.button-fill.button-success:hover {
+  color: var(--color-success);
+}
+
+.button-fill,
+.button-outline:hover {
+  color: white;
+}
+
+.button-outline,
+.button-fill:hover {
+  background-color: transparent;
+} */
+
+
+/* ŠEŠTAS VARIANTAS */
+
+.button-primary {
+  --local-color: var(--color-primary);
+  --local-color-active: var(--color-primary-active);
+}
+
+.button-secondary {
+  --local-color: var(--color-secondary);
+  --local-color-active: var(--color-secondary-active);
+}
+
+.button-success {
+  --local-color: var(--color-success);
+  --local-color-active: var(--color-success-active);
+}
+
+.button-danger {
+  --local-color: var(--color-danger);
+  --local-color-active: var(--color-danger-active);
+}
+
+.button {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 2px solid var(--local-color);
+  margin-bottom: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  display: inline-block;
+  text-align: center;
+  /* transition: background-color .3s ease-in-out, color .3s ease-in-out, border-color .3s ease-in-out; */
+  transition-property: background-color, color, border-color;
+  transition-duration: .3s;
+  transition-timing-function: ease-in-out;
+}
+
+.button-large {
+  font-size: 25px;
+}
+
+.button-small {
+  font-size: 10px;
+}
+
+.button-square {
+  border-radius: 0;
+}
+
+.button-fill,
+.button-outline:hover {
+  background-color: var(--local-color);
+  color: white;
+}
+
+.button-outline,
+.button-fill:hover {
+  color: var(--local-color);
+  background-color: transparent;
+}
+
+.button:active {
+  border-color: var(--local-color-active);
+}
+
+.button-outline:active {
+  background-color: var(--local-color-active);
+}
+
+.button-fill:active {
+  color: var(--local-color-active);
+}
