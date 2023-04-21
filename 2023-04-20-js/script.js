@@ -260,3 +260,10 @@ if (!trimedPassword.includes('#')) {
 } else {
   console.log('Slaptažodis yra per trumpas. Jis privalo būti bent 16 simbolių ilgumo.');
 }
+
+// Pagal amžiu surašyti į kurią klasė eina mokinys:
+// 1. Iki 6 metų į mokyklą neina.
+// 2. 7-10 metų eina į pradinę klasę.
+// 3. 11-14 metų eina į pagrindinę.
+// 4. 15-18 metų eina į gimnaziją.
+// 5. 19+ mokyklą baigė.
