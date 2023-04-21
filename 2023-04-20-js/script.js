@@ -341,3 +341,66 @@ if (correctAnswer11 === playerAnswer11 && correctAnswer12 === playerAnswer12) {
 } else {
   console.log('Nepatekai i kita lygi: abu atsakymai buvo neteisingi.');
 }
+
+// ANTRAS LYGIS:
+// 1. Norint patekti į kitą lygį, reikia atsakyti į abu klausimus iš dviejų:
+// 2. Jeigu atsakytas tik vienas klausimas, tai papildomai reikia parašyti kuris atsakymas buvo neteisingas.
+
+
+let correctAnswer21 = 1;
+let correctAnswer22 = 1;
+
+let playerAnswer21 = 1;
+let playerAnswer22 = 1;
+
+if (correctAnswer11 === playerAnswer11 && correctAnswer12 === playerAnswer12) {
+  console.log('Patekai i kita lygi: abu atsakymai teisingi.')
+} else if (correctAnswer11 === playerAnswer11) {
+  console.log('Nepatekai i kita lygi: antras atsakymas buvo neteisingas, o pirmas buvo teisingas.')
+} else if (correctAnswer12 === playerAnswer12) {
+  console.log('Nepatekai i kita lygi: pirmas atsakymas buvo neteisingas, o antras buvo teisingas.');
+} else {
+  console.log('Nepatekai i kita lygi: abu atsakymai buvo neteisingi.');
+}
+
+// TREČIAS LYGIS: 
+// 1. Trys klausimai ir į kitą lygį pereinama, jeigu atsakomi bent du klausimai.
+// 2. Jeigu atsakomi du klausimai, turi būti parodoma, kuris klausimas buvo neatsakytas.
+// 3. Jeigu atsakomi mažiau nei du klausimai, tai turi parodyti, kuris klausimas buvo atsakytas.
+
+let correctAnswer31 = 1;
+let correctAnswer32 = 1;
+let correctAnswer33 = 1;
+
+let playerAnswer31 = 1;
+let playerAnswer32 = 0;
+let playerAnswer33 = 0;
+
+let answer31 = correctAnswer31 === playerAnswer31;
+let answer32 = correctAnswer32 === playerAnswer32;
+let answer33 = correctAnswer33 === playerAnswer33;
+
+let failStartText = 'Nepatekai į kitą lygį:';
+let winStartText = 'Patekai į kitą lygį:';
+
+let output = '';
+
+if (answer31 && answer32 && answer33) {
+  output = winStartText + ' visi atsakymai buvo teisingi.';
+} else if (answer31 && answer32) {
+  output = winStartText + ' tačiau trečias atsakymas buvo neteisingas.';
+} else if (answer31 && answer33) {
+  output = winStartText + ' tačiau antras atsakymas buvo neteisingas.';
+} else if (answer32 && answer33) {
+  output = winStartText + ' tačiau pirmas atsakymas buvo neteisingas.';
+} else if (answer31) {
+  output = failStartText + ' tačiau pirmas atsakymas buvo teisingas.';
+} else if (answer32) {
+  output = failStartText + ' tačiau antras atsakymas buvo teisingas.';
+} else if (answer33) {
+  output = failStartText + ' tačiau trečias atsakymas buvo teisingas.';
+} else {
+  output = failStartText + ' visi atsakymai buvo neteisingi.';
+}
+
+console.log(output)
