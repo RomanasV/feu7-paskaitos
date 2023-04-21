@@ -9,3 +9,6 @@ Pagal amžiu surašyti į kurią klasė eina mokinys:
 3. 11-14 metų eina į pagrindinę.
 4. 15-18 metų eina į gimnaziją.
 5. 19+ mokyklą baigė.
+
+6.1. Jeigu amžius yra mažiau nei 0, tai parašyti jog įvestas amžius yra per mažas.
+6.2. Jeigu amžius yra daugau nei 120, tai parašyti jog įvestas amžius yra per didelis.
