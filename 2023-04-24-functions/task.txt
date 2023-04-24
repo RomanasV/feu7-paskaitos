@@ -62,3 +62,7 @@ Sukurti:
   9.2.2. Skaičius 11 nesidalina iš 5. Liekana yra 1.
 
 10. Funkciją, kuri patikrina ar įvestas tekstas turi porini raidžių skaičių ar neporinį.
+
+11. Funkciją, kuri paima nurodytą simbolį iš žodžio ar sakinio. 
+11.1. Funkcija priima du argumentus: tekstą ir kelintą simbolį reikia grąžinti.
+11.2. Funkcija grąžina atsakymą tokiu formatu: Teksto "Labas" 3 raidė yra "b".
