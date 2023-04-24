@@ -41,3 +41,13 @@ TREČIAS LYGIS:
 1. Trys klausimai ir į kitą lygį pereinama, jeigu atsakomi bent du klausimai.
 2. Jeigu atsakomi du klausimai, turi būti parodoma, kuris klausimas buvo neatsakytas.
 3. Jeigu atsakomi mažiau nei du klausimai, tai turi parodyti, kuris klausimas buvo atsakytas.
+
+
+Pasisveikinimas
+1. Jeigu vartotojas prisijungęs (true/false), tai prie pasisveikinimo reikia prirašyti jo vardą, pvz. „Good Morning, Tom.".
+2. Jeigu vartotojas nėra prisijungęs, tai išvesti tik tekstą „Good Morning...".
+3. Priklausomai nuo paros laiko, pasisveikinimas turėtų būti skirtingas:
+3.1. 5-12 val. „Good Morning"
+3.2. 13-18 val. „Good Afternoon"
+3.3. 19-4 val. „Good Evening"
+4. Jeigu vartotojas yra ir prisijungęs, ir šiandien yra jo gimtadienis, tai prie pasisveikinimo dar turi būti parašytas ir pasveikinimas, pvz.: „Good Morning, Tom and have a great birthday!"

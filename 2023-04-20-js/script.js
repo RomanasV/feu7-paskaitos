@@ -404,3 +404,176 @@ if (answer31 && answer32 && answer33) {
 }
 
 console.log(output)
+
+let num = 5;
+
+console.log(num);
+console.log(num + 1);
+
+console.log(num);
+
+num = 6;
+console.log(num);
+
+num = num + 1;
+console.log(num);
+
+num += 1;
+console.log(num);
+
+num += 5;
+console.log(num);
+
+num++;
+console.log(num);
+
+num = num - 1;
+console.log(num);
+
+num -= 1;
+console.log(num);
+
+num -= 5;
+console.log(num);
+
+num = num * 2;
+console.log(num);
+
+num *= 2;
+console.log(num);
+
+num = num / 2;
+console.log(num);
+
+num /= 2;
+console.log(num);
+
+let str = 'Labas';
+console.log(str);
+
+str = str + ' rytas';
+console.log(str);
+
+str += '.';
+console.log(str);
+
+// Pasisveikinimas
+// 1. Jeigu vartotojas prisijungęs (true/false), tai prie pasisveikinimo reikia prirašyti jo vardą, pvz. „Good Morning, Tom.".
+// 2. Jeigu vartotojas nėra prisijungęs, tai išvesti tik tekstą „Good Morning...".
+// 3. Priklausomai nuo paros laiko, pasisveikinimas turėtų būti skirtingas:
+// 3.1. 5-12 val. „Good Morning"
+// 3.2. 13-18 val. „Good Afternoon"
+// 3.3. 19-4 val. „Good Evening"
+// 4. Jeigu vartotojas yra ir prisijungęs, ir šiandien yra jo gimtadienis, tai prie pasisveikinimo dar turi būti parašytas ir pasveikinimas, pvz.: „Good Morning, Tom and have a great birthday!"
+
+
+// let isLoggedIn = true;
+// let userName = '';
+// let time = 15;
+// let isBirthday = true;
+
+// if (time >= 5 && time < 13) {
+//   if (isLoggedIn) {
+//     if (isBirthday) {
+//       console.log('Good Morning, ' + userName + ' and have a great birthday!');
+//     } else {
+//       console.log('Good Morning, ' + userName);
+//     }
+//   } else {
+//     console.log('Good Morning');
+//   }
+// } else if (time >= 13 && time < 19) {
+//   if (isLoggedIn) {
+//     if (isBirthday) {
+//       console.log('Good Afternoon, ' + userName + ' and have a great birthday!');
+//     } else {
+//       console.log('Good Afternoon, ' + userName);
+//     }
+//   } else {
+//     console.log('Good Afternoon');
+//   }
+// } else if ((time >= 19 && time < 24) || (time >= 0 && time < 5)) {
+//   if (isLoggedIn) {
+//     if (isBirthday) {
+//       console.log('Good Evening, ' + userName + ' and have a great birthday!');
+//     } else {
+//       console.log('Good Evening, ' + userName);
+//     }
+//   } else {
+//     console.log('Good Evening');
+//   }
+// } else {
+//   if (isLoggedIn) {
+//     if (isBirthday) {
+//       console.log('Hello, ' + userName + ' and have a great birthday!');
+//     } else {
+//       console.log('Hello, ' + userName);
+//     }
+//   } else {
+//     console.log('Hello');
+//   }
+// }
+
+
+// let isLoggedIn = true;
+// let userName = 'John';
+// let time = 23;
+// let isBirthday = true;
+
+// let greetingOutput = '';
+
+// if (time >= 5 && time < 13) {
+//   greetingOutput = 'Good Morning';
+// } else if (time >= 13 && time < 19) {
+//   greetingOutput = 'Good Afternoon';
+// } else if ((time >= 19 && time < 24) || (time >= 0 && time < 5)) {
+//   greetingOutput = 'Good Evening';
+// } else {
+//   greetingOutput = 'Hello';
+// }
+
+// if (isLoggedIn && userName) {
+//   greetingOutput = greetingOutput + ', ' + userName;
+// }
+
+// if (isBirthday) {
+//   greetingOutput += ' and have a great birthday!';
+// }
+
+// console.log(greetingOutput);
+
+let isLoggedIn = true;
+let userName = 'John';
+let time = 23;
+let isBirthday = true;
+
+let timeText = '';
+
+// if (isLoggedIn && userName) {
+//   greetingText = ', ' + userName;
+// }
+let greetingText = (isLoggedIn && userName) ? ', ' + userName : '';
+
+// if (isBirthday) {
+//   birthdayText = ' and have a great birthday!';
+// } else {
+//   birthdayText = '';
+// }
+let birthdayText = isBirthday ? ' and have a great birthday!' : '';
+
+if (time >= 5 && time < 13) {
+  timeText = 'Good Morning';
+} else if (time >= 13 && time < 19) {
+  timeText = 'Good Afternoon';
+} else if ((time >= 19 && time < 24) || (time >= 0 && time < 5)) {
+  timeText = 'Good Evening';
+} else {
+  timeText = 'Hello';
+}
+
+let greetingOutput = timeText + greetingText + birthdayText;
+
+console.log(greetingOutput);
+
+
+
