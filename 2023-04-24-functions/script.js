@@ -12,16 +12,16 @@
 // 10. 10 ilgis ir 120 plotis.
 
 // console.log(10 * 2 + 10 * 2);
-console.log('Perimetras: ' + (10 + 10) * 2 + ' cm.');
-console.log('Perimetras: ' + (10 + 25) * 2 + ' cm.');
-console.log('Perimetras: ' + (10 + 30) * 2 + ' cm.');
-console.log('Perimetras: ' + (10 + 35) * 2 + ' cm.');
-console.log('Perimetras: ' + (10 + 40) * 2 + ' cm.');
-console.log('Perimetras: ' + (10 + 45) * 2 + ' cm.');
-console.log('Perimetras: ' + (10 + 50) * 2 + ' cm.');
-console.log('Perimetras: ' + (10 + 55) * 2 + ' cm.');
-console.log('Perimetras: ' + (10 + 60) * 2 + ' cm.');
-console.log('Perimetras: ' + (10 + 120) * 2 + ' cm.');
+// console.log('Perimetras: ' + (10 + 10) * 2 + ' cm.');
+// console.log('Perimetras: ' + (10 + 25) * 2 + ' cm.');
+// console.log('Perimetras: ' + (10 + 30) * 2 + ' cm.');
+// console.log('Perimetras: ' + (10 + 35) * 2 + ' cm.');
+// console.log('Perimetras: ' + (10 + 40) * 2 + ' cm.');
+// console.log('Perimetras: ' + (10 + 45) * 2 + ' cm.');
+// console.log('Perimetras: ' + (10 + 50) * 2 + ' cm.');
+// console.log('Perimetras: ' + (10 + 55) * 2 + ' cm.');
+// console.log('Perimetras: ' + (10 + 60) * 2 + ' cm.');
+// console.log('Perimetras: ' + (10 + 120) * 2 + ' cm.');
 
 // DRY - Don't Repeat Yourself
 
@@ -33,22 +33,25 @@ console.log('Perimetras: ' + (10 + 120) * 2 + ' cm.');
 // 4. Riestiniai skliaustai {} - funkcijos apibrėžimas
 
 function hello() {
-  console.log('Hello, Steve.');
+  return 'Hello, Steve.';
 }
 
 // Funkcijos iškvietimas
 // 1. Funkcijos pavadinimas
 // 2. Paprasti skliaustai ()
 
-hello();
+console.log(hello());
+document.querySelector('h2').textContent = hello();
 
 function helloWithName(personName, personSurname) {
-  console.log(`- Hello, ${personName} ${personSurname}!!!`);
+  return `- Hello, ${personName} ${personSurname}!!!`;
 }
 
-helloWithName('John', 'Doe');
-helloWithName('Steve', 'Steve');
-helloWithName('Peter', 'Peter');
+console.log(helloWithName('John', 'Doe'));
+
+let helloSteve = helloWithName('Steve', 'Steve');
+console.log(helloSteve);
+// helloWithName('Peter', 'Peter');
 
 function perimeter(width, height, units = 'vnt') {
   // let unitsText = 'vnt';
@@ -61,18 +64,16 @@ function perimeter(width, height, units = 'vnt') {
   if (width && height) {
     let answer = (width + height) * 2;
     let output = `Perimetras: ${answer} ${units}.`
-    console.log(output);
+    return output;
   } else {
-    console.error('Įvesti neteisingi duomenys');
+    return 'Įvesti neteisingi duomenys';
   }
 }
 
-perimeter(10, 50, 'cm');
-perimeter(10, 100, 'm');
-perimeter(100, 100, 'km');
-perimeter(100);
-perimeter();
-
+console.log(perimeter(10, 50, 'cm'));
+console.log(perimeter(10));
+console.log(perimeter(10, 100, 'm'));
+// perimeter(100, 100, 'km');
 
 // Užduotis 1:
 // 1. Sukurti funkciją, kuri skaičiuotų stačiakampio plotą.
@@ -86,10 +87,10 @@ function rectArea(width = 0, height = 0, units = 'vnt') {
   console.log(output);
 }
 
-rectArea(10, 15, 'cm');
-rectArea(100, 14, 'm');
-rectArea(100, 14);
-rectArea(100);
+// rectArea(10, 15, 'cm');
+// rectArea(100, 14, 'm');
+// rectArea(100, 14);
+// rectArea(100);
 
 // Užduotis 2:
 // Atlikti tą patį kaip ir pirmoje užduotyje, tačiau apskaičiuoti stačiojo trikampio plotą.
@@ -100,10 +101,10 @@ function triangleArea(width = 0, height = 0, units = 'vnt') {
   console.log(output);
 }
 
-triangleArea(10, 15, 'cm');
-triangleArea(100, 14, 'm');
-triangleArea(100, 14);
-triangleArea(100);
+// triangleArea(10, 15, 'cm');
+// triangleArea(100, 14, 'm');
+// triangleArea(100, 14);
+// triangleArea(100);
 
 // Užduotis 3:
 // Sukurti naują funkciją, kuri apjungtų šias dvi užduotis ir išvestų abu rezultatus.
@@ -113,6 +114,6 @@ function allData(width, height, units) {
   triangleArea(width, height, units);
 }
 
-allData(10, 15, 'cm');
-allData(25, 46);
-allData(25);
+// allData(10, 15, 'cm');
+// allData(25, 46);
+// allData(25);
