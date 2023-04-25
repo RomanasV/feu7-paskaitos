@@ -57,4 +57,106 @@ function loop(cycles) {
   }
 }
 
-loop(15);
+// loop(15);
+
+// Sukurti funkcijas, kurios paleidžia ciklą su skaičiais nuo 1 iki 100. Šie ciklai:
+// 1. Padaugina skaičių iš 2.
+
+function task1(start = 1, end = 100, nth = 1) {
+  for (let i = start; i <= end; i += nth) {
+    let answer = i * 2;
+    let output = `${i} * 2 = ${answer}`;
+    console.log(output);
+  }
+}
+
+// task1();
+
+function task11(start = 100, end = 1, nth = 1) {
+  for (let i = start; i >= end; i -= nth) {
+    let answer = i * 2;
+    let output = `${i} * 2 = ${answer}`;
+    console.log(output);
+  }
+}
+
+// task11();
+
+// 2. Padaugina skaičių iš 5.
+function task2(start = 1, end = 100, nth = 1) {
+  for (let i = start; i <= end; i += nth) {
+    let answer = i * 5;
+    let output = `${i} * 5 = ${answer}`;
+    console.log(output);
+  }
+}
+
+// task2();
+
+function task21(start = 100, end = 1, nth = 1) {
+  for (let i = start; i >= end; i -= nth) {
+    let answer = i * 5;
+    let output = `${i} * 5 = ${answer}`;
+    console.log(output);
+  }
+}
+
+task21()
+
+// 3. Prideda prie skaičiaus 5.
+function task3(start = 1, end = 100, nth = 1) {
+  for (let i = start; i <= end; i += nth) {
+    let answer = i + 5;
+    let output = `${i} + 5 = ${answer}`;
+    console.log(output);
+  }
+}
+
+// task3();
+
+// 4. Atima iš skaičiaus 2.
+function task4(start = 1, end = 100, nth = 1) {
+  for (let i = start; i <= end; i += nth) {
+    let answer = i - 2;
+    let output = `${i} - 2 = ${answer}`;
+    console.log(output);
+  }
+}
+
+// task4();
+
+// 5. Pakelia skaičių kvadratu.
+function task5(start = 1, end = 100, nth = 1) {
+  for (let i = start; i <= end; i += nth) {
+    let answer = i * i;
+    let output = `${i} * ${i} = ${answer}`;
+    console.log(output);
+  }
+}
+
+// task5();
+
+// 6. Pakelia skaičių kūbu.
+function task6(start = 1, end = 100, nth = 1) {
+  for (let i = start; i <= end; i += nth) {
+    // let answer = Math.pow(i, 3);
+    let answer = i**3;
+    let output = `${i} ** 3 = ${answer}`;
+    console.log(output);
+  }
+}
+
+// task6()
+
+// 7. Sukurti analogiškas funkcijas pirmoms užduotims, tačiau padaryti, jog ciklai skaičiuotųsi nuo 100 iki 1.
+
+// 8. Kiekvienos užduoties išvesties tekstą suformuluoti, jog būtų parašytas užduoties sprendimas, pvz.: 
+// 1 * 2 = 2
+// 2 * 2 = 4
+// 3 * 2 = 6
+// ir t.t.
+
+// 9. Papildyti funkcijas, jog jos priimtu šiuos argumentus:
+// 9.1. Nusakytų nuo kokio skaičiaus prasidės ciklas.
+// 9.2. Nusakytų iki kokio skaičiaus veiks ciklas.
+// 9.3. Nusakytų kelinto ciklo metu turi išvesti atsakymą į konsolę.
