@@ -1,0 +1,3 @@
+Sukurti funkcijas, kurios paleidžia ciklą su skaičiais nuo 1 iki 100. Šie ciklai:
+1. Padaugina skaičių iš 2.
+2. Padaugina skaičių iš 5.
