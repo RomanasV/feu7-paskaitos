@@ -1,0 +1,7 @@
+UZDUOTIS dirbant su pirkinių sąrašu (bent 7 pirkiniai):
+Kiekvienam iš punktų sukurti po atskirą kintamąjį ir jame išsaugoti reikšmę. Šią reikšmę atvaizduoti konsolėje.
+1. Išimti pirmus du pirkinius.
+2. Išimti tris paskutinius pirkinius.
+3. Išimti ketvirtą ir penktą pirkinį.
+4. Išimti antrą ir trečią pirkinį.
+5. Išimti visus, išskyrus pirmą pirkinį.
