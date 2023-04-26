@@ -101,7 +101,7 @@ function task21(start = 100, end = 1, nth = 1) {
   }
 }
 
-task21()
+// task21();
 
 // 3. Prideda prie skaičiaus 5.
 function task3(start = 1, end = 100, nth = 1) {
@@ -160,3 +160,23 @@ function task6(start = 1, end = 100, nth = 1) {
 // 9.1. Nusakytų nuo kokio skaičiaus prasidės ciklas.
 // 9.2. Nusakytų iki kokio skaičiaus veiks ciklas.
 // 9.3. Nusakytų kelinto ciklo metu turi išvesti atsakymą į konsolę.
+
+
+// WHILE / do... while
+
+for (let i = 0; i < 0; i++) {
+  console.log('For ciklas: ' + i);
+}
+
+let n = 0;
+
+while (n < 0) {
+  console.log('while ciklas: ' + n);
+  n++;
+}
+
+let m = 0;
+do {
+  console.log('do..while ciklas: ' + m);
+  m++;
+} while (m < 0);
