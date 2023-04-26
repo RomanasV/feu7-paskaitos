@@ -123,3 +123,28 @@ let slicedCountries12 = countries.slice(4, 2);
 console.log(slicedCountries12);
 
 console.log(countries);
+
+let shoppingList = ['Obuoliai', 'Pienas', 'Cukrus', 'Kava', 'Popierius', 'Vanduo', 'Arbata'];
+console.log(shoppingList);
+
+// UZDUOTIS dirbant su pirkinių sąrašu (bent 7 pirkiniai):
+// Kiekvienam iš punktų sukurti po atskirą kintamąjį ir jame išsaugoti reikšmę. Šią reikšmę atvaizduoti konsolėje.
+// 1. Išimti pirmus du pirkinius.
+let shoppingListTask1 = shoppingList.slice(0, 2);
+console.log(shoppingListTask1);
+
+// 2. Išimti tris paskutinius pirkinius.
+let shoppingListTask2 = shoppingList.slice(-3);
+console.log(shoppingListTask2);
+
+// 3. Išimti ketvirtą ir penktą pirkinį.
+let shoppingListTask3 = shoppingList.slice(3, 5);
+console.log(shoppingListTask3);
+
+// 4. Išimti antrą ir trečią pirkinį.
+let shoppingListTask4 = shoppingList.slice(1, 3);
+console.log(shoppingListTask4);
+
+// 5. Išimti visus, išskyrus pirmą pirkinį.
+let shoppingListTask5 = shoppingList.slice(1);
+console.log(shoppingListTask5);
