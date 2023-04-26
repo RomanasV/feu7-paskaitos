@@ -148,3 +148,24 @@ console.log(shoppingListTask4);
 // 5. Išimti visus, išskyrus pirmą pirkinį.
 let shoppingListTask5 = shoppingList.slice(1);
 console.log(shoppingListTask5);
+
+// SPLICE - modifikuoja (mutuoja) originalų masyvą
+let nums = [1, 2, 3, 4, 5, 6, 7, 10];
+
+console.log(nums);
+
+// let splicedNums = nums.splice(2);
+// let splicedNums = nums.splice(0, 1);
+// let splicedNums = nums.splice(2, 1);
+// let splicedNums = nums.splice(2, 3);
+// let splicedNums = nums.splice(-1);
+// let splicedNums = nums.splice(-3, 2);
+// let splicedNums = nums.splice(-3, 2, 2);
+// let splicedNums = nums.splice(-3, 2, 'Du');
+// let splicedNums = nums.splice(1, 2, 'Labas');
+// let splicedNums = nums.splice(2, 1, 2.5);
+// let splicedNums = nums.splice(2, 0, 'Du su puse');
+let splicedNums = nums.splice(2, 0, 2.5, 2.8, 2.9);
+
+console.log(splicedNums);
+console.log(nums);
