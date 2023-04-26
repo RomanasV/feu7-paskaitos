@@ -169,3 +169,62 @@ let splicedNums = nums.splice(2, 0, 2.5, 2.8, 2.9);
 
 console.log(splicedNums);
 console.log(nums);
+
+
+// Sukurti 10-ties filmų masyvą ir iš jo:
+let moviesList = ["Malholando kelias", "Meilės laukimas", "Bus kraujo", "Vaikystė", "Jausmų galia", "Gyvenimo medis", " Ji ji", "Zodiakas ", "Žmonių vaikai", "Žudymo aktas"];
+console.log(moviesList);
+
+// 1. Išimti pirmus 5 filmus.
+let moviesTask1 = moviesList.slice(0, 5);
+console.log(moviesTask1);
+
+// 2. Išimti 4 paskutinius filmus.
+let moviesTask2 = moviesList.slice(-4);
+console.log(moviesTask2);
+
+// 3. Išimti nuo trečio iki septinto filmo.
+let moviesTask3 = moviesList.slice(2, 7);
+console.log(moviesTask3);
+
+// 4. Išimti antrą ir trečią filmą.
+let moviesTask4 = moviesList.slice(1, 3);
+console.log(moviesTask4);
+
+// 5. Išimti visus, išskyrus pirmą filmą.
+let moviesTask5 = moviesList.slice(1);
+console.log(moviesTask5);
+
+// 6. Išimti 5 filmus skaičiuojant nuo trečio.
+let moviesTask6 = moviesList.slice(3, 8);
+console.log(moviesTask6);
+
+// 7. Išimti tris filmus nuo galo, tačiau palikti paskutinį.
+let moviesTask7 = moviesList.slice(-4, -1);
+console.log(moviesTask7);
+
+// 8. Vietoje penkto filmo įrašyti du naujus filmus.
+let moviesTask8 = moviesList.slice(4, 1, 'Naujas filmas');
+
+// 9. Pašalinti pirmą filmą.
+// moviesList.shift();
+moviesList.splice(0, 1);
+
+// 10. Įrašyti naują filmą į masyvo pradžią.
+moviesList.unshift('Dar vienas naujas filmas');
+
+console.log(moviesList);
+
+// 11.1. Išimti pirmus tris filmus, skaičiuojant nuo antro filmo.
+let moviesTask111 = moviesList.slice(1, 4);
+console.log(moviesTask111);
+
+// 11.2. Išimti paskutinius tris filmus, skaičiuojant nuo priešpaskutinio filmo.
+let moviesTask112 = moviesList.slice(-4, -1);
+console.log(moviesTask112);
+
+// 11.3. Šiuos išimtus filmus išsaugoti naujame masyve ir padaryti, jog jo nariai būtų apsukti.
+// let moviesTask113 = [moviesTask111, moviesTask112].flat().reverse();
+// let moviesTask113 = [...moviesTask111, ...moviesTask112].reverse();
+let moviesTask113 = moviesTask111.concat(moviesTask112).reverse();
+console.log(moviesTask113);
