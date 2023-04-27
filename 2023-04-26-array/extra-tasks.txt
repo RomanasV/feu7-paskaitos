@@ -115,7 +115,7 @@ Atlikus šias užduotis eilės tvarka masyvas turėtų atrodyti taip:
 3.52. Gauti tik tekstus (string).
 3.53. Gauti tik tekstus (string), kurie turi daugiau nei 5 simbolius.
 3.54. Gauti tik tekstus (string), kurie turi mažiau arba lygiai 5 simbolius.
-3.55. Gauti tik tekstus (string), kurie turi mažiau arba lygiai 5 simbolius.
+3.55. Gauti tik tekstus (string), kurie turi mažiau nei 7 simbolius.
 3.56. Gauti tik tekstus (string), kurie turi raidę t.
 3.57. Gauti tik tekstus (string), kurie turi raidę y.
 3.58. Gauti tik tekstus (string), kurie turi raides e arba a.
