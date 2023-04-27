@@ -370,3 +370,46 @@ console.log(task338);
 // 3.39. Gauti tik neigiamus skaičius, kurie dalinasi iš 111.
 let task339 = arr.filter(item => item < 0 && item % 111 === 0);
 console.log(task339);
+
+// 3.40. Gauti tik skaičius, kurie yra didesni už 500 ir kurie dalinasi iš 2.
+let task340 = arr.filter(item => item > 500 && item % 2 === 0);
+console.log(task340);
+
+// 3.41. Gauti tik skaičius, kurie yra didesni už 1000 ir kurie dalinasi iš 3.
+let task341 = arr.filter(item => item > 1000 && item % 3 === 0);
+console.log(task341);
+
+// 3.42. Gauti tik skaičius, kurie yra mažesni už 1000 ir kurie dalinasi iš 9.
+let task342 = arr.filter(item => item < 1000 && item % 9 === 0);
+console.log(task342);
+
+// 3.43. Gauti tik skaičius, kurie yra mažesni už 500 ir kurie dalinasi iš 2.
+let task343 = arr.filter(item => item < 500 && item % 2 === 0);
+console.log(task343);
+
+// 3.44. Gauti tik skaičius, kurie yra didesni arba lygūs 33 ir kurie dalinasi iš 3.
+let task344 = arr.filter(item => item >= 33 && item % 3 === 0);
+console.log(task344);
+
+// 3.45. Gauti tik skaičius, kurie yra didesni arba lygūs 444 ir kurie dalinasi iš 12.
+let task345 = arr.filter(item => item >= 444 && item % 12 === 0);
+console.log(task345);
+
+// 3.46. Gauti tik skaičius, kurie yra mažesni arba lygūs 155 ir kurie dalinasi iš 5.
+let task346 = arr.filter(item => item <= 155 && item % 5 === 0);
+console.log(task346);
+
+// 3.47. Gauti tik skaičius, kurie yra mažesni arba lygūs -333 ir kurie dalinasi iš 9.
+let task347 = arr.filter(item => item <= -333 && item % 9 === 0);
+console.log(task347);
+
+// 3.48. Gauti tik skaičius, kurie yra didesni už 100, mažesni už 500 ir kurie dalinasi iš 5.
+let task348 = arr.filter(item => item > 100 && item < 500 && item % 5 === 0);
+console.log(task348);
+
+// 3.49. Gauti tik skaičius, kurie yra didesni arba lygūs 888, mažesni už 1000 ir kurie dalinasi iš 2.
+let task349 = arr.filter(item => item >= 888 && item < 1000 && item % 2 === 0);
+console.log(task349);
+
+let task350 = arr.filter(item => item <= 888 && item >= -333 && item % 3 === 0 && item !== 0);
+console.log(task350);
