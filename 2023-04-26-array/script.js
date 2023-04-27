@@ -247,3 +247,24 @@ let filteredNums = originalNums.filter(function(num){
 
 console.log(filteredNums);
 console.log(originalNums);
+
+
+// 3.62. Gauti tik tekstus (string), kurie turi daugiau nei vieną raidę t.
+let arr = ['start', 2, 3, 5, 11, 155, 888, '15x', 6789, -5564, 'obuolys', -51, 55, 0, 33, 789, 6543, 1, 'trylika', 444, 321, 654, -1, 987, -333, -321, 'end'];
+console.log(arr);
+
+let filteredArr = arr.filter(item => {
+  if (isNaN(item)) {
+    let wordLetters = item.split('');
+
+    let sameLetterArr = wordLetters.filter(letter => letter === 't');
+
+    return sameLetterArr.length > 1;
+  }
+});
+
+console.log(filteredArr);
+
+let filteredArr2 = arr.filter(item => isNaN(item) && item.split('t').length > 2);
+
+console.log(filteredArr2);
