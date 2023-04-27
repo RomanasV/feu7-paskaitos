@@ -228,3 +228,22 @@ console.log(moviesTask112);
 // let moviesTask113 = [...moviesTask111, ...moviesTask112].reverse();
 let moviesTask113 = moviesTask111.concat(moviesTask112).reverse();
 console.log(moviesTask113);
+
+
+// FILTER metodas
+
+let originalNums = [1, 2, 3, 4, 5, 6, 7, 8, 10];
+console.log(originalNums);
+
+// let filteredNums = originalNums.filter(function(element, index, array){
+//   console.log(element);
+//   console.log(index);
+//   console.log(array);
+// });
+
+let filteredNums = originalNums.filter(function(num){
+  return num <= 5 && num % 2 === 0;
+});
+
+console.log(filteredNums);
+console.log(originalNums);
