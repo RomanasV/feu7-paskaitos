@@ -802,9 +802,33 @@ function task415(data) {
 
 // task415(arr);
 
-
-
-
-
-
 console.log(arr);
+
+
+let h1Element = document.querySelector('h1');
+h1Element.textContent = 'Hello';
+h1Element.textContent = h1Element.textContent + ' world';
+h1Element.textContent += '.';
+
+let personName = 'John';
+let output = ' Hello, ' + personName + '.';
+
+let h1ElementForPerson = document.querySelector('h1.person-hello');
+h1ElementForPerson.textContent = output;
+
+console.dir(h1Element.textContent);
+
+let h1InnerElement = document.querySelector('#inner-element');
+console.log(h1InnerElement);
+
+h1InnerElement.innerHTML = 'Hello <em>world</em>';
+
+let containerElement = document.querySelector('.container');
+// containerElement.innerHTML = '<h1>Hello</h1>';
+// containerElement.innerHTML += '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, voluptatum dignissimos, nesciunt a assumenda aut qui error dolor aliquid voluptatibus suscipit consectetur deleniti? Rem et doloremque laborum temporibus maxime dolorum.</p>';
+
+containerElement.innerHTML = `
+  <h1>Hello</h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, voluptatum dignissimos, nesciunt a assumenda aut qui error dolor aliquid voluptatibus suscipit consectetur deleniti? Rem et doloremque laborum temporibus maxime dolorum.</p>
+  <button>Click</button>
+`;
