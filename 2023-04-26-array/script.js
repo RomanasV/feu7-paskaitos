@@ -1,3 +1,5 @@
+console.groupCollapsed('Teorija');
+
 // Masyvas / Array
 let numsArray = [5, 100, -5, 54.45, 'labas'];
 // Indeksai      0   3    4    5       6         
@@ -325,50 +327,6 @@ let forEachNums = numArr.forEach((num) => {
 
 console.log(forEachNums);
 
-
-arr = ['start', 2, 3, 5, 11, 155, 888, '15x', 6789, -5564, 'obuolys', -51, 55, 0, 33, 789, 6543, 1, 'trylika', 444, 321, 654, -1, 987, -333, -321, 'end'];
-
-console.log(arr);
-
-// 4.1. Tik skaičius (number tipo duomenis).
-for (let i = 0; i < arr.length; i++) {
-  if (!isNaN(arr[i])) {
-    console.log(arr[i]);
-  }
-}
-
-arr.map((item) => {
-  if (!isNaN(item)) {
-    console.log(item);
-  }
-})
-
-arr.forEach((item) => {
-  if (!isNaN(item)) {
-    console.log(item)
-  }
-})
-
-// 4.2. Tik tekstą (string tipo duomenis).
-for (let i = 0; i < arr.length; i++) {
-  if (isNaN(arr[i])) {
-    console.log(arr[i]);
-  }
-}
-
-arr.map((item) => {
-  if (isNaN(item)) {
-    console.log(item);
-  }
-})
-
-arr.forEach((item) => {
-  if (isNaN(item)) {
-    console.log(item)
-  }
-})
-
-
 let animals = ['horse', 'chicken', 'cow'];
 
 animals.map((animal) => {
@@ -380,3 +338,473 @@ for (let i = 0; i < animals.length; i++) {
 
   console.log(animal);
 }
+
+console.groupEnd();
+
+
+arr = ['start', 2, 3, 5, 11, 155, 888, '15x', 6789, -5564, 'obuolys', -51, 55, 0, 33, 789, 6543, 1, 'trylika', 444, 321, 654, -1, 987, -333, -321, 'end'];
+
+
+
+// 4.1. Tik skaičius (number tipo duomenis).
+function task41(data) {
+  // for (let i = 0; i < data.length; i++) {
+  //   if (!isNaN(data[i])) {
+  //     console.log(data[i]);
+  //   }
+  // }
+  
+  // data.map((item) => {
+  //   if (!isNaN(item)) {
+  //     console.log(item);
+  //   }
+  // })
+  
+  data.forEach((item) => {
+    if (!isNaN(item)) {
+      console.log(item)
+    }
+  })
+}
+
+// task41(arr);
+
+// 4.2. Tik tekstą (string tipo duomenis).
+function task42(data) {
+  for (let i = 0; i < data.length; i++) {
+    if (isNaN(data[i])) {
+      console.log(data[i]);
+    }
+  }
+  
+  data.map((item) => {
+    if (isNaN(item)) {
+      console.log(item);
+    }
+  })
+  
+  data.forEach((item) => {
+    if (isNaN(item)) {
+      console.log(item)
+    }
+  })
+}
+
+// task42(arr);
+
+// 4.3. Tik skaičius (number tipo duomenis) ir juos pakelti 4-tuoju laipsniu.
+function task43(data, num) {
+  for (let i = 0; i < data.length; i++) {
+    if (!isNaN(data[i])) {
+      // console.log(data[i]**num);
+      console.log(Math.pow(data[i], num));
+    }
+  }
+  
+  data.map((item) => {
+    if (!isNaN(item)) {
+      console.log(item**num);
+    }
+  })
+  
+  data.forEach((item) => {
+    if (!isNaN(item)) {
+      console.log(item**num)
+    }
+  })
+}
+
+// task43(arr, 4);
+
+// 4.4. Tik skaičius (number tipo duomenis) ir prie jų pridėti 55.
+function task44(data, num) {
+  for (let i = 0; i < data.length; i++) {
+    if (!isNaN(data[i])) {
+      console.log(data[i] + num);
+    }
+  }
+  
+  data.map((item) => {
+    if (!isNaN(item)) {
+      console.log(item + num);
+    }
+  })
+  
+  data.forEach((item) => {
+    if (!isNaN(item)) {
+      console.log(item + num);
+    }
+  })
+}
+
+// task44(arr, -55);
+
+// 4.5. Tik skaičius (number tipo duomenis) ir juos padalinti iš 2.
+function task45(data, num) {
+  for (let i = 0; i < data.length; i++) {
+    if (!isNaN(data[i])) {
+      console.log(data[i] / num);
+    }
+  }
+  
+  data.map((item) => {
+    if (!isNaN(item)) {
+      console.log(item / num);
+    }
+  })
+  
+  data.forEach((item) => {
+    if (!isNaN(item)) {
+      console.log(item / num);
+    }
+  })
+}
+
+// task45(arr, 2);
+
+// 4.6. Tik skaičius (number tipo duomenis) ir prieš juos pridėti teksta, tokiu formatu: "Number: 2".
+function task46(data, str) {
+  for (let i = 0; i < data.length; i++) {
+    if (!isNaN(data[i])) {
+      console.log(str + data[i]);
+    }
+  }
+  
+  data.map((item) => {
+    if (!isNaN(item)) {
+      console.log(str + item);
+    }
+  })
+  
+  data.forEach((item) => {
+    if (!isNaN(item)) {
+      console.log(str + item);
+    }
+  })
+}
+
+// task46(arr, 'Number: ');
+
+
+// 4.7. Tik skaičius (number tipo duomenis) ir pridėti tekstą su jų pačių indeksais, pvz.:
+//   "Index: 0, Number: 2"
+//   "Index: 1, Number: 3"
+//   "Index: 2, Number: 5"
+//   Ir t.t.
+
+function task47(data) {
+  let newArr = data.filter(item => !isNaN(item));
+  for (let i = 0; i < newArr.length; i++) {
+    console.log(`Index: ${i}, Number: ${newArr[i]}`);
+  }
+  
+  newArr.map((item, index) => {
+    console.log(`Index: ${index}, Number: ${item}`);
+  })
+  
+  newArr.forEach((item, index) => {
+    console.log(`Index: ${index}, Number: ${item}`);
+  })
+}
+
+// task47(arr);
+
+// 4.8. Tik skaičius (number tipo duomenis) ir juos padauginti iš jų pačių indekso.
+
+function task48(data) {
+  for (let i = 0; i < data.length; i++) {
+    if (!isNaN(data[i])) {
+      console.log(i * data[i]);
+    }
+  }
+  
+  data.map((item, i) => {
+    if (!isNaN(item)) {
+      console.log(i * item);
+    }
+  })
+  
+  data.forEach((item, index) => {
+    if (!isNaN(item)) {
+      console.log(index * item);
+    }
+  })
+}
+
+// task48(arr);
+
+// 4.9. Tik skaičius (number tipo duomenis) ir juos padauginti iš ankstesnio nario, pvz.:
+//   - Pirmo skaičiaus dauginti nereikia.
+//   - Antrą skaičių dauginti iš pirmo.
+//   - Trečią skaičių dauginti iš antro.
+//   - Ketvirta skaičių dauginti iš trečio.
+//   - Penktą skaičių dauginti iš ketvirto.
+//   Ir t.t.
+
+function task49(data) {
+  let numbersArr = data.filter(item => !isNaN(item));
+
+  for (let i = 0; i < numbersArr.length; i++) {
+    let currentNumber = numbersArr[i];
+    let output;
+
+    if (i > 0) {
+      let prevNumber = numbersArr[i - 1];
+      output = prevNumber * currentNumber;
+    } else {
+      output = currentNumber;
+    }
+
+    console.log(output);
+  }
+  
+  numbersArr.map((currentNumber, index) => {
+    let output;
+
+    if (index > 0) {
+      let prevNumber = numbersArr[index - 1];
+      output = prevNumber * currentNumber;
+    } else {
+      output = currentNumber;
+    }
+
+    console.log(output);
+  })
+  
+  numbersArr.forEach((number, index) => {
+    let output;
+
+    if (index > 0) {
+      let prevNumber = numbersArr[index - 1];
+      output = prevNumber * number;
+    } else {
+      output = number;
+    }
+
+    console.log(output);
+  })
+}
+
+// task49(arr);
+
+// 4.10. Tik tuos skaičius (number tipo duomenis), kuriuos padauginus iš 5, atsakymas gaunasi didesnis už 350.
+
+function task410(data) {
+  for (let i = 0; i < data.length; i++) {
+    if (!isNaN(data[i]) && data[i] * 5 > 350) {
+      console.log(data[i]);
+    }
+  }
+  
+  data.map((item) => {
+    if (!isNaN(item) && item * 5 > 350) {
+      console.log(item);
+    }
+  })
+  
+  data.forEach((item) => {
+    if (!isNaN(item) && item * 5 > 350) {
+      console.log(item);
+    }
+  })
+}
+
+// task410(arr);
+
+// 4.11. Tik tekstą (string tipo duomenis) ir prie kiekvieno teksto parašyti kiek simbolių jis turi, pvz. "Start has 5 symbols".
+function task411(data) {
+  for (let i = 0; i < data.length; i++) {
+    if (isNaN(data[i]) && typeof data[i] === 'string') {
+      let word = data[i];
+      let wordLength = word.length;
+      let output = `${word} has ${wordLength} symbols`;
+      console.log(output);
+    }
+  }
+  
+  data.map((item) => {
+    if (isNaN(item) && typeof item === 'string') {
+      console.log(`${item} has ${item.length} symbols`);
+    }
+  })
+  
+  data.forEach((item) => {
+    if (isNaN(item) && typeof item === 'string') {
+      console.log(`${item} has ${item.length} symbols`);
+    }
+  })
+}
+
+// task411(arr);
+
+// 4.12. Tik tekstą (string tipo duomenis), tačiau kiekviena žodžio raidę išskiriant brūkšniu ir paverčiant ją didžiąja raide, pvz.: "S-T-A-R-T".
+
+function task412(data, symbol = '-') {
+  for (let i = 0; i < data.length; i++) {
+    if (isNaN(data[i]) && typeof data[i] === 'string') {
+      let word = data[i];
+      let output = word.split('').join(symbol).toUpperCase();
+      console.log(output);
+    }
+  }
+  
+  data.map((item) => {
+    if (isNaN(item) && typeof item === 'string') {
+      let output = item.split('').join(symbol).toUpperCase();
+      console.log(output);
+    }
+  })
+  
+  data.forEach((item) => {
+    if (isNaN(item) && typeof item === 'string') {
+      let output = item.split('').join(symbol).toUpperCase();
+      console.log(output);
+    }
+  })
+}
+
+// task412(arr);
+
+// 4.13. Tik tekstą (string tipo duomenis), tačiau kiekviena žodžio pirmą ir trečią raidę pakeičiant brūkšniu (underscore), pvz.: "_t_rt";
+function task413(data) {
+  for (let i = 0; i < data.length; i++) {
+    if (isNaN(data[i]) && typeof data[i] === 'string') {
+      let word = data[i];
+      let wordLetters = word.split('');
+      wordLetters[0] = '_';
+      wordLetters[2] = '_';
+
+      let convertedStr = wordLetters.join('');
+      console.log(convertedStr);
+    }
+  }
+  
+  data.map((item) => {
+    if (isNaN(item) && typeof item === 'string') {
+      let wordLetters = item.split('');
+      wordLetters[0] = '_';
+      wordLetters[2] = '_';
+
+      let convertedStr = wordLetters.join('');
+      console.log(convertedStr);
+    }
+  })
+  
+  data.forEach((item) => {
+    if (isNaN(item) && typeof item === 'string') {
+      let wordLetters = item.split('');
+      wordLetters[0] = '_';
+      wordLetters[2] = '_';
+
+      let convertedStr = wordLetters.join('');
+      console.log(convertedStr);
+    }
+  })
+}
+
+// task413(arr);
+
+// 4.14. Tik tekstą (string tipo duomenis), tačiau žodį parašant atvirkščiai, pvz.: vietoje "start" parašyti "trats";
+function task414(data) {
+  for (let i = 0; i < data.length; i++) {
+    if (isNaN(data[i]) && typeof data[i] === 'string') {
+      let word = data[i];
+      // let output = word.split('').reverse().join('');
+      // console.log(output);
+
+      let reversedStr = '';
+      for (let i = 0; i < word.length; i++) {
+        let letter = word[i];
+        reversedStr = letter + reversedStr;
+      }
+      console.log(reversedStr);
+    }
+  }
+  
+  data.map((item) => {
+    if (isNaN(item) && typeof item === 'string') {
+      let output = item.split('').reverse().join('');
+      console.log(output);
+    }
+  })
+  
+  data.forEach((item) => {
+    if (isNaN(item) && typeof item === 'string') {
+      let output = item.split('').reverse().join('');
+      console.log(output);
+    }
+  })
+}
+
+// task414(arr);
+
+// 4.15. Tik tekstą (string tipo duomenis) ir prie kiekvieno teksto parašyti tarp kokių narių masyve jis yra, pvz.: "Word obuolys is between -5564 and -51 in the array".
+
+function task415(data) {
+  for (let i = 0; i < data.length; i++) {
+    if (isNaN(data[i]) && typeof data[i] === 'string') {
+      let word = data[i];
+      let previousItem = data[i - 1];
+      let nextItem = data[i + 1];
+
+      let output;
+
+      if (i === 0) {
+        output = `Word ${word} is the first in the array and the next item is ${nextItem}.`
+      } else if (i < data.length - 1) {
+        output = `Word ${word} is between ${previousItem} and ${nextItem} in the array`
+      } else {
+        output = `Word ${word} is the last in the array and the previous item is ${previousItem}.`
+      }
+
+      console.log(output);
+    }
+  }
+  
+  data.map((item, i) => {
+    if (isNaN(item) && typeof item === 'string') {
+      let previousItem = data[i - 1];
+      let nextItem = data[i + 1];
+
+      let output;
+
+      if (i === 0) {
+        output = `Word ${item} is the first in the array and the next item is ${nextItem}.`
+      } else if (i < data.length - 1) {
+        output = `Word ${item} is between ${previousItem} and ${nextItem} in the array`
+      } else {
+        output = `Word ${item} is the last in the array and the previous item is ${previousItem}.`
+      }
+
+      console.log(output);
+    }
+  })
+  
+  data.forEach((item, index) => {
+    if (isNaN(item) && typeof item === 'string') {
+      let previousItem = data[index - 1];
+      let nextItem = data[index + 1];
+
+      let output;
+
+      if (index === 0) {
+        output = `Word ${item} is the first in the array and the next item is ${nextItem}.`
+      } else if (index < data.length - 1) {
+        output = `Word ${item} is between ${previousItem} and ${nextItem} in the array`
+      } else {
+        output = `Word ${item} is the last in the array and the previous item is ${previousItem}.`
+      }
+
+      console.log(output);
+    }
+  })
+}
+
+// task415(arr);
+
+
+
+
+
+
+console.log(arr);
