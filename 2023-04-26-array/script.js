@@ -245,6 +245,12 @@ let filteredNums = originalNums.filter(function(num){
   return num <= 5 && num % 2 === 0;
 });
 
+let filteredNums2 = originalNums.filter((num) => {
+  return num <= 5 && num % 2 === 0;
+});
+
+let filteredNums3 = originalNums.filter(num => num <= 5 && num % 2 === 0);
+
 console.log(filteredNums);
 console.log(originalNums);
 
@@ -268,3 +274,109 @@ console.log(filteredArr);
 let filteredArr2 = arr.filter(item => isNaN(item) && item.split('t').length > 2);
 
 console.log(filteredArr2);
+
+// MAP metodas
+let numArr = [1, 4, 9, 16];
+
+for (let i = 0; i < numArr.length; i++) {
+  console.log('For ciklas: ' + numArr[i]);
+}
+
+numArr.map(function(num) {
+  console.log('Map ciklas (paprasta funkcija): ' + num);
+});
+
+numArr.map((num) => {
+  console.log('Map ciklas (arrow funkcija): ' + num);
+});
+
+numArr.map(num => console.log('Map ciklas (arrow funkcija sutrumpinta): ' + num));
+
+numArr.map((num, index, originalArr) => {
+  console.log(index);
+  console.log('Map ciklas (arrow funkcija): ' + num);
+  console.log(originalArr);
+});
+
+// FOREACH metodas
+numArr.forEach(function(num) {
+  console.log('ForEach ciklas: ' + num);
+});
+
+numArr.forEach((num) => {
+  console.log('ForEach ciklas (arrow function): ' + num);
+});
+
+
+console.log(numArr);
+
+// Map - grąžina reikšmę
+// forEach - negrąžina reikšmės
+
+let mapNums = numArr.map((num) => {
+  return 'Atsakymas: ' + num * num;
+}).reverse();
+
+console.log(mapNums);
+
+let forEachNums = numArr.forEach((num) => {
+  return 'Atsakymas: ' + num * num;
+});
+
+console.log(forEachNums);
+
+
+arr = ['start', 2, 3, 5, 11, 155, 888, '15x', 6789, -5564, 'obuolys', -51, 55, 0, 33, 789, 6543, 1, 'trylika', 444, 321, 654, -1, 987, -333, -321, 'end'];
+
+console.log(arr);
+
+// 4.1. Tik skaičius (number tipo duomenis).
+for (let i = 0; i < arr.length; i++) {
+  if (!isNaN(arr[i])) {
+    console.log(arr[i]);
+  }
+}
+
+arr.map((item) => {
+  if (!isNaN(item)) {
+    console.log(item);
+  }
+})
+
+arr.forEach((item) => {
+  if (!isNaN(item)) {
+    console.log(item)
+  }
+})
+
+// 4.2. Tik tekstą (string tipo duomenis).
+for (let i = 0; i < arr.length; i++) {
+  if (isNaN(arr[i])) {
+    console.log(arr[i]);
+  }
+}
+
+arr.map((item) => {
+  if (isNaN(item)) {
+    console.log(item);
+  }
+})
+
+arr.forEach((item) => {
+  if (isNaN(item)) {
+    console.log(item)
+  }
+})
+
+
+let animals = ['horse', 'chicken', 'cow'];
+
+animals.map((animal) => {
+  console.log(animal);
+})
+
+for (let i = 0; i < animals.length; i++) {
+  let animal = animals[i];
+
+  console.log(animal);
+}
