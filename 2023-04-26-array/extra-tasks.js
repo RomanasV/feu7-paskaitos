@@ -1,3 +1,5 @@
+console.groupCollapsed('1-3 tasks');
+
 const arr = [4, 5, -5556, 155, 640, '15x', 6789, -5564, 478, 654, 'obuolys', 789, -51, 55, -222, 0, -357, -56, 'trylika', 444, 7778, 4154, 4751];
 
 console.log(arr);
@@ -546,23 +548,30 @@ console.log(task379);
 let task380 = arr.filter(item => isNaN(item) && item[0] !== 'e' && item.length < 6 && isNaN(item[0]));
 console.log(task380);
 
+console.groupEnd();
+
 // 4.1. Tik skaičius (number tipo duomenis).
 function task41(data) {
+  let ulElement = document.querySelector('#task-41');
+
   // for (let i = 0; i < data.length; i++) {
   //   if (!isNaN(data[i])) {
-  //     console.log(data[i]);
+  //     let liElement = '<li>' + data[i] + '</li>';
+  //     ulElement.innerHTML += liElement; 
   //   }
   // }
   
   // data.map((item) => {
   //   if (!isNaN(item)) {
-  //     console.log(item);
+  //     let liElement = `<li>${item}</li>`;
+  //     ulElement.innerHTML += liElement;
   //   }
   // })
   
   data.forEach((item) => {
     if (!isNaN(item)) {
-      console.log(item)
+      let liElement = `<li>${item}</li>`;
+      ulElement.innerHTML += liElement;
     }
   })
 }
@@ -571,33 +580,62 @@ function task41(data) {
 
 // 4.2. Tik tekstą (string tipo duomenis).
 function task42(data) {
-  for (let i = 0; i < data.length; i++) {
-    if (isNaN(data[i])) {
-      console.log(data[i]);
-    }
-  }
+  // let container = document.querySelector('.container');
+
+  // container.innerHTML += '<h2>Task 4.2:</h2>';
+  // container.innerHTML += '<ul id="task-42"></ul>';
+
+  // container.innerHTML += `<h2>Task 4.2:</h2>
+  //                         <ul id="task-42"></ul>`;
   
-  data.map((item) => {
-    if (isNaN(item)) {
-      console.log(item);
-    }
-  })
+  // let ulElement = document.querySelector('#task-42');
+
+  // let updatedArr = [];
+
+  // for (let i = 0; i < data.length; i++) {
+  //   if (isNaN(data[i])) {
+  //     // let liElement = `<li>${data[i]}</li>`;
+  //     // ulElement.innerHTML += liElement;
+
+  //     updatedArr.push(data[i]);
+  //   }
+  // }
+
+  let updatedArr = [];
+  // data.map((item) => {
+  //   if (isNaN(item)) {
+  //     console.log(item);
+  //     updatedArr.push(item);
+  //   }
+  // })
   
   data.forEach((item) => {
     if (isNaN(item)) {
-      console.log(item)
+      updatedArr.push(item);
     }
   })
+
+  renderList(updatedArr, 'Task 4.2:', 'task-42');
 }
 
-// task42(arr);
+task42(arr);
 
 // 4.3. Tik skaičius (number tipo duomenis) ir juos pakelti 4-tuoju laipsniu.
 function task43(data, num) {
+  
+
+  let container = document.querySelector('.container');
+
+  container.innerHTML += `<h2>Task 4.3:</h2>
+                          <ul id="task-43"></ul>`;
+
+  let ulElement = document.querySelector('#task-43');
   for (let i = 0; i < data.length; i++) {
     if (!isNaN(data[i])) {
       // console.log(data[i]**num);
-      console.log(Math.pow(data[i], num));
+      let answer = Math.pow(data[i], num);
+      let liElement = `<li>${answer}</li>`;
+      ulElement.innerHTML += liElement;
     }
   }
   
@@ -614,30 +652,40 @@ function task43(data, num) {
   })
 }
 
-// task43(arr, 4);
+task43(arr, 4);
 
 // 4.4. Tik skaičius (number tipo duomenis) ir prie jų pridėti 55.
 function task44(data, num) {
-  for (let i = 0; i < data.length; i++) {
-    if (!isNaN(data[i])) {
-      console.log(data[i] + num);
-    }
-  }
+  // for (let i = 0; i < data.length; i++) {
+  //   if (!isNaN(data[i])) {
+  //     console.log(data[i] + num);
+  //   }
+  // }
   
-  data.map((item) => {
-    if (!isNaN(item)) {
-      console.log(item + num);
-    }
-  })
+  // data.map((item) => {
+  //   if (!isNaN(item)) {
+  //     console.log(item + num);
+  //   }
+  // })
   
+  let updatedArr = [];
+
   data.forEach((item) => {
     if (!isNaN(item)) {
-      console.log(item + num);
+      let answer = item + num;
+      updatedArr.push(answer);
     }
   })
+
+  renderList(
+    updatedArr, 
+    'Task 4.4:', 
+    'task-44', 
+    'Tik skaičius (number tipo duomenis) ir prie jų pridėti 55.'
+  );
 }
 
-// task44(arr, -55);
+task44(arr, 55);
 
 // 4.5. Tik skaičius (number tipo duomenis) ir juos padalinti iš 2.
 function task45(data, num) {
@@ -941,6 +989,7 @@ function task414(data) {
 // 4.15. Tik tekstą (string tipo duomenis) ir prie kiekvieno teksto parašyti tarp kokių narių masyve jis yra, pvz.: "Word obuolys is between -5564 and -51 in the array".
 
 function task415(data) {
+  let updatedArr = [];
   for (let i = 0; i < data.length; i++) {
     if (isNaN(data[i]) && typeof data[i] === 'string') {
       let word = data[i];
@@ -957,47 +1006,65 @@ function task415(data) {
         output = `Word ${word} is the last in the array and the previous item is ${previousItem}.`
       }
 
-      console.log(output);
+      updatedArr.push(output);
     }
   }
+
+  let description = 'Tik tekstą (string tipo duomenis) ir prie kiekvieno teksto parašyti tarp kokių narių masyve jis yra, pvz.: "Word obuolys is between -5564 and -51 in the array"';
   
-  data.map((item, i) => {
-    if (isNaN(item) && typeof item === 'string') {
-      let previousItem = data[i - 1];
-      let nextItem = data[i + 1];
+  renderList(updatedArr, 'Task 4.15:', 'task-415', description);
 
-      let output;
+  // data.map((item, i) => {
+  //   if (isNaN(item) && typeof item === 'string') {
+  //     let previousItem = data[i - 1];
+  //     let nextItem = data[i + 1];
 
-      if (i === 0) {
-        output = `Word ${item} is the first in the array and the next item is ${nextItem}.`
-      } else if (i < data.length - 1) {
-        output = `Word ${item} is between ${previousItem} and ${nextItem} in the array`
-      } else {
-        output = `Word ${item} is the last in the array and the previous item is ${previousItem}.`
-      }
+  //     let output;
 
-      console.log(output);
-    }
-  })
+  //     if (i === 0) {
+  //       output = `Word ${item} is the first in the array and the next item is ${nextItem}.`
+  //     } else if (i < data.length - 1) {
+  //       output = `Word ${item} is between ${previousItem} and ${nextItem} in the array`
+  //     } else {
+  //       output = `Word ${item} is the last in the array and the previous item is ${previousItem}.`
+  //     }
+
+  //     console.log(output);
+  //   }
+  // })
   
-  data.forEach((item, index) => {
-    if (isNaN(item) && typeof item === 'string') {
-      let previousItem = data[index - 1];
-      let nextItem = data[index + 1];
+  // data.forEach((item, index) => {
+  //   if (isNaN(item) && typeof item === 'string') {
+  //     let previousItem = data[index - 1];
+  //     let nextItem = data[index + 1];
 
-      let output;
+  //     let output;
 
-      if (index === 0) {
-        output = `Word ${item} is the first in the array and the next item is ${nextItem}.`
-      } else if (index < data.length - 1) {
-        output = `Word ${item} is between ${previousItem} and ${nextItem} in the array`
-      } else {
-        output = `Word ${item} is the last in the array and the previous item is ${previousItem}.`
-      }
+  //     if (index === 0) {
+  //       output = `Word ${item} is the first in the array and the next item is ${nextItem}.`
+  //     } else if (index < data.length - 1) {
+  //       output = `Word ${item} is between ${previousItem} and ${nextItem} in the array`
+  //     } else {
+  //       output = `Word ${item} is the last in the array and the previous item is ${previousItem}.`
+  //     }
 
-      console.log(output);
-    }
-  })
+  //     console.log(output);
+  //   }
+  // })
 }
 
-// task415(arr);
+task415(arr);
+
+
+function renderList(arr, title, id, description) {
+  let container = document.querySelector('.container');
+  
+  container.innerHTML += `<h2>${title}</h2>
+                          <p>${description}</p>
+                          <ul id="${id}"></ul>`;
+  let ulElement = document.querySelector(`#${id}`);
+
+  arr.forEach(item => {
+    ulElement.innerHTML += `<li>${item}</li>`;
+  })
+}
