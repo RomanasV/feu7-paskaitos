@@ -95,7 +95,112 @@ function listAllMovies(movies) {
 
 let allMoviesArr = [moviesArr, moviesArr2, moviesArr3];
 
-listAllMovies(allMoviesArr);
+// listAllMovies(allMoviesArr);
 
 
 let moviesList = ["Malholando kelias", "Meilės laukimas", "Bus kraujo", "Vaikystė", "Jausmų galia", "Gyvenimo medis", "Ji ji", "Zodiakas ", "Žmonių vaikai", "Žudymo aktas"];
+
+let movieYears = [
+  2001,
+  2002,
+  null,
+  2004,
+  null,
+  2006,
+  2007,
+  2008,
+  2009,
+  2010
+];
+
+function listMoviesWithYear(titles, years) {
+  let ulElement = document.querySelector('#movies-1');
+  
+  // if (titles.length === years.length) {
+  //   titles.map((title, index) => {
+  //     let year = years[index];
+  
+  //     let yearText = year ? ` (${year})` : '';
+  
+  //     let liElement = `<li>${index + 1}. ${title}${yearText}</li>`;
+  //     ulElement.innerHTML += liElement;
+  //   })
+  // } else {
+  //   titles.map((title, index) => {
+  //     let liElement = `<li>${index + 1}. ${title}</li>`;
+  //     ulElement.innerHTML += liElement;
+  //   })
+  // }
+
+  if (titles.length === years.length) {
+    for (let i = 0; i < titles.length; i++) {
+      let title = titles[i];
+      let year = years[i];
+
+      let yearText = year ? ` (${year})` : '';
+  
+      let liElement = `<li>${i + 1}. ${title}${yearText}</li>`;
+      ulElement.innerHTML += liElement;
+    }
+  } else {
+    for (let i = 0; i < titles.length; i++) {
+      let title = titles[i];
+      let liElement = `<li>${i + 1}. ${title}</li>`;
+      ulElement.innerHTML += liElement;
+    }
+  }
+
+}
+
+listMoviesWithYear(moviesList, movieYears);
+
+let moviesWithYearList = [
+  ["Malholando kelias", 2001],
+  ["Meilės laukimas"], 
+  ["Bus kraujo", 2003], 
+  ["Vaikystė", 2004], 
+  ["Jausmų galia", 2005], 
+  ["Gyvenimo medis"], 
+  ["Ji ji", 2007], 
+  ["Zodiakas", 2008], 
+  ["Žmonių vaikai", 2009], 
+  ["Žudymo aktas", 2010],
+];
+
+function listMoviesWithYear2(movies) {
+  let ulElement = document.querySelector('#movies-1');
+
+  // movies.map((movie, index) => {
+  //   let title = movie[0];
+  //   let year = movie[1];
+
+  //   // let yearText = year ? ` (${year})` : '';
+
+  //   let yearText = '';
+
+  //   if (year) {
+  //     yearText = ` (${year})`;
+  //   }
+
+  //   let liElement = `<li>${index + 1}. ${title}${yearText}</li>`;
+  //   ulElement.innerHTML += liElement;
+  // })
+
+  for (let i = 0; i < movies.length; i++) {
+    let movie = movies[i];
+
+    let title = movie[0];
+    let year = movie[1];
+
+    let yearText = '';
+
+    if (year) {
+      yearText = ` (${year})`;
+    }
+
+    let liElement = `<li>${i + 1}. ${title}${yearText}</li>`;
+    ulElement.innerHTML += liElement;
+  }
+}
+
+// listMoviesWithYear2(moviesWithYearList);
