@@ -82,6 +82,11 @@ let studentObj = {
   city: 'Vilnius',
   group: 'FEU7',
   'first name': 'Steve',
+  grades: [7, 8, 9, 10],
+  address: {
+    city: 'Kaunas',
+    street: 'Vilniaus st.',
+  }
 };
 
 // Objekto properties pasiekimas
@@ -102,3 +107,54 @@ console.log(studentObj.city);
 console.log(studentObj.group);
 
 console.log(studentObj['first name']);
+
+// Objekto properties pakeitimas
+console.log(studentObj.age);
+// studentObj.age = studentObj.age + 1;
+studentObj.age = 26;
+console.log(studentObj.age);
+
+studentObj['city'] = 'Kaunas';
+console.log(studentObj.city);
+
+// Objekto properties sukūrimas
+console.log(studentObj.isActive);
+studentObj.isActive = true;
+console.log(studentObj.isActive);
+
+studentObj['birth city'] = 'Klaipėda';
+
+delete studentObj['birth city'];
+
+studentObj.hobbies = ['sports', 'reading'];
+console.log(studentObj.hobbies);
+
+studentObj.hobbies.map((hobby) => {
+  console.log(hobby);
+});
+
+for (let i = 0; i < studentObj.hobbies.length; i++) {
+  console.log(studentObj.hobbies[i]);
+}
+
+studentObj.contacts = {
+  phone: 864543131,
+  email: 'vardas@email.com',
+}
+
+console.log(studentObj);
+console.log(studentObj.contacts);
+console.log(studentObj.contacts.phone);
+console.log(studentObj.contacts.email);
+
+
+// let company1 = new Object();
+let company1 = {};
+
+company1.test = 'Labas'
+
+console.log(company1);
+
+let company2 = {
+  test: 'Labas',
+};
