@@ -96,3 +96,6 @@ function listAllMovies(movies) {
 let allMoviesArr = [moviesArr, moviesArr2, moviesArr3];
 
 listAllMovies(allMoviesArr);
+
+
+let moviesList = ["Malholando kelias", "Meilės laukimas", "Bus kraujo", "Vaikystė", "Jausmų galia", "Gyvenimo medis", "Ji ji", "Zodiakas ", "Žmonių vaikai", "Žudymo aktas"];
