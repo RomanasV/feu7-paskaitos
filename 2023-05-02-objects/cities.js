@@ -111,6 +111,8 @@ let citiesData = [
 ];
 
 function renderCities(cities) {
+  let citiesList = document.querySelector('#cities-list');
+
   cities.forEach(city => {
     // 1.6. Visus miestų masyvų narius išvesti į konsolę.
     console.log(city);
@@ -130,6 +132,9 @@ function renderCities(cities) {
     city.touristAttractions.forEach(attraction => {
       console.log(attraction);
     });
+
+
+    citiesList.innerHTML += `<div class="city-item">Mietas</div>`;
   })
 }
 

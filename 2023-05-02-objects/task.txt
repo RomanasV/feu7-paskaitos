@@ -50,3 +50,6 @@ UŽDUOTIS:
 1.6.4. Visų miestų šalį išvesti į konsolę.
 1.6.5. Į konsolę išvesti ar miestas yra sostinė, ar ne.
 1.6.6. Į konsolę išvesti visas miesto lankytinas vietas.
+
+2. HTML faile sukurti tuščią div elementą, kuriame bus atvaizduoti visi miestai.
+ 2.1. Panaudojant ciklą, atvaizduoti visus miestus ekrane pagal nurodytą stilių.
