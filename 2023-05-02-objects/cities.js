@@ -129,14 +129,77 @@ function renderCities(cities) {
     // 1.6.6. Į konsolę išvesti visas miesto lankytinas vietas.
     console.log(city.touristAttractions);
 
-    city.touristAttractions.forEach(attraction => {
-      console.log(attraction);
+    // let name = city.name;
+    // let population = city.population;
+    // let isCapital = city.isCapital;
+    // let touristAttractions = city.touristAttractions;
+    // let continent = city.location.continent;
+    // let country = city.location.country;
+
+    let {name, population, isCapital, touristAttractions} = city;
+    let {continent, country} = city.location;
+    
+    let touristAttractionElements = '';
+
+    touristAttractions.forEach(attraction => {
+      touristAttractionElements += `<li>${attraction}</li>`;
     });
 
+    let capitalTitle = '';
 
-    citiesList.innerHTML += `<div class="city-item">Mietas</div>`;
+    if (isCapital) {
+      capitalTitle = ' (capital)';
+    }
+
+    citiesList.innerHTML += `<div class="city-item">
+                              <h2>${name}${capitalTitle}</h2>
+                              <p>${name} city is located in ${continent}, ${country} and has population of ${population} people.</p>
+                              <h3>Main Tourist attraction of ${name} is:</h3>
+                              <ul>${touristAttractionElements}</ul>
+                            </div>`;
   })
 }
 
 renderCities(citiesData);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let name = 'Kaunas';
+// let population = 400000;
+// let country = 'Lithuania';
+// let continent = 'Europe';
+// let touristAttractions = ['Pirma', 'Antra', 'Trecia'];
+
+// let liElements = '';
+
+// touristAttractions.forEach(attraction => {
+//   liElements += `<li>${attraction}</li>`;
+// });
+
+// let citiesList = document.querySelector('#cities-list');
+
+// citiesList.innerHTML = `
+// <div class="city-item">
+//   <h2>${name}</h2>
+//   <p>${name} city is located in ${continent}, ${country} and has population of ${population} people.</p>
+//   <h3>Main Tourist attraction of ${name} is:</h3>
+//   <ul>${liElements}</ul>
+// </div>`;
