@@ -81,11 +81,30 @@ let studentObj = {
   age: 25,
   city: 'Vilnius',
   group: 'FEU7',
-  'first name': 'Steve',
+  'second name': 'Steve',
   grades: [7, 8, 9, 10],
   address: {
     city: 'Kaunas',
     street: 'Vilniaus st.',
+  },
+  getFullName: function() {
+    return `Full name is: ${this.name} ${this['second name']} ${this.surname}.`;
+  },
+  setStudentInactive: function() {
+    this.isActive = false;
+  },
+  setStudentActive: function() {
+    this.isActive = true;
+    return this.isActive;
+  },
+  removeHobby(hobbyToRemove) {
+    // let updatedHobbies = this.hobbies.filter((hobby) => {
+    //   return hobby !== hobbyToRemove;
+    // });
+
+    // this.hobbies = updatedHobbies;
+
+    this.hobbies = this.hobbies.filter(hobby => hobby !== hobbyToRemove);
   }
 };
 
@@ -148,13 +167,39 @@ console.log(studentObj.contacts.phone);
 console.log(studentObj.contacts.email);
 
 
-// let company1 = new Object();
-let company1 = {};
+console.log(studentObj.getFullName());
 
-company1.test = 'Labas'
+console.log(studentObj.isActive);
+studentObj.setStudentInactive();
+console.log(studentObj.isActive);
+console.log(studentObj.setStudentActive());
+console.log(studentObj.isActive);
 
-console.log(company1);
+studentObj.switchStudentActivity = function() {
+  // if (this.isActive) {
+  //   this.isActive = false;
+  // } else {
+  //   this.isActive = true;
+  // }
 
-let company2 = {
-  test: 'Labas',
-};
+  this.isActive = !this.isActive;
+
+  return this.isActive;
+}
+
+console.log(studentObj.isActive);
+console.log(studentObj.switchStudentActivity());
+console.log(studentObj.switchStudentActivity());
+console.log(studentObj.switchStudentActivity());
+
+studentObj.addHobby = function(hobbyToAdd) {
+  this.hobbies.push(hobbyToAdd);
+  return this.hobbies;
+}
+
+console.log(studentObj.hobbies);
+console.log(studentObj.addHobby('traveling'));
+
+
+studentObj.removeHobby('reading');
+console.log(studentObj.hobbies);
