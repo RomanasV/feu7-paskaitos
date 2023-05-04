@@ -88,16 +88,16 @@ let citiesData = [
       touristAttractions: ['Melbourne Skydeck'],
       isCapital: false,
   },
-  {
-      name: 'Sapporo',
-      population: 1900000,
-      location: {
-          continent: 'Asia',
-          country: 'Japan',
-      },
-      touristAttractions: ['Hokkaido Jingu'],
-      isCapital: false,
-  },
+//   {
+//       name: 'Sapporo',
+//       population: 1900000,
+//       location: {
+//           continent: 'Asia',
+//           country: 'Japan',
+//       },
+//       touristAttractions: ['Hokkaido Jingu'],
+//       isCapital: false,
+//   },
   {
       name: 'Miami',
       population: 400000,
@@ -191,20 +191,142 @@ function renderCities(cities) {
 renderCities(citiesData);
 
 
-function styleCities() {
-    let cityTitles = document.querySelectorAll('.capital h2');
+// 5. Naudojant tik JavaScript:
 
+function styleCities() {
+    //  5.1. Pakeisti visų sostinių teksto spalvą.
+    let cityTitles = document.querySelectorAll('.capital h2');
+    
     // for (let i = 0; i < cityTitles.length; i++) {
-    //     cityTitles[i].style.color = 'red';
-    //     cityTitles[i].style.backgroundColor = 'black';
-    //     cityTitles[i].style.padding = '20px 10px';
+        //     cityTitles[i].style.color = 'red';
+        //     cityTitles[i].style.backgroundColor = 'black';
+        //     cityTitles[i].style.padding = '20px 10px';
+        // }
+        
+    cityTitles.forEach((titleElement) => {
+        //  5.1. Pakeisti visų sostinių teksto spalvą.
+        titleElement.style.color = 'green';
+        // titleElement.style.backgroundColor = 'black';
+        // titleElement.style.padding = '20px 10px';
+    })
+
+
+    //  5.2. Pakeisti kas antro miesto fono spalvą.
+    // let cities = document.querySelectorAll('.city-item');
+
+    // cities.forEach((city, index) => {
+    //     if (index % 2 === 0) {
+    //         city.style.backgroundColor = '#f0f0f0';
+    //     }
+    // })
+
+    // for (let i = 0; i < cities.length; i++) {
+    //     if (i % 2 === 0) {
+    //         cities[i].style.backgroundColor = '#f0f0f0';
+    //     }
     // }
 
-    cityTitles.forEach((titleElement) => {
-        titleElement.style.color = 'red';
-        titleElement.style.backgroundColor = 'black';
-        titleElement.style.padding = '20px 10px';
-    })
+    // for (let i = 0; i < cities.length; i+=2) {
+    //     cities[i].style.backgroundColor = '#f0f0f0';
+    // }
+
+    let oddCities = document.querySelectorAll('.city-item:nth-child(odd)');
+
+    // oddCities.forEach(city => {
+    //     city.style.backgroundColor = '#f0f0f0';
+    // })
+
+    for (let i = 0; i < oddCities.length; i++) {
+        oddCities[i].style.backgroundColor = '#f0f0f0';
+    }
+
+
+    //  5.3. Pakeisti visų lankytinų vietų sąrašo pirmo nario spalvą į žalią.
+    let firstLiElements = document.querySelectorAll('.city-item li:first-child');
+
+    // firstLiElements.forEach(element => {
+    //     element.style.color = 'green';
+    // })
+
+    for (let i = 0; i < firstLiElements.length; i++) {
+        // firstLiElements[i].style.color = 'green';
+    }
+
+    //  5.4. Pakeisti visų lankytinų vietų sąrašo paskutinių narių spalvą į raudoną, jeigu narių (lankytinų vietų) yra daugiau nei 3.
+    // let lastLiElements = document.querySelectorAll('.city-item li:nth-of-type(1n + 3)');
+
+    // lastLiElements.forEach(element => {
+    //     element.style.color = 'red';
+    // })
+
+    // for (let i = 0; i < lastLiElements.length; i++) {
+    //     lastLiElements[i].style.color = 'red';
+    // }
+
+    let allCities = document.querySelectorAll('.city-item');
+
+    // allCities.forEach(city => {
+    //     let singleCityLiElements = city.querySelectorAll('li');
+
+    //     singleCityLiElements.forEach((liElement, index) => {
+    //         if (index === 0) {
+    //             liElement.style.color = 'green';
+    //         } else if (index > 2) {
+    //             liElement.style.color = 'red';
+    //         } else {
+    //             liElement.style.color = 'orange';
+    //         }
+    //     })
+    // })
+
+    for (let i = 0; i < allCities.length; i++) {
+        let singleCityLiElements = allCities[i].querySelectorAll('li');
+
+        for (let j = 0; j < singleCityLiElements.length; j++) {
+            let color = 'black';
+
+            if (j === 0) {
+                color = 'green';
+            } else if (j > 2) {
+                color = 'red';
+            } else {
+                color = 'orange';
+            }
+
+            singleCityLiElements[j].style.color = color;
+        }
+    }
+
+    
+    // 6. Miestų plotis turi būti 50%.
+    // 6.1. Jeigu miestų skaičius nėra porinis, tai paskutinio miesto plotis turi būti 100%.
+
+    let citiesList = document.querySelector('#cities-list');
+    citiesList.style.display = 'flex';
+    citiesList.style.flexWrap = 'wrap';
+    citiesList.style.gap = '20px';
+
+    // allCities.forEach((city, index) => {
+    //     city.style.padding = '20px';
+    //     city.style.boxSizing = 'border-box';
+
+    //     if (index === allCities.length - 1 && allCities.length % 2 !== 0) {
+    //         city.style.width = '100%';
+    //     } else {
+    //         city.style.width = 'calc((100% - 20px) / 2)';
+    //     }
+    // })
+
+    for (let i = 0; i < allCities.length; i++) {
+        allCities[i].style.padding = '20px';
+        allCities[i].style.boxSizing = 'border-box';
+
+        if (i === allCities.length - 1 && allCities.length % 2 !== 0) {
+            allCities[i].style.width = '100%';
+        } else {
+            allCities[i].style.width = 'calc((100% - 20px) / 2)';
+        }
+    }
 }
 
 styleCities();
