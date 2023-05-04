@@ -191,7 +191,23 @@ function renderCities(cities) {
 renderCities(citiesData);
 
 
+function styleCities() {
+    let cityTitles = document.querySelectorAll('.capital h2');
 
+    // for (let i = 0; i < cityTitles.length; i++) {
+    //     cityTitles[i].style.color = 'red';
+    //     cityTitles[i].style.backgroundColor = 'black';
+    //     cityTitles[i].style.padding = '20px 10px';
+    // }
+
+    cityTitles.forEach((titleElement) => {
+        titleElement.style.color = 'red';
+        titleElement.style.backgroundColor = 'black';
+        titleElement.style.padding = '20px 10px';
+    })
+}
+
+styleCities();
 
 
 
