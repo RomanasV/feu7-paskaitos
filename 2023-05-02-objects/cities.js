@@ -25,7 +25,7 @@ let citiesData = [
           continent: 'North America',
           country: 'United States',
       },
-      touristAttractions: ['Central park', 'Brooklyn bridge'],
+      touristAttractions: [],
       isCapital: false,
   },
   {
@@ -35,7 +35,7 @@ let citiesData = [
           continent: 'Asia',
           country: 'Japan',
       },
-      touristAttractions: ['Sensō-ji', 'Tokyo Sky Tree'],
+      touristAttractions: ['Sensō-ji'],
       isCapital: true,
   },
   {
@@ -55,7 +55,7 @@ let citiesData = [
           continent: 'Europe',
           country: 'Monaco',
       },
-      touristAttractions: ['Oceanographic museum', "Prince's Palace of Monaco", 'Monaco Grand Prix'],
+      touristAttractions: [],
       isCapital: true,
   },
   {
@@ -85,7 +85,7 @@ let citiesData = [
           continent: 'Australia',
           country: 'Australia',
       },
-      touristAttractions: ['Melbourne Skydeck', 'Queen Victoria Market'],
+      touristAttractions: ['Melbourne Skydeck'],
       isCapital: false,
   },
   {
@@ -95,7 +95,7 @@ let citiesData = [
           continent: 'Asia',
           country: 'Japan',
       },
-      touristAttractions: ['Hokkaido Jingu', 'Sapporo Beer Museum'],
+      touristAttractions: ['Hokkaido Jingu'],
       isCapital: false,
   },
   {
@@ -115,19 +115,19 @@ function renderCities(cities) {
 
   cities.forEach(city => {
     // 1.6. Visus miestų masyvų narius išvesti į konsolę.
-    console.log(city);
+    // console.log(city);
     // 1.6.1. Visų miestų pavadinimis išvesti į konsolę.
-    console.log(city.name);
+    // console.log(city.name);
     // 1.6.2. Visų miestų populiaciją išvesti į konsolę.
-    console.log(city.population);
+    // console.log(city.population);
     // 1.6.3. Visų miestų žemyną išvesti į konsolę.
-    console.log(city.location.continent);
+    // console.log(city.location.continent);
     // 1.6.4. Visų miestų šalį išvesti į konsolę.
-    console.log(city.location.country);
+    // console.log(city.location.country);
     // 1.6.5. Į konsolę išvesti ar miestas yra sostinė, ar ne.
-    console.log(city.isCapital);
+    // console.log(city.isCapital);
     // 1.6.6. Į konsolę išvesti visas miesto lankytinas vietas.
-    console.log(city.touristAttractions);
+    // console.log(city.touristAttractions);
 
     // let name = city.name;
     // let population = city.population;
@@ -139,23 +139,51 @@ function renderCities(cities) {
     let {name, population, isCapital, touristAttractions} = city;
     let {continent, country} = city.location;
     
-    let touristAttractionElements = '';
+    // 4. Priklausomai nuo miesto lankytinų objektų kiekio, tekstas turi skirtis:
+    //  4.1. Jeigu lankytina vieta tik viena, tai turėtų būti naudojama vienaskaita, pvz.: „Main Tourist attraction of Vilnius is".
+    //  4.2. Jeigu lankytinų vietų yra daugiau, nei viena, tai tekstas turėtų būti daugiskaitoje, pvz. „Main Tourist attractions of Kaunas are".
+    //  4.3. Jeigu lankytinų vietų nėra, tai tekstas neturėtų būti atvaizduojamas.
+    let attractionsTitle = '';
+    let attractionsSection = '';
 
-    touristAttractions.forEach(attraction => {
-      touristAttractionElements += `<li>${attraction}</li>`;
-    });
+    if (touristAttractions.length > 1) {
+        attractionsTitle = `Main Tourist attractions of ${name} are:`;
+    } else if (touristAttractions.length === 1) {
+        attractionsTitle = `Main Tourist attraction of ${name} is:`;
+    }
+
+    if (touristAttractions.length > 0) {
+        let touristAttractionElements = '';
+
+        touristAttractions.forEach(attraction => {
+          touristAttractionElements += `<li>${attraction}</li>`;
+        });
+
+        attractionsSection = `<h3>${attractionsTitle}</h3>
+                              <ul>${touristAttractionElements}</ul>`;
+    }
+
+    // 3.1. Jeigu miestas yra sostinė, tai:
+    //  3.1.1. Prie miesto pavadinimo pridėti žodį capital, pvz.: Vilnius (capital)
+
+    //  3.1.2. Prie miesto aprašymo pridėti tekstą, kuris nusako jog tai šalies sostinė, pvz.: „Vilnius is the capital of Lithuania."
+
+    //  3.1.3. Jeigu miestas yra sostinė, tai prie apgaubiančio elemento pridėti klasę „capital".
 
     let capitalTitle = '';
+    let capitalDescription = '';
+    let capitalClass = '';
 
     if (isCapital) {
       capitalTitle = ' (capital)';
+      capitalDescription = ` ${name} is the capital of ${country}.`;
+      capitalClass = ' capital';
     }
 
-    citiesList.innerHTML += `<div class="city-item">
+    citiesList.innerHTML += `<div class="city-item${capitalClass}">
                               <h2>${name}${capitalTitle}</h2>
-                              <p>${name} city is located in ${continent}, ${country} and has population of ${population} people.</p>
-                              <h3>Main Tourist attraction of ${name} is:</h3>
-                              <ul>${touristAttractionElements}</ul>
+                              <p>${name} city is located in ${continent}, ${country} and has population of ${population} people.${capitalDescription}</p>
+                              ${attractionsSection}
                             </div>`;
   })
 }
