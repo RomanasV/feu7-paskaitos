@@ -1,0 +1,11 @@
+7. Naudojant posts masyvą, atlikti žemiau nurodytas užduotis ir atsakymus išvesti į konsolę. Visoms užduotis kurti funkciją ir jai, kaip parametrą, paduoti nurodytą masyvą.
+7.1. Gauti pirmo masyvo nario reikšmę.
+7.2. Gauti paskutinio masyvo nario reikšmę.
+7.3. Gauti 15 masyvo nario reikšmę.
+7.4. Gauti 13 masyvo nario reikšmę skaičiuojant nuo galo.
+7.5. Gauti vidurinio masyvo nario reikšmę.
+7.6. Gauti pirmų keturių masyvo narių reikšmes.
+7.7. Gauti paskutinių penkių masyvo narių reikšmes.
+7.8. Gauti nuo penkto iki penkiolikto masyvo narių reikšmes.
+7.9. Gauti kas antro masyvo nario reikšmes.
+7.10. Gauti pirmo ir paskutinio masyvo narių reikšmes.
