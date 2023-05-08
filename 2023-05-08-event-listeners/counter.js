@@ -4,9 +4,15 @@
 let numbersWrapper = document.querySelector('#numbers');
 
 // 2. JavaScript pagalba šio elemento viduje sukurti: h3 elementą ir du mygtukų elementus
+// 12. Sukurti du naujus mygtukus, kurie:
+// 12.1. Prideda dvejetą prie esamos h3 elemento reikšmės.
+// 12.2. Atima dvejetą iš esamos h3 elemento reikšmės.
+
 let numberDisplay = document.createElement('h3');
 let minusButton = document.createElement('button');
 let plusButton = document.createElement('button');
+let minus2Button = document.createElement('button');
+let plus2Button = document.createElement('button');
 
 // 3. h3 elemento tekstas turėtų būti „5"
 // 4. Mygtukų tekstas turėtų būti „+" ir „-"
@@ -15,12 +21,14 @@ checkColor();
 
 minusButton.textContent = '-';
 plusButton.textContent = '+';
+minus2Button.textContent = '-2';
+plus2Button.textContent = '+2';
 
 // numbersWrapper.append(numberDisplay);
 // numbersWrapper.append(minusButton);
 // numbersWrapper.append(plusButton);
 
-numbersWrapper.append(numberDisplay, minusButton, plusButton);
+numbersWrapper.append(numberDisplay, minus2Button, minusButton, plusButton, plus2Button);
 
 // 5. Sukurti „click" (paspaudimo) event listener'ius abiems mygtukams.
 // 6. „-" mygtuko event listeneris turėtų iškviesti funkciją, kuri sumažina skaičių h3 elemente, o „+" mygtuko paspaudimas turėtų skaičių padidinti
@@ -35,8 +43,38 @@ minusButton.addEventListener('click', () => {
     minusButton.setAttribute('disabled', true);
   }
 
+  if (numberDisplay.textContent <= 2) {
+    minus2Button.setAttribute('disabled', true);
+  }
+
   if (numberDisplay.textContent < 10) {
     plusButton.removeAttribute('disabled');
+  }
+
+  if (numberDisplay.textContent < 9) {
+    plus2Button.removeAttribute('disabled');
+  }
+
+  checkColor();
+})
+
+minus2Button.addEventListener('click', () => {
+  numberDisplay.textContent = numberDisplay.textContent - 2;
+
+  if (numberDisplay.textContent <= 1) {
+    minusButton.setAttribute('disabled', true);
+  }
+  
+  if (numberDisplay.textContent <= 2) {
+    minus2Button.setAttribute('disabled', true);
+  }
+
+  if (numberDisplay.textContent < 10) {
+    plusButton.removeAttribute('disabled');
+  }
+  
+  if (numberDisplay.textContent < 9) {
+    plus2Button.removeAttribute('disabled');
   }
 
   checkColor();
@@ -49,8 +87,38 @@ plusButton.addEventListener('click', () => {
     plusButton.setAttribute('disabled', true);
   }
 
+  if (numberDisplay.textContent >= 9) {
+    plus2Button.setAttribute('disabled', true);
+  }
+
   if (numberDisplay.textContent > 1) {
     minusButton.removeAttribute('disabled');
+  }
+
+  if (numberDisplay.textContent > 2) {
+    minus2Button.removeAttribute('disabled');
+  }
+
+  checkColor();
+})
+
+plus2Button.addEventListener('click', () => {
+  numberDisplay.textContent = Number(numberDisplay.textContent) + 2;
+
+  if (numberDisplay.textContent >= 10) {
+    plusButton.setAttribute('disabled', true);
+  }
+
+  if (numberDisplay.textContent >= 9) {
+    plus2Button.setAttribute('disabled', true);
+  }
+
+  if (numberDisplay.textContent > 1) {
+    minusButton.removeAttribute('disabled');
+  }
+  
+  if (numberDisplay.textContent > 2) {
+    minus2Button.removeAttribute('disabled');
   }
 
   checkColor();
