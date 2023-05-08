@@ -17,7 +17,7 @@ let plus2Button = document.createElement('button');
 // 3. h3 elemento tekstas turėtų būti „5"
 // 4. Mygtukų tekstas turėtų būti „+" ir „-"
 let count = 5;
-checkData();
+checkData(0);
 
 minusButton.textContent = '-';
 plusButton.textContent = '+';
@@ -36,25 +36,10 @@ numbersWrapper.append(numberDisplay, minus2Button, minusButton, plusButton, plus
 // 7. Jeigu skaitmuo h3 komponente yra mažesnis už du, tai „-" mygtukas turėtų patapti neveiksnus (disabled)- element.setAttribute('disabled', true) / element.removeAttribute('disabled')
 // 8. Jeigu skaitmuo h3 komponente yra 10, tai „+" mygtukas turėtų patapti neveiksnus (disabled)
 
-minusButton.addEventListener('click', () => {
-  count--;
-  checkData();
-})
-
-minus2Button.addEventListener('click', () => {
-  count-=2;
-  checkData()
-})
-
-plusButton.addEventListener('click', () => {
-  count++;
-  checkData();
-})
-
-plus2Button.addEventListener('click', () => {
-  count+=2;
-  checkData();
-})
+minusButton.addEventListener('click', () => checkData(-1));
+minus2Button.addEventListener('click', () => checkData(-2));
+plusButton.addEventListener('click', () => checkData(1));
+plus2Button.addEventListener('click', () => checkData(2));
 
 // 9. Jeigu skaitmuo yra 5 arba daugiau, tai jo spalva turėtų būti žalia. Kitu atveju - raudona.
 function checkColor() {
@@ -65,7 +50,8 @@ function checkColor() {
   }
 }
 
-function checkData() {
+function checkData(changeNum) {
+  count = count + changeNum;
   numberDisplay.textContent = count;
   checkColor();
 
