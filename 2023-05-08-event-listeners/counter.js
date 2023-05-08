@@ -16,8 +16,8 @@ let plus2Button = document.createElement('button');
 
 // 3. h3 elemento tekstas turėtų būti „5"
 // 4. Mygtukų tekstas turėtų būti „+" ir „-"
-numberDisplay.textContent = 5;
-checkColor();
+let count = 5;
+checkData();
 
 minusButton.textContent = '-';
 plusButton.textContent = '+';
@@ -37,98 +37,59 @@ numbersWrapper.append(numberDisplay, minus2Button, minusButton, plusButton, plus
 // 8. Jeigu skaitmuo h3 komponente yra 10, tai „+" mygtukas turėtų patapti neveiksnus (disabled)
 
 minusButton.addEventListener('click', () => {
-  numberDisplay.textContent = numberDisplay.textContent - 1;
-
-  if (numberDisplay.textContent <= 1) {
-    minusButton.setAttribute('disabled', true);
-  }
-
-  if (numberDisplay.textContent <= 2) {
-    minus2Button.setAttribute('disabled', true);
-  }
-
-  if (numberDisplay.textContent < 10) {
-    plusButton.removeAttribute('disabled');
-  }
-
-  if (numberDisplay.textContent < 9) {
-    plus2Button.removeAttribute('disabled');
-  }
-
-  checkColor();
+  count--;
+  checkData();
 })
 
 minus2Button.addEventListener('click', () => {
-  numberDisplay.textContent = numberDisplay.textContent - 2;
-
-  if (numberDisplay.textContent <= 1) {
-    minusButton.setAttribute('disabled', true);
-  }
-  
-  if (numberDisplay.textContent <= 2) {
-    minus2Button.setAttribute('disabled', true);
-  }
-
-  if (numberDisplay.textContent < 10) {
-    plusButton.removeAttribute('disabled');
-  }
-  
-  if (numberDisplay.textContent < 9) {
-    plus2Button.removeAttribute('disabled');
-  }
-
-  checkColor();
+  count-=2;
+  checkData()
 })
 
 plusButton.addEventListener('click', () => {
-  numberDisplay.textContent = Number(numberDisplay.textContent) + 1;
-
-  if (numberDisplay.textContent >= 10) {
-    plusButton.setAttribute('disabled', true);
-  }
-
-  if (numberDisplay.textContent >= 9) {
-    plus2Button.setAttribute('disabled', true);
-  }
-
-  if (numberDisplay.textContent > 1) {
-    minusButton.removeAttribute('disabled');
-  }
-
-  if (numberDisplay.textContent > 2) {
-    minus2Button.removeAttribute('disabled');
-  }
-
-  checkColor();
+  count++;
+  checkData();
 })
 
 plus2Button.addEventListener('click', () => {
-  numberDisplay.textContent = Number(numberDisplay.textContent) + 2;
-
-  if (numberDisplay.textContent >= 10) {
-    plusButton.setAttribute('disabled', true);
-  }
-
-  if (numberDisplay.textContent >= 9) {
-    plus2Button.setAttribute('disabled', true);
-  }
-
-  if (numberDisplay.textContent > 1) {
-    minusButton.removeAttribute('disabled');
-  }
-  
-  if (numberDisplay.textContent > 2) {
-    minus2Button.removeAttribute('disabled');
-  }
-
-  checkColor();
+  count+=2;
+  checkData();
 })
 
 // 9. Jeigu skaitmuo yra 5 arba daugiau, tai jo spalva turėtų būti žalia. Kitu atveju - raudona.
 function checkColor() {
-  if (numberDisplay.textContent < 5) {
+  if (count < 5) {
     numberDisplay.style.color = 'red';
   } else {
     numberDisplay.style.color = 'green'
+  }
+}
+
+function checkData() {
+  numberDisplay.textContent = count;
+  checkColor();
+
+  if (count >= 10) {
+    plusButton.setAttribute('disabled', true);
+  } else {
+    plusButton.removeAttribute('disabled');
+  }
+
+  if (count >= 9) {
+    plus2Button.setAttribute('disabled', true);
+  } else {
+    plus2Button.removeAttribute('disabled');
+  }
+
+  if (count > 1) {
+    minusButton.removeAttribute('disabled');
+  } else {
+    minusButton.setAttribute('disabled', true);
+  }
+
+  if (count > 2) {
+    minus2Button.removeAttribute('disabled');
+  } else {
+    minus2Button.setAttribute('disabled', true);
   }
 }
