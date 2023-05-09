@@ -17,3 +17,13 @@ ANTRA DALIS:
 
 4. Formoje pridėti „checkbox" tipo input'ą, kuriame pateikta galimybę rinktis iš dominančių programavimo kalbų.
 5. Dominančias programavimo kalbas atvaizduoti „student-item" elemente.
+
+TREČIA DALIS:
+1. Vietoje el. pašto rodyti tik žvaigždutes „****".
+2. Kiekviename „student-item" elemente sukurti mygtuką „Rodyti asmens duomenis".
+3. Paspaudus šį mygtuką:
+    3.1. Parodyti to studento el. paštą.
+    3.2. Pakeist mygtuko tekstą į „Slėpti asmens duomenis".
+4. Jeigu asmens duomenys yra rodomi, tai paspaudus mygtuką:
+    4.1. Paslėpti asmens el. paštą.
+    4.2. Mygtuko tekstą pakeisti į „Rodyti asmens duomenis".
