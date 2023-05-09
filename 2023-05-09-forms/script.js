@@ -2,6 +2,7 @@ const studentForm = document.getElementById('student-form');
 
 studentForm.addEventListener('submit', (event) => {
   event.preventDefault();
+
   
   // const studentName = document.querySelector('#student-name').value;
   // const studentName = document.getElementById('student-name').value;
@@ -13,9 +14,9 @@ studentForm.addEventListener('submit', (event) => {
   
   // const studentName = event.target.querySelector('#student-name').value;
   // const studentName = event.target.querySelector('[name="name"]').value;
-
+  
   // const studentName = event.target.elements.name.value;
-
+  
   const form = event.target;
 
   const name = form.name.value;
@@ -25,15 +26,8 @@ studentForm.addEventListener('submit', (event) => {
   const email = form.email.value;
   const itKnowledge = form['it-knowledge'].value;
   const group = form.group.value;
+  const interests = form.querySelectorAll('[name="interests"]:checked');
   
-  console.dir(name);
-  console.dir(surname);
-  console.dir(age);
-  console.dir(phone);
-  console.dir(email);
-  console.dir(itKnowledge);
-  console.dir(group);
-
   const studentsList = document.querySelector('#students-list');
   
   const studentItem = document.createElement('div');
@@ -62,5 +56,19 @@ studentForm.addEventListener('submit', (event) => {
   const groupElement = document.createElement('p');
   groupElement.innerHTML = `<strong>Group:</strong> ${group}`;
 
-  studentItem.append(nameElement, surnameElement, ageElement, phoneElement, emailElement, itKnowledgeElement, groupElement);
+  const interestsWrapper = document.createElement('div');
+  const interestsTitle = document.createElement('h3');
+  interestsTitle.textContent = 'Student interests:'
+
+  const interestsList = document.createElement('ul');
+
+  interests.forEach(interest => {
+    const interestElement = document.createElement('li');
+    interestElement.textContent = interest.value;
+    interestsList.append(interestElement);
+  })
+
+  interestsWrapper.append(interestsTitle, interestsList);
+
+  studentItem.append(nameElement, surnameElement, ageElement, phoneElement, emailElement, itKnowledgeElement, groupElement, interestsWrapper);
 })
