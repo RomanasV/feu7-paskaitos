@@ -45,10 +45,10 @@ studentForm.addEventListener('submit', (event) => {
   ageElement.innerHTML = `<strong>Age:</strong> ${age}`;
 
   const phoneElement = document.createElement('p');
-  phoneElement.innerHTML = `<strong>Phone:</strong> ${phone}`;
-
+  phoneElement.innerHTML = `<strong>Phone:</strong> ****`;
+  
   const emailElement = document.createElement('p');
-  emailElement.innerHTML = `<strong>Email:</strong> ${email}`;
+  emailElement.innerHTML = `<strong>Email:</strong> ****`;
 
   const itKnowledgeElement = document.createElement('p');
   itKnowledgeElement.innerHTML = `<strong>IT knowledge:</strong> ${itKnowledge}`;
@@ -70,5 +70,24 @@ studentForm.addEventListener('submit', (event) => {
 
   interestsWrapper.append(interestsTitle, interestsList);
 
-  studentItem.append(nameElement, surnameElement, ageElement, phoneElement, emailElement, itKnowledgeElement, groupElement, interestsWrapper);
+  let privateInfoButton = document.createElement('button');
+  privateInfoButton.textContent = 'Show Private info';
+
+  let privateInfoHidden = true;
+
+  privateInfoButton.addEventListener('click', () => {
+    privateInfoHidden = !privateInfoHidden;
+
+    if (privateInfoHidden) {
+      emailElement.innerHTML = `<strong>Email:</strong> ****`;
+      phoneElement.innerHTML = `<strong>Phone:</strong> ****`;
+      privateInfoButton.textContent = 'Show Private info';
+    } else {
+      emailElement.innerHTML = `<strong>Email:</strong> ${email}`;
+      phoneElement.innerHTML = `<strong>Phone:</strong> ${phone}`;
+      privateInfoButton.textContent = 'Hide Private info';
+    }
+  })
+
+  studentItem.append(nameElement, surnameElement, ageElement, phoneElement, emailElement, itKnowledgeElement, groupElement, interestsWrapper, privateInfoButton);
 })
