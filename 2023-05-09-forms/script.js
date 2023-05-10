@@ -82,10 +82,10 @@ studentForm.addEventListener('submit', (event) => {
 
   interestsWrapper.append(interestsTitle, interestsList);
 
-  let privateInfoButton = document.createElement('button');
+  const privateInfoButton = document.createElement('button');
   privateInfoButton.textContent = 'Show Private info';
 
-  let privateInfoHidden = true;
+  const privateInfoHidden = true;
 
   privateInfoButton.addEventListener('click', () => {
     privateInfoHidden = !privateInfoHidden;
@@ -101,16 +101,31 @@ studentForm.addEventListener('submit', (event) => {
     }
   })
 
-  studentItem.append(nameElement, surnameElement, ageElement, phoneElement, emailElement, itKnowledgeElement, groupElement, interestsWrapper, privateInfoButton);
+  const removeStudentButton = document.createElement('button');
+  removeStudentButton.textContent = 'Remove Student';
+
+  removeStudentButton.addEventListener('click', () => {
+    studentItem.remove();
+    renderAlertMessage(`Student deleted (${name} ${surname})`, 'red');
+  })
+
+  studentItem.append(nameElement, surnameElement, ageElement, phoneElement, emailElement, itKnowledgeElement, groupElement, interestsWrapper, privateInfoButton, removeStudentButton);
 
   form.reset();
 
   itKnowledgeChangeHandler();
 
+  let createdStudentText = `Student created (${name} ${surname})`;
+  renderAlertMessage(createdStudentText, 'green');
+})
+
+function renderAlertMessage(text, color) {
   const alertMessage = document.querySelector('#alert-message');
-  alertMessage.textContent = `Student created (${name} ${surname})`;
+  alertMessage.textContent = text;
+
+  alertMessage.style.color = color;
 
   setTimeout(() => {
     alertMessage.textContent = '';
   }, 5000);
-})
+}
