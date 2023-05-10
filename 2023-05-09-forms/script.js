@@ -2,7 +2,6 @@ const studentForm = document.getElementById('student-form');
 
 studentForm.addEventListener('submit', (event) => {
   event.preventDefault();
-
   
   // const studentName = document.querySelector('#student-name').value;
   // const studentName = document.getElementById('student-name').value;
@@ -90,4 +89,13 @@ studentForm.addEventListener('submit', (event) => {
   })
 
   studentItem.append(nameElement, surnameElement, ageElement, phoneElement, emailElement, itKnowledgeElement, groupElement, interestsWrapper, privateInfoButton);
+
+  form.reset();
+
+  const alertMessage = document.querySelector('#alert-message');
+  alertMessage.textContent = `Student created (${name} ${surname})`;
+
+  setTimeout(() => {
+    alertMessage.textContent = '';
+  }, 5000);
 })
