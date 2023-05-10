@@ -36,3 +36,10 @@ KETVIRTA DALIS (studento ištrynimas):
 2. Paspaudus šį mygtuką, studento elementas yra ištrinamas.
 3. Ištrynus studentą, turi iššokti <span> elementas, kuris informuoja apie studento ištrynimą: „Studentas (Vardas Pavardė) sėkmingai ištrintas.". Šis span elementas dingsta po 5 sekundžių.
 
+PENKTA UŽDUOTIS (formos validacija naudojant JavaScript):
+1. Priduodant formą (submit) patikrinti ar privalomi laukeliai nėra tušti.
+2. Jeigu bent vienas privalomas formos laukelis yra tuščias:
+    2.1. Formos alert žinutėje reikia parašyti, jog ne visi laukeliai yra užpildyti. Šis tekstas turi būti raudonos spalvos.
+    2.2. Kiekvienas privalomas input laukelis, kuris nėra užpildytas:
+        2.2.1. Turi būti apvestas raudonu rėmeliu.
+        2.2.2. Šalia laukelio turi būti parašytas raudonas tekstas: „Šis laukelis yra privalomas".
