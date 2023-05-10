@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- PIRMA DALIS:
@@ -19,15 +20,15 @@
       7. Radio tipo laukeliai, kuriuose pasirenkamas grupės numeris. Turi būti galimybė pasirinkti grupes nuo FEU 1gr. iki FEU 7gr.
       8. Šalia kiekvieno įvesties (input) elemento, pridėti label elementą, kuris žymi laukelio pavadinimą. -->
 
-  <form id="student-form">
+  <form id="student-form" novalidate>
     <div class="form-control">
       <label for="student-name">Name:</label>
-      <input type="text" name="name" id="student-name" placeholder="Enter name" value="John">
+      <input type="text" name="name" id="student-name" placeholder="Enter name" required>
     </div>
 
     <div class="form-control">
       <label for="student-surname">Surname:</label>
-      <input type="text" name="surname" id="student-surname" placeholder="Enter surname" value="Doe">
+      <input type="text" name="surname" id="student-surname" placeholder="Enter surname" value="Doe" required>
     </div>
 
     <div class="form-control">

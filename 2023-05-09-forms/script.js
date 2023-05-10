@@ -28,6 +28,27 @@ studentForm.addEventListener('submit', (event) => {
   // const studentName = event.target.querySelector('[name="name"]').value;
   
   // const studentName = event.target.elements.name.value;
+
+  const requiredFields = document.querySelectorAll('input:required');
+  console.log(requiredFields);
+
+  const requiredField = document.querySelector('input:required');
+  requiredField.classList.remove('input-error');
+
+  if (!requiredField.value) {
+    requiredField.classList.add('input-error');
+
+    let inputErrorMessage = document.createElement('span');
+    inputErrorMessage.classList.add('input-error-message');
+    inputErrorMessage.textContent = 'Required field';
+
+    requiredField.after(inputErrorMessage);
+
+    renderAlertMessage('Some fields are missing', 'red');
+    return;
+  }
+  
+  console.log('laukelis uzpildytas teisingai');
   
   const form = event.target;
 
