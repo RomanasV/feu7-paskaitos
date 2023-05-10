@@ -1,5 +1,18 @@
 const studentForm = document.getElementById('student-form');
 
+function itKnowledgeChangeHandler() {
+  const studentItKnowledgeInput = document.querySelector('#student-it-knowledge');
+  const studentItKnowledgeOutput = document.querySelector('#student-it-knowledge-output');
+
+  studentItKnowledgeOutput.textContent = studentItKnowledgeInput.value;
+  
+  studentItKnowledgeInput.addEventListener('input', (event) => {
+    studentItKnowledgeOutput.textContent = event.target.value;
+  })
+}
+
+itKnowledgeChangeHandler();
+
 studentForm.addEventListener('submit', (event) => {
   event.preventDefault();
   
@@ -91,6 +104,8 @@ studentForm.addEventListener('submit', (event) => {
   studentItem.append(nameElement, surnameElement, ageElement, phoneElement, emailElement, itKnowledgeElement, groupElement, interestsWrapper, privateInfoButton);
 
   form.reset();
+
+  itKnowledgeChangeHandler();
 
   const alertMessage = document.querySelector('#alert-message');
   alertMessage.textContent = `Student created (${name} ${surname})`;
