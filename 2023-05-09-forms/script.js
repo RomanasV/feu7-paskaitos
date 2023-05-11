@@ -5,7 +5,7 @@ const initialData = [
 
   },
   {
-    
+
   }
 ]
 
@@ -38,28 +38,51 @@ studentForm.addEventListener('submit', (event) => {
   
   // const studentName = event.target.elements.name.value;
 
-  const requiredFields = document.querySelectorAll('input:required');
-  console.log(requiredFields);
+  const form = event.target;
 
-  const requiredField = document.querySelector('input:required');
-  requiredField.classList.remove('input-error');
+  const inputErrorMessages = form.querySelectorAll('.input-error-message');
+  inputErrorMessages.forEach(errorMessage => errorMessage.remove());
 
-  if (!requiredField.value) {
-    requiredField.classList.add('input-error');
+  const requiredFields = form.querySelectorAll('input:required');
 
-    let inputErrorMessage = document.createElement('span');
-    inputErrorMessage.classList.add('input-error-message');
-    inputErrorMessage.textContent = 'Required field';
+  let isValid = true;
 
-    requiredField.after(inputErrorMessage);
+  requiredFields.forEach(requiredField => {
+    requiredField.classList.remove('input-error');
 
+    if (!requiredField.value) {
+      requiredField.classList.add('input-error');
+
+      let inputErrorMessage = document.createElement('span');
+      inputErrorMessage.classList.add('input-error-message');
+      inputErrorMessage.textContent = 'Required field';
+
+      requiredField.after(inputErrorMessage);
+
+      isValid = false;
+    } else {
+
+      if (requiredField.name === 'name') {
+        if (requiredField.value.length < 3) {
+          requiredField.classList.add('input-error');
+
+          let inputErrorMessage = document.createElement('span');
+          inputErrorMessage.classList.add('input-error-message');
+          inputErrorMessage.textContent = 'Vardas privalo būti bent 3 simbolių ilgumo';
+
+          requiredField.after(inputErrorMessage);
+          
+          isValid = false;
+        }
+      }
+
+    }
+  })
+
+  if (!isValid) {
     renderAlertMessage('Some fields are missing', 'red');
     return;
   }
-  
-  console.log('laukelis uzpildytas teisingai');
-  
-  const form = event.target;
 
   const name = form.name.value;
   const surname = form.surname.value;
@@ -115,7 +138,7 @@ studentForm.addEventListener('submit', (event) => {
   const privateInfoButton = document.createElement('button');
   privateInfoButton.textContent = 'Show Private info';
 
-  const privateInfoHidden = true;
+  let privateInfoHidden = true;
 
   privateInfoButton.addEventListener('click', () => {
     privateInfoHidden = !privateInfoHidden;
