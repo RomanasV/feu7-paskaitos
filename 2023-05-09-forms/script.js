@@ -2,7 +2,14 @@ const studentForm = document.getElementById('student-form');
 
 const initialData = [
   {
-
+    name: 'John',
+    surname: 'Doe',
+    age: 55,
+    phone: '+3704564654',
+    email: 'email@email.email',
+    itKnowledge: 7,
+    group: 'feu 5',
+    interests: ['JavaScript', 'Java']
   },
   {
 
@@ -24,83 +31,12 @@ itKnowledgeChangeHandler();
 
 studentForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  
-  // const studentName = document.querySelector('#student-name').value;
-  // const studentName = document.getElementById('student-name').value;
-  // const studentName = document.getElementsByName('name')[0].value;
-  // const studentName = document.querySelector('[name="name"]').value;
-  
-  // const studentName = studentForm.querySelector('#student-name').value;
-  // const studentName = studentForm.querySelector('[name="name"]').value;
-  
-  // const studentName = event.target.querySelector('#student-name').value;
-  // const studentName = event.target.querySelector('[name="name"]').value;
-  
-  // const studentName = event.target.elements.name.value;
 
   const form = event.target;
 
-  const inputErrorMessages = form.querySelectorAll('.input-error-message');
-  inputErrorMessages.forEach(errorMessage => errorMessage.remove());
+  let formIsValid = validateForm(form);
 
-  const requiredFields = form.querySelectorAll('input:required');
-
-  let isValid = true;
-
-  requiredFields.forEach(requiredField => {
-    requiredField.classList.remove('input-error');
-
-    if (!requiredField.value) {
-      isValid = validateInputField(requiredField, 'Required field');
-    } else {
-      if (requiredField.name === 'name') {
-        if (requiredField.value.length < 3) {
-          let errorMessage = 'Vardas privalo būti bent 3 simbolių ilgumo';
-          validateInputField(requiredField, errorMessage);
-          isValid = false;
-        }
-        return;
-      }
-      
-      if (requiredField.name === 'surname') {
-        if (requiredField.value.length < 3) {
-          validateInputField(requiredField, 'Pavardė privalo būti bent 3 simbolių ilgumo');
-          isValid = false;
-        }
-        return;
-      }
-      
-      if (requiredField.name === 'age') {
-        if (requiredField.value < 0) {
-          validateInputField(requiredField, 'Amžius privalo būti teigiamas skaičius');
-          isValid = false;
-        } else if (requiredField.value > 120) {
-          validateInputField(requiredField, 'Įvestas amžius yra per didelis');
-          isValid = false;
-        }
-        return;
-      }
-      
-      if (requiredField.name === 'phone') {
-        if (requiredField.value.length < 9 || requiredField.value.length > 12) {
-          validateInputField(requiredField, 'Įvestas telefono numeris yra neteisingas');
-          isValid = false;
-        }
-        return;
-      }
-      
-      if (requiredField.name === 'email') {
-        if (requiredField.value.length < 8 || !requiredField.value.includes('@') || !requiredField.value.includes('.')) {
-          validateInputField(requiredField, 'Įvestas elektroninis paštas yra neteisingas');
-          isValid = false;
-        }
-        return;
-      }
-
-    }
-  })
-
-  if (!isValid) {
+  if (!formIsValid) {
     renderAlertMessage('Some fields are missing', 'red');
     return;
   }
@@ -214,4 +150,134 @@ function validateInputField(input, message) {
   input.after(inputErrorMessage);
   
   return false;
+}
+
+// function validateForm(form) {
+//   const inputErrorMessages = form.querySelectorAll('.input-error-message');
+//   inputErrorMessages.forEach(errorMessage => errorMessage.remove());
+
+//   const requiredFields = form.querySelectorAll('input:required');
+
+//   let isValid = true;
+
+//   requiredFields.forEach(requiredField => {
+//     requiredField.classList.remove('input-error');
+
+//     if (!requiredField.value) {
+//       isValid = validateInputField(requiredField, 'Required field');
+//     } else {
+//       if (requiredField.name === 'name') {
+//         if (requiredField.value.length < 3) {
+//           let errorMessage = 'Vardas privalo būti bent 3 simbolių ilgumo';
+//           validateInputField(requiredField, errorMessage);
+//           isValid = false;
+//         }
+//         return;
+//       }
+      
+//       if (requiredField.name === 'surname') {
+//         if (requiredField.value.length < 3) {
+//           validateInputField(requiredField, 'Pavardė privalo būti bent 3 simbolių ilgumo');
+//           isValid = false;
+//         }
+//         return;
+//       }
+      
+//       if (requiredField.name === 'age') {
+//         if (requiredField.value < 0) {
+//           validateInputField(requiredField, 'Amžius privalo būti teigiamas skaičius');
+//           isValid = false;
+//         } else if (requiredField.value > 120) {
+//           validateInputField(requiredField, 'Įvestas amžius yra per didelis');
+//           isValid = false;
+//         }
+//         return;
+//       }
+      
+//       if (requiredField.name === 'phone') {
+//         if (requiredField.value.length < 9 || requiredField.value.length > 12) {
+//           validateInputField(requiredField, 'Įvestas telefono numeris yra neteisingas');
+//           isValid = false;
+//         }
+//         return;
+//       }
+      
+//       if (requiredField.name === 'email') {
+//         if (requiredField.value.length < 8 || !requiredField.value.includes('@') || !requiredField.value.includes('.')) {
+//           validateInputField(requiredField, 'Įvestas elektroninis paštas yra neteisingas');
+//           isValid = false;
+//         }
+//         return;
+//       }
+
+//     }
+//   })
+
+//   return isValid;
+// }
+
+function validateForm(form) {
+  const inputErrorMessages = form.querySelectorAll('.input-error-message');
+  inputErrorMessages.forEach(errorMessage => errorMessage.remove());
+
+  const requiredFields = form.querySelectorAll('input:required');
+
+  let isValid = true;
+
+  requiredFields.forEach(requiredField => {
+    requiredField.classList.remove('input-error');
+
+    if (!requiredField.value) {
+      isValid = validateInputField(requiredField, 'Required field');
+    } else {
+
+      switch (requiredField.name) {
+        case 'name':
+
+          if (requiredField.value.length < 3) {
+            let errorMessage = 'Vardas privalo būti bent 3 simbolių ilgumo';
+            validateInputField(requiredField, errorMessage);
+            isValid = false;
+          }
+          break;
+
+        case 'surname':
+
+          if (requiredField.value.length < 3) {
+            validateInputField(requiredField, 'Pavardė privalo būti bent 3 simbolių ilgumo');
+            isValid = false;
+          }
+          break;
+
+        case 'age':
+
+          if (requiredField.value < 0) {
+            validateInputField(requiredField, 'Amžius privalo būti teigiamas skaičius');
+            isValid = false;
+          } else if (requiredField.value > 120) {
+            validateInputField(requiredField, 'Įvestas amžius yra per didelis');
+            isValid = false;
+          }
+          break;
+
+        case 'phone':
+
+          if (requiredField.value.length < 9 || requiredField.value.length > 12) {
+            validateInputField(requiredField, 'Įvestas telefono numeris yra neteisingas');
+            isValid = false;
+          }
+          break;
+
+        case 'email':
+
+          if (requiredField.value.length < 8 || !requiredField.value.includes('@') || !requiredField.value.includes('.')) {
+            validateInputField(requiredField, 'Įvestas elektroninis paštas yra neteisingas');
+            isValid = false;
+          }
+          break;
+      }
+    }
+  })
+
+  return isValid;
 }
