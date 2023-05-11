@@ -59,3 +59,8 @@ Papildyti formos validaciją. Jeigu:
 ŠEŠTA UŽDUOTIS:
 1. Sukurti pradinius duomenų masyvą, kuriame būtų bent 5 studentų duomenys (objektų formatu).
 2. Sukurti funkciją, kuri priima šiuos duomenis ir užkrovus puslapį į ekraną iškart išveda duomenis iš šio masyvo.
+
+SEPTINTA UŽDUOTIS:
+1. Prie kiekvieno studento pridėti mygtuką, kurį paspaudus leistų redaguoti studento duomenis.
+2. Redaguojant studentą, submit mygtuko tekstas turėtų pasikeisti į „Save Changes".
+3. Pakeitus studento duomenis, turi iššokti <span> elementas, kuris informuoja apie studento duomenų redagavimą: „Studento (Vardas Pavardė) duomenys sėkmingai pakeisti". Šis span elementas dingsta po 5 sekundžių.
