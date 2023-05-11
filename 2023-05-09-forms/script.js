@@ -1,5 +1,14 @@
 const studentForm = document.getElementById('student-form');
 
+const initialData = [
+  {
+
+  },
+  {
+    
+  }
+]
+
 function itKnowledgeChangeHandler() {
   const studentItKnowledgeInput = document.querySelector('#student-it-knowledge');
   const studentItKnowledgeOutput = document.querySelector('#student-it-knowledge-output');
