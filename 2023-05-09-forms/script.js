@@ -51,29 +51,50 @@ studentForm.addEventListener('submit', (event) => {
     requiredField.classList.remove('input-error');
 
     if (!requiredField.value) {
-      requiredField.classList.add('input-error');
-
-      let inputErrorMessage = document.createElement('span');
-      inputErrorMessage.classList.add('input-error-message');
-      inputErrorMessage.textContent = 'Required field';
-
-      requiredField.after(inputErrorMessage);
-
-      isValid = false;
+      isValid = validateInputField(requiredField, 'Required field');
     } else {
-
       if (requiredField.name === 'name') {
         if (requiredField.value.length < 3) {
-          requiredField.classList.add('input-error');
-
-          let inputErrorMessage = document.createElement('span');
-          inputErrorMessage.classList.add('input-error-message');
-          inputErrorMessage.textContent = 'Vardas privalo būti bent 3 simbolių ilgumo';
-
-          requiredField.after(inputErrorMessage);
-          
+          let errorMessage = 'Vardas privalo būti bent 3 simbolių ilgumo';
+          validateInputField(requiredField, errorMessage);
           isValid = false;
         }
+        return;
+      }
+      
+      if (requiredField.name === 'surname') {
+        if (requiredField.value.length < 3) {
+          validateInputField(requiredField, 'Pavardė privalo būti bent 3 simbolių ilgumo');
+          isValid = false;
+        }
+        return;
+      }
+      
+      if (requiredField.name === 'age') {
+        if (requiredField.value < 0) {
+          validateInputField(requiredField, 'Amžius privalo būti teigiamas skaičius');
+          isValid = false;
+        } else if (requiredField.value > 120) {
+          validateInputField(requiredField, 'Įvestas amžius yra per didelis');
+          isValid = false;
+        }
+        return;
+      }
+      
+      if (requiredField.name === 'phone') {
+        if (requiredField.value.length < 9 || requiredField.value.length > 12) {
+          validateInputField(requiredField, 'Įvestas telefono numeris yra neteisingas');
+          isValid = false;
+        }
+        return;
+      }
+      
+      if (requiredField.name === 'email') {
+        if (requiredField.value.length < 8 || !requiredField.value.includes('@') || !requiredField.value.includes('.')) {
+          validateInputField(requiredField, 'Įvestas elektroninis paštas yra neteisingas');
+          isValid = false;
+        }
+        return;
       }
 
     }
@@ -181,4 +202,16 @@ function renderAlertMessage(text, color) {
   setTimeout(() => {
     alertMessage.textContent = '';
   }, 5000);
+}
+
+function validateInputField(input, message) {
+  input.classList.add('input-error');
+
+  let inputErrorMessage = document.createElement('span');
+  inputErrorMessage.classList.add('input-error-message');
+  inputErrorMessage.textContent = message;
+
+  input.after(inputErrorMessage);
+  
+  return false;
 }
