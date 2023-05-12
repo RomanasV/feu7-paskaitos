@@ -1,4 +1,5 @@
 const studentForm = document.getElementById('student-form');
+const studentsList = document.querySelector('#students-list');
 
 const initialData = [
   {
@@ -48,13 +49,8 @@ let editStudent = null;
 function renderSingleStudent(studentData) {
   let { name, surname, age, phone, email, itKnowledge, group, interests } = studentData;
   
-  const studentsList = document.querySelector('#students-list');
-  
   const studentItem = document.createElement('div');
   studentItem.classList.add('student-item');
-  
-  console.log(editStudent)
-  studentsList.prepend(studentItem);
 
   const nameElement = document.createElement('p');
   nameElement.innerHTML = `<strong>Name:</strong> ${name}`;
@@ -129,29 +125,32 @@ function renderSingleStudent(studentData) {
   editStudentButton.textContent = 'Edit Student';
 
   editStudentButton.addEventListener('click', () => {
-    editStudent = true;
-
     const nameInput = studentForm.name;
     nameInput.value = name;
-
+    
     const surnameInput = studentForm.surname;
     surnameInput.value = surname;
-
-    console.log(age);
-    console.log(phone);
-    console.log(phone);
-    console.log(email);
-    console.log(itKnowledge);
-    console.log(group);
-    console.log(interests);
+    
+    // console.log(age);
+    // console.log(phone);
+    // console.log(email);
+    // console.log(itKnowledge);
+    // console.log(group);
+    // console.log(interests);
+    
+    studentForm['student-form-submit'].value = 'Save changes';
+    editStudent = studentItem;
   })
 
   studentItem.append(nameElement, surnameElement, ageElement, phoneElement, emailElement, itKnowledgeElement, groupElement, interestsWrapper, privateInfoButton, removeStudentButton, editStudentButton);
+
+  return studentItem;
 }
 
 function renderInitialData(data) {
   data.map((item) => {
-    renderSingleStudent(item);
+    const studentElement = renderSingleStudent(item);
+    studentsList.prepend(studentElement);
   })
 }
 
@@ -220,15 +219,26 @@ studentForm.addEventListener('submit', (event) => {
     group,
     interests: interestsData
   }
+  
+  if (editStudent) {
+    let updatedStudent = renderSingleStudent(newStudentData);
+    editStudent.replaceWith(updatedStudent);
 
-  renderSingleStudent(newStudentData);
+    let createdStudentText = `Student updated (${name} ${surname})`;
+    renderAlertMessage(createdStudentText, 'green');
+
+    studentForm['student-form-submit'].value = 'Create student';
+    editStudent = null;
+  } else {
+    let newStudent = renderSingleStudent(newStudentData);
+    studentsList.prepend(newStudent);
+
+    let createdStudentText = `Student created (${name} ${surname})`;
+    renderAlertMessage(createdStudentText, 'green');
+  }
 
   form.reset();
-
   itKnowledgeChangeHandler();
-
-  let createdStudentText = `Student created (${name} ${surname})`;
-  renderAlertMessage(createdStudentText, 'green');
 })
 
 function renderAlertMessage(text, color) {
