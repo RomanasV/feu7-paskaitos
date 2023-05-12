@@ -43,80 +43,92 @@ const initialData = [
   },
 ]
 
-function renderInitialData(data) {
-  data.map((item) => {
-    let { name, surname, age, phone, email, itKnowledge, group, interests } = item;
+function renderSingleStudent(studentData) {
+  // console.log(studentData);
+  let { name, surname, age, phone, email, itKnowledge, group, interests } = studentData;
 
-    const studentsList = document.querySelector('#students-list');
+  const studentsList = document.querySelector('#students-list');
 
-    const studentItem = document.createElement('div');
-    studentItem.classList.add('student-item');
+  const studentItem = document.createElement('div');
+  studentItem.classList.add('student-item');
 
-    studentsList.prepend(studentItem);
+  studentsList.prepend(studentItem);
 
-    const nameElement = document.createElement('p');
-    nameElement.innerHTML = `<strong>Name:</strong> ${name}`;
+  const nameElement = document.createElement('p');
+  nameElement.innerHTML = `<strong>Name:</strong> ${name}`;
 
-    const surnameElement = document.createElement('p');
-    surnameElement.innerHTML = `<strong>Surname:</strong> ${surname}`;
+  const surnameElement = document.createElement('p');
+  surnameElement.innerHTML = `<strong>Surname:</strong> ${surname}`;
 
-    const ageElement = document.createElement('p');
-    ageElement.innerHTML = `<strong>Age:</strong> ${age}`;
+  const ageElement = document.createElement('p');
+  ageElement.innerHTML = `<strong>Age:</strong> ${age}`;
 
-    const phoneElement = document.createElement('p');
-    phoneElement.innerHTML = `<strong>Phone:</strong> ****`;
-    
-    const emailElement = document.createElement('p');
-    emailElement.innerHTML = `<strong>Email:</strong> ****`;
+  const phoneElement = document.createElement('p');
+  phoneElement.innerHTML = `<strong>Phone:</strong> ****`;
+  
+  const emailElement = document.createElement('p');
+  emailElement.innerHTML = `<strong>Email:</strong> ****`;
 
-    const itKnowledgeElement = document.createElement('p');
-    itKnowledgeElement.innerHTML = `<strong>IT knowledge:</strong> ${itKnowledge}`;
+  const itKnowledgeElement = document.createElement('p');
+  itKnowledgeElement.innerHTML = `<strong>IT knowledge:</strong> ${itKnowledge}`;
 
-    const groupElement = document.createElement('p');
-    groupElement.innerHTML = `<strong>Group:</strong> ${group}`;
+  const groupElement = document.createElement('p');
+  groupElement.innerHTML = `<strong>Group:</strong> ${group}`;
 
-    const interestsWrapper = document.createElement('div');
-    const interestsTitle = document.createElement('h3');
-    interestsTitle.textContent = 'Student interests:'
+  const interestsWrapper = document.createElement('div');
+  const interestsTitle = document.createElement('h3');
+  interestsTitle.textContent = 'Student interests:'
 
-    const interestsList = document.createElement('ul');
+  const interestsList = document.createElement('ul');
 
+  if (interests.length > 0) {
     interests.forEach(interest => {
       const interestElement = document.createElement('li');
       interestElement.textContent = interest;
       interestsList.append(interestElement);
     })
-
+    
     interestsWrapper.append(interestsTitle, interestsList);
+  } else {
+    const noInterestsTitle = document.createElement('span');
+    noInterestsTitle.textContent = 'No interests :(';
 
-    const privateInfoButton = document.createElement('button');
-    privateInfoButton.textContent = 'Show Private info';
+    interestsWrapper.append(interestsTitle, noInterestsTitle);
+  }
 
-    let privateInfoHidden = true;
+  const privateInfoButton = document.createElement('button');
+  privateInfoButton.textContent = 'Show Private info';
 
-    privateInfoButton.addEventListener('click', () => {
-      privateInfoHidden = !privateInfoHidden;
+  let privateInfoHidden = true;
 
-      if (privateInfoHidden) {
-        emailElement.innerHTML = `<strong>Email:</strong> ****`;
-        phoneElement.innerHTML = `<strong>Phone:</strong> ****`;
-        privateInfoButton.textContent = 'Show Private info';
-      } else {
-        emailElement.innerHTML = `<strong>Email:</strong> ${email}`;
-        phoneElement.innerHTML = `<strong>Phone:</strong> ${phone}`;
-        privateInfoButton.textContent = 'Hide Private info';
-      }
-    })
+  privateInfoButton.addEventListener('click', () => {
+    privateInfoHidden = !privateInfoHidden;
 
-    const removeStudentButton = document.createElement('button');
-    removeStudentButton.textContent = 'Remove Student';
+    if (privateInfoHidden) {
+      emailElement.innerHTML = `<strong>Email:</strong> ****`;
+      phoneElement.innerHTML = `<strong>Phone:</strong> ****`;
+      privateInfoButton.textContent = 'Show Private info';
+    } else {
+      emailElement.innerHTML = `<strong>Email:</strong> ${email}`;
+      phoneElement.innerHTML = `<strong>Phone:</strong> ${phone}`;
+      privateInfoButton.textContent = 'Hide Private info';
+    }
+  })
 
-    removeStudentButton.addEventListener('click', () => {
-      studentItem.remove();
-      renderAlertMessage(`Student deleted (${name} ${surname})`, 'red');
-    })
+  const removeStudentButton = document.createElement('button');
+  removeStudentButton.textContent = 'Remove Student';
 
-    studentItem.append(nameElement, surnameElement, ageElement, phoneElement, emailElement, itKnowledgeElement, groupElement, interestsWrapper, privateInfoButton, removeStudentButton);
+  removeStudentButton.addEventListener('click', () => {
+    studentItem.remove();
+    renderAlertMessage(`Student deleted (${name} ${surname})`, 'red');
+  })
+
+  studentItem.append(nameElement, surnameElement, ageElement, phoneElement, emailElement, itKnowledgeElement, groupElement, interestsWrapper, privateInfoButton, removeStudentButton);
+}
+
+function renderInitialData(data) {
+  data.map((item) => {
+    renderSingleStudent(item);
   })
 }
 
@@ -155,77 +167,38 @@ studentForm.addEventListener('submit', (event) => {
   const itKnowledge = form['it-knowledge'].value;
   const group = form.group.value;
   const interests = form.querySelectorAll('[name="interests"]:checked');
-  
-  const studentsList = document.querySelector('#students-list');
-  
-  const studentItem = document.createElement('div');
-  studentItem.classList.add('student-item');
 
-  studentsList.prepend(studentItem);
+  // const newStudentData = {
+  //   name: name,
+  //   surname: surname,
+  //   age: age,
+  //   phone: phone,
+  //   email: email,
+  //   itKnowledge: itKnowledge,
+  //   group: group,
+  //   interests: interests
+  // }
 
-  const nameElement = document.createElement('p');
-  nameElement.innerHTML = `<strong>Name:</strong> ${name}`;
+  // const interestsData = [];
+  // interests.forEach(interest => {
+  //   interestsData.push(interest.value);
+  // })
 
-  const surnameElement = document.createElement('p');
-  surnameElement.innerHTML = `<strong>Surname:</strong> ${surname}`;
+  // const interestsData = Array.from(interests).map(interest => interest.value);
+  const interestsData = [...interests].map(interest => interest.value);
 
-  const ageElement = document.createElement('p');
-  ageElement.innerHTML = `<strong>Age:</strong> ${age}`;
+  const newStudentData = {
+    name,
+    surname,
+    age,
+    phone,
+    email,
+    itKnowledge,
+    group,
+    interests: interestsData
+  }
 
-  const phoneElement = document.createElement('p');
-  phoneElement.innerHTML = `<strong>Phone:</strong> ****`;
-  
-  const emailElement = document.createElement('p');
-  emailElement.innerHTML = `<strong>Email:</strong> ****`;
-
-  const itKnowledgeElement = document.createElement('p');
-  itKnowledgeElement.innerHTML = `<strong>IT knowledge:</strong> ${itKnowledge}`;
-
-  const groupElement = document.createElement('p');
-  groupElement.innerHTML = `<strong>Group:</strong> ${group}`;
-
-  const interestsWrapper = document.createElement('div');
-  const interestsTitle = document.createElement('h3');
-  interestsTitle.textContent = 'Student interests:'
-
-  const interestsList = document.createElement('ul');
-
-  interests.forEach(interest => {
-    const interestElement = document.createElement('li');
-    interestElement.textContent = interest.value;
-    interestsList.append(interestElement);
-  })
-
-  interestsWrapper.append(interestsTitle, interestsList);
-
-  const privateInfoButton = document.createElement('button');
-  privateInfoButton.textContent = 'Show Private info';
-
-  let privateInfoHidden = true;
-
-  privateInfoButton.addEventListener('click', () => {
-    privateInfoHidden = !privateInfoHidden;
-
-    if (privateInfoHidden) {
-      emailElement.innerHTML = `<strong>Email:</strong> ****`;
-      phoneElement.innerHTML = `<strong>Phone:</strong> ****`;
-      privateInfoButton.textContent = 'Show Private info';
-    } else {
-      emailElement.innerHTML = `<strong>Email:</strong> ${email}`;
-      phoneElement.innerHTML = `<strong>Phone:</strong> ${phone}`;
-      privateInfoButton.textContent = 'Hide Private info';
-    }
-  })
-
-  const removeStudentButton = document.createElement('button');
-  removeStudentButton.textContent = 'Remove Student';
-
-  removeStudentButton.addEventListener('click', () => {
-    studentItem.remove();
-    renderAlertMessage(`Student deleted (${name} ${surname})`, 'red');
-  })
-
-  studentItem.append(nameElement, surnameElement, ageElement, phoneElement, emailElement, itKnowledgeElement, groupElement, interestsWrapper, privateInfoButton, removeStudentButton);
+  renderSingleStudent(newStudentData);
 
   form.reset();
 
