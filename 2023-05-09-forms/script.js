@@ -43,8 +43,9 @@ const initialData = [
   },
 ]
 
+let oldStudentData = null;
+
 function renderSingleStudent(studentData) {
-  // console.log(studentData);
   let { name, surname, age, phone, email, itKnowledge, group, interests } = studentData;
 
   const studentsList = document.querySelector('#students-list');
