@@ -43,16 +43,17 @@ const initialData = [
   },
 ]
 
-let oldStudentData = null;
+let editStudent = null;
 
 function renderSingleStudent(studentData) {
   let { name, surname, age, phone, email, itKnowledge, group, interests } = studentData;
-
+  
   const studentsList = document.querySelector('#students-list');
-
+  
   const studentItem = document.createElement('div');
   studentItem.classList.add('student-item');
-
+  
+  console.log(editStudent)
   studentsList.prepend(studentItem);
 
   const nameElement = document.createElement('p');
@@ -124,7 +125,28 @@ function renderSingleStudent(studentData) {
     renderAlertMessage(`Student deleted (${name} ${surname})`, 'red');
   })
 
-  studentItem.append(nameElement, surnameElement, ageElement, phoneElement, emailElement, itKnowledgeElement, groupElement, interestsWrapper, privateInfoButton, removeStudentButton);
+  const editStudentButton = document.createElement('button');
+  editStudentButton.textContent = 'Edit Student';
+
+  editStudentButton.addEventListener('click', () => {
+    editStudent = true;
+
+    const nameInput = studentForm.name;
+    nameInput.value = name;
+
+    const surnameInput = studentForm.surname;
+    surnameInput.value = surname;
+
+    console.log(age);
+    console.log(phone);
+    console.log(phone);
+    console.log(email);
+    console.log(itKnowledge);
+    console.log(group);
+    console.log(interests);
+  })
+
+  studentItem.append(nameElement, surnameElement, ageElement, phoneElement, emailElement, itKnowledgeElement, groupElement, interestsWrapper, privateInfoButton, removeStudentButton, editStudentButton);
 }
 
 function renderInitialData(data) {
