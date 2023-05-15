@@ -1,5 +1,6 @@
 const studentForm = document.getElementById('student-form');
 const studentsList = document.querySelector('#students-list');
+let editStudent = null;
 
 const initialData = [
   {
@@ -44,7 +45,90 @@ const initialData = [
   },
 ]
 
-let editStudent = null;
+function init() {
+  renderInitialData(initialData);
+  itKnowledgeChangeHandler();
+  formLocalStorageHandler(studentForm);
+
+  studentForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+  
+    const form = event.target;
+  
+    let formIsValid = validateForm(form);
+  
+    if (!formIsValid) {
+      renderAlertMessage('Some fields are missing', 'red');
+      return;
+    }
+  
+    const name = form.name.value;
+    const surname = form.surname.value;
+    const age = form.age.value;
+    const phone = form.phone.value;
+    const email = form.email.value;
+    const itKnowledge = form['it-knowledge'].value;
+    const group = form.group.value;
+    const interests = form.querySelectorAll('[name="interests"]:checked');
+  
+    // const newStudentData = {
+    //   name: name,
+    //   surname: surname,
+    //   age: age,
+    //   phone: phone,
+    //   email: email,
+    //   itKnowledge: itKnowledge,
+    //   group: group,
+    //   interests: interests
+    // }
+  
+    // const interestsData = [];
+    // interests.forEach(interest => {
+    //   interestsData.push(interest.value);
+    // })
+  
+    // const interestsData = Array.from(interests).map(interest => interest.value);
+    const interestsData = [...interests].map(interest => interest.value);
+  
+    const newStudentData = {
+      name,
+      surname,
+      age,
+      phone,
+      email,
+      itKnowledge,
+      group,
+      interests: interestsData
+    }
+    
+    if (editStudent) {
+      let updatedStudent = renderSingleStudent(newStudentData);
+      editStudent.replaceWith(updatedStudent);
+  
+      let createdStudentText = `Student updated (${name} ${surname})`;
+      renderAlertMessage(createdStudentText, 'green');
+  
+      studentForm['student-form-submit'].value = 'Create student';
+      editStudent = null;
+    } else {
+      let newStudent = renderSingleStudent(newStudentData);
+      studentsList.prepend(newStudent);
+  
+      let createdStudentText = `Student created (${name} ${surname})`;
+      renderAlertMessage(createdStudentText, 'green');
+    }
+  
+    form.reset();
+    itKnowledgeChangeHandler();
+
+    localStorage.removeItem('name');
+    localStorage.removeItem('surname');
+    localStorage.removeItem('phone');
+    localStorage.removeItem('age');
+    localStorage.removeItem('email');
+    localStorage.removeItem('it-knowledge');
+  })
+}
 
 function renderSingleStudent(studentData) {
   let { name, surname, age, phone, email, itKnowledge, group, interests } = studentData;
@@ -154,8 +238,6 @@ function renderInitialData(data) {
   })
 }
 
-renderInitialData(initialData);
-
 function itKnowledgeChangeHandler() {
   const studentItKnowledgeInput = document.querySelector('#student-it-knowledge');
   const studentItKnowledgeOutput = document.querySelector('#student-it-knowledge-output');
@@ -166,80 +248,6 @@ function itKnowledgeChangeHandler() {
     studentItKnowledgeOutput.textContent = event.target.value;
   })
 }
-
-itKnowledgeChangeHandler();
-
-studentForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-
-  const form = event.target;
-
-  let formIsValid = validateForm(form);
-
-  if (!formIsValid) {
-    renderAlertMessage('Some fields are missing', 'red');
-    return;
-  }
-
-  const name = form.name.value;
-  const surname = form.surname.value;
-  const age = form.age.value;
-  const phone = form.phone.value;
-  const email = form.email.value;
-  const itKnowledge = form['it-knowledge'].value;
-  const group = form.group.value;
-  const interests = form.querySelectorAll('[name="interests"]:checked');
-
-  // const newStudentData = {
-  //   name: name,
-  //   surname: surname,
-  //   age: age,
-  //   phone: phone,
-  //   email: email,
-  //   itKnowledge: itKnowledge,
-  //   group: group,
-  //   interests: interests
-  // }
-
-  // const interestsData = [];
-  // interests.forEach(interest => {
-  //   interestsData.push(interest.value);
-  // })
-
-  // const interestsData = Array.from(interests).map(interest => interest.value);
-  const interestsData = [...interests].map(interest => interest.value);
-
-  const newStudentData = {
-    name,
-    surname,
-    age,
-    phone,
-    email,
-    itKnowledge,
-    group,
-    interests: interestsData
-  }
-  
-  if (editStudent) {
-    let updatedStudent = renderSingleStudent(newStudentData);
-    editStudent.replaceWith(updatedStudent);
-
-    let createdStudentText = `Student updated (${name} ${surname})`;
-    renderAlertMessage(createdStudentText, 'green');
-
-    studentForm['student-form-submit'].value = 'Create student';
-    editStudent = null;
-  } else {
-    let newStudent = renderSingleStudent(newStudentData);
-    studentsList.prepend(newStudent);
-
-    let createdStudentText = `Student created (${name} ${surname})`;
-    renderAlertMessage(createdStudentText, 'green');
-  }
-
-  form.reset();
-  itKnowledgeChangeHandler();
-})
 
 function renderAlertMessage(text, color) {
   const alertMessage = document.querySelector('#alert-message');
@@ -263,70 +271,6 @@ function validateInputField(input, message) {
   
   return false;
 }
-
-// function validateForm(form) {
-//   const inputErrorMessages = form.querySelectorAll('.input-error-message');
-//   inputErrorMessages.forEach(errorMessage => errorMessage.remove());
-
-//   const requiredFields = form.querySelectorAll('input:required');
-
-//   let isValid = true;
-
-//   requiredFields.forEach(requiredField => {
-//     requiredField.classList.remove('input-error');
-
-//     if (!requiredField.value) {
-//       isValid = validateInputField(requiredField, 'Required field');
-//     } else {
-//       if (requiredField.name === 'name') {
-//         if (requiredField.value.length < 3) {
-//           let errorMessage = 'Vardas privalo būti bent 3 simbolių ilgumo';
-//           validateInputField(requiredField, errorMessage);
-//           isValid = false;
-//         }
-//         return;
-//       }
-      
-//       if (requiredField.name === 'surname') {
-//         if (requiredField.value.length < 3) {
-//           validateInputField(requiredField, 'Pavardė privalo būti bent 3 simbolių ilgumo');
-//           isValid = false;
-//         }
-//         return;
-//       }
-      
-//       if (requiredField.name === 'age') {
-//         if (requiredField.value < 0) {
-//           validateInputField(requiredField, 'Amžius privalo būti teigiamas skaičius');
-//           isValid = false;
-//         } else if (requiredField.value > 120) {
-//           validateInputField(requiredField, 'Įvestas amžius yra per didelis');
-//           isValid = false;
-//         }
-//         return;
-//       }
-      
-//       if (requiredField.name === 'phone') {
-//         if (requiredField.value.length < 9 || requiredField.value.length > 12) {
-//           validateInputField(requiredField, 'Įvestas telefono numeris yra neteisingas');
-//           isValid = false;
-//         }
-//         return;
-//       }
-      
-//       if (requiredField.name === 'email') {
-//         if (requiredField.value.length < 8 || !requiredField.value.includes('@') || !requiredField.value.includes('.')) {
-//           validateInputField(requiredField, 'Įvestas elektroninis paštas yra neteisingas');
-//           isValid = false;
-//         }
-//         return;
-//       }
-
-//     }
-//   })
-
-//   return isValid;
-// }
 
 function validateForm(form) {
   const inputErrorMessages = form.querySelectorAll('.input-error-message');
@@ -393,3 +337,36 @@ function validateForm(form) {
 
   return isValid;
 }
+
+function formLocalStorageHandler(form) {
+  // const nameElement = form.name;
+
+  // if (localStorage.getItem('name')) {
+  //   nameElement.value = localStorage.getItem('name');
+  // }
+
+  // nameElement.addEventListener('input', (event) => {
+  //   localStorage.setItem('name', event.target.value);
+  // });
+
+  inputLocalStorageHandler(form, 'name');
+  inputLocalStorageHandler(form, 'surname');
+  inputLocalStorageHandler(form, 'age');
+  inputLocalStorageHandler(form, 'phone');
+  inputLocalStorageHandler(form, 'email');
+  inputLocalStorageHandler(form, 'it-knowledge');
+}
+
+function inputLocalStorageHandler(form, key) {
+  const input = form[key];
+
+  if (localStorage.getItem(key)) {
+    input.value = localStorage.getItem(key);
+  }
+
+  input.addEventListener('input', (event) => {
+    localStorage.setItem(key, event.target.value);
+  });
+}
+
+init();
