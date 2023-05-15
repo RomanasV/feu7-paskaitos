@@ -127,6 +127,8 @@ function init() {
     localStorage.removeItem('age');
     localStorage.removeItem('email');
     localStorage.removeItem('it-knowledge');
+    localStorage.removeItem('group');
+    localStorage.removeItem('interests');
   })
 }
 
@@ -338,27 +340,42 @@ function validateForm(form) {
   return isValid;
 }
 
-function formLocalStorageHandler(form) {
-  // const nameElement = form.name;
+// function formLocalStorageHandler(form) {
+//   // const nameElement = form.name;
 
-  // if (localStorage.getItem('name')) {
-  //   nameElement.value = localStorage.getItem('name');
-  // }
+//   // if (localStorage.getItem('name')) {
+//   //   nameElement.value = localStorage.getItem('name');
+//   // }
 
-  // nameElement.addEventListener('input', (event) => {
-  //   localStorage.setItem('name', event.target.value);
-  // });
+//   // nameElement.addEventListener('input', (event) => {
+//   //   localStorage.setItem('name', event.target.value);
+//   // });
 
-  inputLocalStorageHandler(form, 'name');
-  inputLocalStorageHandler(form, 'surname');
-  inputLocalStorageHandler(form, 'age');
-  inputLocalStorageHandler(form, 'phone');
-  inputLocalStorageHandler(form, 'email');
-  inputLocalStorageHandler(form, 'it-knowledge');
-}
+//   inputLocalStorageHandler(form, 'name');
+//   inputLocalStorageHandler(form, 'surname');
+//   inputLocalStorageHandler(form, 'age');
+//   inputLocalStorageHandler(form, 'phone');
+//   inputLocalStorageHandler(form, 'email');
+//   inputLocalStorageHandler(form, 'it-knowledge');
+//   inputLocalStorageHandler(form, 'group');
+// }
 
 function inputLocalStorageHandler(form, key) {
   const input = form[key];
+
+  if (key === 'group') {
+    if (localStorage.getItem(key)) {
+      input.value = localStorage.getItem(key);
+    }
+
+    input.forEach(groupElement => {
+      groupElement.addEventListener('input', (event) => {
+        localStorage.setItem(key, event.target.value);
+      })
+    })
+
+    return;
+  }
 
   if (localStorage.getItem(key)) {
     input.value = localStorage.getItem(key);
@@ -367,6 +384,61 @@ function inputLocalStorageHandler(form, key) {
   input.addEventListener('input', (event) => {
     localStorage.setItem(key, event.target.value);
   });
+}
+
+function formLocalStorageHandler(form) {
+  form.addEventListener('input', (event) => {
+    const key = event.target.name;
+    const value = event.target.value;
+
+    if (key === 'interests') {
+      const checkedInterests = form.querySelectorAll(`[name="${key}"]:checked`);
+
+      const checkedInterestValues = [...checkedInterests].map(interest => {
+        return interest.value;
+      })
+
+      const checkedInterestValuesJSON = JSON.stringify(checkedInterestValues);
+
+      localStorage.setItem(key, checkedInterestValuesJSON);
+    } else {
+      localStorage.setItem(key, value);
+    }
+  })
+
+  // if (localStorage.getItem('name')) {
+  //   form.name.value = localStorage.getItem('name');
+  // }
+
+  // if (localStorage.getItem('surname')) {
+  //   form.surname.value = localStorage.getItem('surname');
+  // }
+
+  setInputByLocalStorageValue('name', form);
+  setInputByLocalStorageValue('surname', form);
+  setInputByLocalStorageValue('age', form);
+  setInputByLocalStorageValue('phone', form);
+  setInputByLocalStorageValue('email', form);
+  setInputByLocalStorageValue('group', form);
+  setInputByLocalStorageValue('interests', form);
+}
+
+function setInputByLocalStorageValue(key, form) {
+  if (key === 'interests') {
+    const interestsLocalStorageArr = JSON.parse(localStorage.getItem(key));
+
+    if (interestsLocalStorageArr) {
+      interestsLocalStorageArr.forEach(interest => {
+        const interestInput = form.querySelector(`[name=${key}][value="${interest}"]`);
+
+        interestInput.checked = true;
+      })
+    }
+  } else {
+    if (localStorage.getItem(key)) {
+      form[key].value = localStorage.getItem(key);
+    }
+  }
 }
 
 init();
