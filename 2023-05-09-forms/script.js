@@ -10,7 +10,7 @@ const initialData = [
     phone: '+3704564654',
     email: 'email@email.email',
     itKnowledge: 7,
-    group: 'feu 5',
+    group: 'feu 1',
     interests: ['JavaScript', 'Java']
   },
   {
@@ -20,7 +20,7 @@ const initialData = [
     phone: '+3704564654',
     email: 'email@email.email',
     itKnowledge: 7,
-    group: 'feu 4',
+    group: 'feu 2',
     interests: ['JavaScript']
   },
   {
@@ -40,7 +40,7 @@ const initialData = [
     phone: '+3704564654',
     email: 'email@email.email',
     itKnowledge: 4,
-    group: 'feu 7',
+    group: 'feu 3',
     interests: []
   },
 ]
@@ -217,12 +217,29 @@ function renderSingleStudent(studentData) {
     const surnameInput = studentForm.surname;
     surnameInput.value = surname;
     
-    // console.log(age);
-    // console.log(phone);
-    // console.log(email);
-    // console.log(itKnowledge);
-    // console.log(group);
-    // console.log(interests);
+    const ageInput = studentForm.age;
+    ageInput.value = age;
+    
+    const phoneInput = studentForm.phone;
+    phoneInput.value = phone;
+    
+    studentForm.email.value = email;
+    studentForm['it-knowledge'].value = itKnowledge;
+    itKnowledgeChangeHandler();
+
+    studentForm.group.value = group;
+
+    const allInterestInputs = document.querySelectorAll('[name="interests"]');
+
+    allInterestInputs.forEach(interest => {
+      interest.removeAttribute('checked');
+    })
+
+    interests.forEach(interest => {
+      const interestInput = document.querySelector(`[name="interests"][value="${interest}"]`);
+      // interestInput.checked = true;
+      interestInput.setAttribute('checked', true);
+    })
     
     studentForm['student-form-submit'].value = 'Save changes';
     editStudent = studentItem;
