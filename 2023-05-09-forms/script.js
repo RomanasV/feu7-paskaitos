@@ -112,6 +112,8 @@ function init() {
   
       studentForm['student-form-submit'].value = 'Create student';
       editStudent = null;
+
+      clearCheckboxGroup('interests');
     } else {
       let newStudent = renderSingleStudent(newStudentData);
       studentsList.prepend(newStudent);
@@ -242,11 +244,7 @@ function renderSingleStudent(studentData) {
 
     studentForm.group.value = group;
 
-    const allInterestInputs = document.querySelectorAll('[name="interests"]');
-
-    allInterestInputs.forEach(interest => {
-      interest.removeAttribute('checked');
-    })
+    clearCheckboxGroup('interests');
 
     interests.forEach(interest => {
       const interestInput = document.querySelector(`[name="interests"][value="${interest}"]`);
@@ -263,13 +261,21 @@ function renderSingleStudent(studentData) {
   return studentItem;
 }
 
+function clearCheckboxGroup(checkboxName) {
+  const allInterestInputs = document.querySelectorAll(`[type="checkbox"][name="${checkboxName}"]`);
+
+  allInterestInputs.forEach(interest => {
+    interest.removeAttribute('checked');
+  })
+}
+
 function renderInitialData() {
   const initialData = JSON.parse(localStorage.getItem('students-data'));
 
   if (initialData) {
     initialData.map((item) => {
       const studentElement = renderSingleStudent(item);
-      studentsList.prepend(studentElement);
+      studentsList.append(studentElement);
     })
   }
 }
