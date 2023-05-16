@@ -2,51 +2,53 @@ const studentForm = document.getElementById('student-form');
 const studentsList = document.querySelector('#students-list');
 let editStudent = null;
 
-const initialData = [
-  {
-    name: 'John',
-    surname: 'Doe',
-    age: 55,
-    phone: '+3704564654',
-    email: 'email@email.email',
-    itKnowledge: 7,
-    group: 'feu 1',
-    interests: ['JavaScript', 'Java']
-  },
-  {
-    name: 'John 2',
-    surname: 'Doe 2',
-    age: 55,
-    phone: '+3704564654',
-    email: 'email@email.email',
-    itKnowledge: 7,
-    group: 'feu 2',
-    interests: ['JavaScript']
-  },
-  {
-    name: 'John 3',
-    surname: 'Doe 3',
-    age: 55,
-    phone: '+3704564654',
-    email: 'email@email.email',
-    itKnowledge: 4,
-    group: 'feu 1',
-    interests: ['Java', 'PHP']
-  },
-  {
-    name: 'John 4',
-    surname: 'Doe 34',
-    age: 55,
-    phone: '+3704564654',
-    email: 'email@email.email',
-    itKnowledge: 4,
-    group: 'feu 3',
-    interests: []
-  },
-]
+// const initialData = [
+//   {
+//     name: 'John',
+//     surname: 'Doe',
+//     age: 55,
+//     phone: '+3704564654',
+//     email: 'email@email.email',
+//     itKnowledge: 7,
+//     group: 'feu 1',
+//     interests: ['JavaScript', 'Java']
+//   },
+//   {
+//     name: 'John 2',
+//     surname: 'Doe 2',
+//     age: 55,
+//     phone: '+3704564654',
+//     email: 'email@email.email',
+//     itKnowledge: 7,
+//     group: 'feu 2',
+//     interests: ['JavaScript']
+//   },
+//   {
+//     name: 'John 3',
+//     surname: 'Doe 3',
+//     age: 55,
+//     phone: '+3704564654',
+//     email: 'email@email.email',
+//     itKnowledge: 4,
+//     group: 'feu 1',
+//     interests: ['Java', 'PHP']
+//   },
+//   {
+//     name: 'John 4',
+//     surname: 'Doe 34',
+//     age: 55,
+//     phone: '+3704564654',
+//     email: 'email@email.email',
+//     itKnowledge: 4,
+//     group: 'feu 3',
+//     interests: []
+//   },
+// ]
+
+// localStorage.setItem('students-data', JSON.stringify(initialData));
 
 function init() {
-  renderInitialData(initialData);
+  renderInitialData();
   itKnowledgeChangeHandler();
   formLocalStorageHandler(studentForm);
 
@@ -113,7 +115,18 @@ function init() {
     } else {
       let newStudent = renderSingleStudent(newStudentData);
       studentsList.prepend(newStudent);
-  
+
+      const studentsDataLocalStorage = localStorage.getItem('students-data');
+      let studentsData = [];
+
+      if (studentsDataLocalStorage) {
+        studentsData = JSON.parse(studentsDataLocalStorage);
+      }
+
+      studentsData.unshift(newStudentData);
+
+      localStorage.setItem('students-data', JSON.stringify(studentsData));
+      
       let createdStudentText = `Student created (${name} ${surname})`;
       renderAlertMessage(createdStudentText, 'green');
     }
@@ -250,11 +263,15 @@ function renderSingleStudent(studentData) {
   return studentItem;
 }
 
-function renderInitialData(data) {
-  data.map((item) => {
-    const studentElement = renderSingleStudent(item);
-    studentsList.prepend(studentElement);
-  })
+function renderInitialData() {
+  const initialData = JSON.parse(localStorage.getItem('students-data'));
+
+  if (initialData) {
+    initialData.map((item) => {
+      const studentElement = renderSingleStudent(item);
+      studentsList.prepend(studentElement);
+    })
+  }
 }
 
 function itKnowledgeChangeHandler() {
