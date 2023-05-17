@@ -44,3 +44,20 @@ categoryForm.addEventListener('submit', (event) => {
       jokeParagraph.textContent = jokeData.value;
     })
 })
+
+const searchForm = document.querySelector('#search-form');
+
+searchForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const searchValue = event.target['search-input'].value;
+
+  fetch('https://api.chucknorris.io/jokes/search?query=' + searchValue)
+    .then(response => response.json())
+    .then(searchData => {
+      const index = 0;
+      const jokeData = searchData.result[index];
+
+      jokeParagraph.textContent = jokeData.value;
+    })
+})
