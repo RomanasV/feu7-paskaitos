@@ -1,0 +1,12 @@
+{
+  "movieName": "The Pope's Exorcist",
+  "ratings": {
+    "rate": 6.1,
+    "rated": 28000
+  },
+  "releaseDate": 2023,
+  "aboutMovie": "Follow Gabriele Amorth, the Vatican's leading exorcist, as he investigates the possession of a child and uncovers a conspiracy the Vatican has tried to keep secret.",
+  "genres": ["Horror", "Thriller"],
+  "producers": ["Julius Avery"],
+  "actors": ["Russell Crowe", "Daniel Zovatto", "Alex Essoe"]
+}

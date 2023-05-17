@@ -1,0 +1,12 @@
+{
+  "movieName": "The Covenant",
+  "ratings": {
+    "rate": 7.6,
+    "rated": 22000
+  },
+  "releaseDate": 2023,
+  "aboutMovie": "During the war in Afghanistan, a local interpreter risks his own life to carry an injured sergeant across miles of grueling terrain.",
+  "genres": ["Action", "Thriller", "war"],
+  "producers": ["Guy Ritchie"],
+  "actors": ["Guy Ritchie", "Ivan Atkinson", "Marn Davies"]
+}
