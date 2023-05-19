@@ -55,7 +55,8 @@ searchForm.addEventListener('submit', (event) => {
   fetch('https://api.chucknorris.io/jokes/search?query=' + searchValue)
     .then(response => response.json())
     .then(searchData => {
-      const index = 0;
+      const total = searchData.total;
+      const index = Math.floor(Math.random() * total);
       const jokeData = searchData.result[index];
 
       jokeParagraph.textContent = jokeData.value;
