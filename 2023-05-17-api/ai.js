@@ -2,54 +2,55 @@ function init() {
   const nameForm = document.querySelector('#ai-name-form');
   const nameOutput = document.querySelector('#name-output');
 
-  console.log(nameOutput)
-
-  nameForm.addEventListener('submit', (event) => {
+  nameForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const nameInputValue = event.target['name-input'].value;
+    nameOutput.textContent = '';
 
-    let ageText = '';
-    let nationalizeText = '';
-    let genderText = '';
+    const ageResponse = await fetch(`https://api.agify.io?name=${nameInputValue}`);
+    const ageData = await ageResponse.json()
 
-    fetch(`https://api.agify.io?name=${nameInputValue}`)
-      .then(response => response.json())
-      .then(data => {
-        const age = data.age;
-        const output = `1. ${nameInputValue} is ${age} years old.`;
-        ageText = output;
+    const genderResponse = await fetch(`https://api.genderize.io?name=${nameInputValue}`);
+    const genderData = await genderResponse.json();
 
-        fetch(`https://api.nationalize.io?name=${nameInputValue}`)
-          .then(response => response.json())
-          .then(data => {
-            const countryCode = data.country[0].country_id;
-            
-            fetch(`https://restcountries.com/v3.1/alpha/${countryCode}`)
-              .then(res => res.json())
-              .then(countryData => {
-                const countryName = countryData[0].name.common;
+    const nationalResponse = await fetch(`https://api.nationalize.io?name=${nameInputValue}`);
+    const nationalData = await nationalResponse.json();
+    const countryCode = nationalData.country[0].country_id;
 
-                const output = `2. ${nameInputValue} is from ${countryName}.`;
-                nationalizeText = output;
+    const countryResponse = await fetch(`https://restcountries.com/v3.1/alpha/${countryCode}`);
+    const countryData = await countryResponse.json();
 
-                fetch(`https://api.genderize.io?name=${nameInputValue}`)
-                  .then(res => res.json())
-                  .then(data => {
-                    const gender = data.gender;
-                    const output = `3. ${nameInputValue} is a ${gender}.`;
-                    genderText = output;
+    const age = ageData.age;
+    const ageOutput = `1. ${nameInputValue} is ${age} years old.`;
 
-                    nameOutput.textContent = `${ageText} ${nationalizeText} ${genderText}`;
-                  })
-              })
-          }) 
-      })
-
+    const countryName = countryData[0].name.common;
+    const countryOutput = `2. ${nameInputValue} is from ${countryName}.`;
     
+    const gender = genderData.gender;
+    const genderOutput = `3. ${nameInputValue} is a ${gender}.`;
 
-    
-      
+    nameOutput.textContent = `${ageOutput} ${countryOutput} ${genderOutput}`;
   })
 }
 
 init();
+
+
+function regularFetch() {
+  fetch('https://api.nationalize.io?name=michael')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+    })
+}
+
+// regularFetch();
+
+async function asyncAwaitFetch() {
+  const response = await fetch('https://api.nationalize.io?name=michael');
+  const data = await response.json();
+
+  console.log(data);
+}
+
+// asyncAwaitFetch();
