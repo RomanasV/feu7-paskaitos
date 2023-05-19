@@ -1,0 +1,6 @@
+API nuoroda: https://jsonplaceholder.typicode.com
+
+1. Sukurti vartotojų puslapį (users.html), kuriame būtų atvaizduotas vartotojų sąrašas.
+  1.1. Prie vartotojo turėtu būti jo vardas.
+  1.2. Paspaudus ant vartotojo - nukreipiama į jo user.html puslapį.
+  1.3. Prie vartotojo vardo turėtų būti parašytų post'ų skaičius.
