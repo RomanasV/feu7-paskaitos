@@ -36,3 +36,13 @@ API nuoroda: https://jsonplaceholder.typicode.com
 6. Šiame puslapyje (user.html) turi būti atvaizduojama:
   6.1. Visi vartotojo parašyti įrašai (posts). Kiekvienas post'as turi turėti nuorodą.
   6.2. Visi vartotojo sukurti foto albumai. Kiekvienas albumas turės pavadinimą, kuris turi būti nuoroda.
+
+7. Sukurti naują puslapį post.html ir jame atvaizduoti:
+  7.1. Įrašo (post) pavadinimą.
+  7.2. Autoriaus vardą. Paspaudus ant autoriaus vardo, turėtų atidaryti autoriaus puslapį.
+  7.3. Įrašo turinį.
+  7.4. Įrašo komentarus. Kiekvienas komentaras turi:
+    7.4.1. Komentaro pavadinimą.
+    7.4.2. Komentaro turinį - pastraipą.
+    7.4.3. Komentarą parašiusio asmens el. pašto adresą.
+  7.5. Nuoroda „Kiti autoriaus įrašai", kurią paspaudus bus nukreipiama į puslapį posts.html. Jame vėliau bus atvaizduojami visi šio vartotojo įrašai.
