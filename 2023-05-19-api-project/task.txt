@@ -23,3 +23,12 @@ API nuoroda: https://jsonplaceholder.typicode.com
   4.3. Albums / albumų puslapis.
   4.4. Posts / pranešimų puslapis.
   4.5. Pakeisti aktyvaus puslapio nuorodos stilių.
+
+5. Sukurti naują puslapį user.html, kuriame bus atvaizduojama vartotojo informacija:
+  5.1. Pilnas vardas.
+  5.2. Vartotojo vardas / nick'as.
+  5.3. El. paštas.
+  5.4. Adresas, kuris turės gatvę, namo numerį, miestą, pašto kodą. Paspaudus ant adreso, pagal koordinates, turėtų atidaryti šios vietos Google Maps.
+  5.5. Telefono numeris.
+  5.6. Internetinio puslapio adresas.
+  5.7. Įmonės, kurioje dirba, pavadinimas.
