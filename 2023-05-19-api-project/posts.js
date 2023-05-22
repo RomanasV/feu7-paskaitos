@@ -10,7 +10,6 @@ async function init() {
 
 init();
 
-
 function createPostsList(posts) {
   const postsList = document.createElement('ul');
   postsList.classList.add('posts-list');

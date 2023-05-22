@@ -16,3 +16,10 @@ API nuoroda: https://jsonplaceholder.typicode.com
   3.3. Albume esančių nuotraukų skaičius.
   3.4. Viena nuotrauka.
   3.5. Šis elementas turi būti nuoroda.
+
+4. Sukurti navigacijos elementą, kuris nukreips į puslapius:
+  4.1. Home / pagrindinis puslapis.
+  4.2. Users / vartotojų puslapis.
+  4.3. Albums / albumų puslapis.
+  4.4. Posts / pranešimų puslapis.
+  4.5. Pakeisti aktyvaus puslapio nuorodos stilių.
