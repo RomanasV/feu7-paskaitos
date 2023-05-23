@@ -2,14 +2,13 @@ async function init() {
   const res = await fetch('https://jsonplaceholder.typicode.com/users/5?_embed=posts&_embed=albums');
   const userData = await res.json();
 
-  console.log(userData);
-  console.log(userData.posts);
-  console.log(userData.albums);
-
   const contentElement = document.querySelector('#content');
   const userInfo = createUserInfoElement(userData);
-  const userPosts = createUserPosts();
-  const userAlbums = createUserAlbums();
+  // const userPosts = createUserPosts(userData.posts, userData.name);
+  // const userAlbums = createUserAlbums(userData.albums, userData.name);
+  
+  const userPosts = createDataList(userData.posts, userData.name, 'posts', 'post.html');
+  const userAlbums = createDataList(userData.albums, userData.name, 'albums', 'album.html');
 
   contentElement.append(userInfo, userPosts, userAlbums);
 }
@@ -40,16 +39,89 @@ function createUserInfoElement(user) {
   return userInfoWrapper;
 }
 
-function createUserPosts() {
+function createUserPosts(posts, name) {
   const postsWrapper = document.createElement('div');
+  postsWrapper.classList.add('posts-wrapper');
 
-  postsWrapper.innerHTML = '<p>Cia bus postai</p>';
+  const postsWrapperTitle = document.createElement('h2');
+  postsWrapper.append(postsWrapperTitle);
+  postsWrapperTitle.textContent = 'No posts :(';
+  
+  if (posts.length > 0) {
+    postsWrapperTitle.textContent = `Posts of ${name}:`;
+    const postsList = document.createElement('ul');
+  
+    posts.forEach(post => {
+      const { title } = post;
+      const postItem = document.createElement('li');
+      const postLink = document.createElement('a');
+      postLink.href = './post.html';
+      postLink.textContent = title;
+  
+      postItem.append(postLink);
+      postsList.append(postItem);
+    })
+  
+    postsWrapper.append(postsList);
+  }
+  
   return postsWrapper;
 }
 
-function createUserAlbums() {
+function createUserAlbums(albums, name) {
   const albumsWrapper = document.createElement('div');
+  albumsWrapper.classList.add('albums-wrapper');
 
-  albumsWrapper.innerHTML = '<p>Cia bus albumai</p>';
+  const albumsWrapperTitle = document.createElement('h2');
+  albumsWrapper.append(albumsWrapperTitle);
+  albumsWrapperTitle.textContent = 'No albums :(';
+  
+  if (albums.length > 0) {
+    albumsWrapperTitle.textContent = `Albums of ${name}:`;
+    const albumsList = document.createElement('ul');
+  
+    albums.forEach(album => {
+      const { title } = album;
+      const albumItem = document.createElement('li');
+      const albumLink = document.createElement('a');
+      albumLink.href = './album.html';
+      albumLink.textContent = title;
+  
+      albumItem.append(albumLink);
+      albumsList.append(albumItem);
+    })
+  
+    albumsWrapper.append(albumsList);
+  }
+  
   return albumsWrapper;
+}
+
+function createDataList(data, name, dataTitle, url) {
+  const wrapper = document.createElement('div');
+  wrapper.classList.add(dataTitle + '-wrapper');
+
+  const wrapperTitle = document.createElement('h2');
+  wrapper.append(wrapperTitle);
+  wrapperTitle.textContent = `No ${dataTitle} :(`;
+  
+  if (data.length > 0) {
+    wrapperTitle.textContent = `${dataTitle} of ${name}:`;
+    const list = document.createElement('ul');
+  
+    data.forEach(item => {
+      const { title } = item;
+      const listItem = document.createElement('li');
+      const itemLink = document.createElement('a');
+      itemLink.href = './' + url;
+      itemLink.textContent = title;
+  
+      listItem.append(itemLink);
+      list.append(listItem);
+    })
+  
+    wrapper.append(list);
+  }
+  
+  return wrapper;
 }
