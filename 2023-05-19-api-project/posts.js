@@ -17,17 +17,18 @@ function createPostsList(posts) {
   posts.forEach(post => {
     const postTitle = post.title;
     const postAuthorName = post.user.name;
+    const postAuthorId = post.userId;
     const postCommentsNumber = post.comments.length;
 
     const postElement = document.createElement('li');
     const postLinkElement = document.createElement('a');
 
-    postLinkElement.href = './post.html';
+    postLinkElement.href = './post.html?post_id=' + post.id;
     postLinkElement.textContent = `${postTitle} (${postCommentsNumber})`;
 
     const userLinkElement = document.createElement('a');
 
-    userLinkElement.href = './user.html';
+    userLinkElement.href = './user.html?user_id=' + postAuthorId;
     userLinkElement.textContent = postAuthorName;
 
     postElement.append(postLinkElement, ' - ', userLinkElement);

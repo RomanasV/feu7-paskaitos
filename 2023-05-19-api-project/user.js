@@ -1,5 +1,12 @@
 async function init() {
-  const res = await fetch('https://jsonplaceholder.typicode.com/users/5?_embed=posts&_embed=albums');
+  // const urlParams = new URLSearchParams(location.search);
+  // const id = urlParams.get('user_id');
+
+  const queryParams = location.search;
+  const urlParams = new URLSearchParams(queryParams);
+  const id = urlParams.get('user_id');
+
+  const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}?_embed=posts&_embed=albums`);
   const userData = await res.json();
 
   const contentElement = document.querySelector('#content');
@@ -55,7 +62,7 @@ function createUserPosts(posts, name) {
       const { title } = post;
       const postItem = document.createElement('li');
       const postLink = document.createElement('a');
-      postLink.href = './post.html';
+      postLink.href = './post.html?post_id=' + post.id;
       postLink.textContent = title;
   
       postItem.append(postLink);
@@ -84,7 +91,7 @@ function createUserAlbums(albums, name) {
       const { title } = album;
       const albumItem = document.createElement('li');
       const albumLink = document.createElement('a');
-      albumLink.href = './album.html';
+      albumLink.href = './album.html?album_id=' + album.id;
       albumLink.textContent = title;
   
       albumItem.append(albumLink);

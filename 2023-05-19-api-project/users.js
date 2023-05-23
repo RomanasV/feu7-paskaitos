@@ -12,12 +12,14 @@ function createUsersList(users) {
   usersList.classList.add('users-list');
 
   users.forEach(user => {
+    const userId = user.id;
+
     const itemElement = document.createElement('li');
     itemElement.classList.add('user-item');
 
     const linkElement = document.createElement('a');
-    linkElement.textContent = `${user.name} (${user.posts.length})`;
-    linkElement.href = './user.html';
+    linkElement.textContent = `${userId} ${user.name} (${user.posts.length})`;
+    linkElement.href = './user.html?user_id=' + userId;
 
     itemElement.append(linkElement);
 
