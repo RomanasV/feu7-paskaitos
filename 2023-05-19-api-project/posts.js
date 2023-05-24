@@ -1,7 +1,19 @@
 async function init() {
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=15&_expand=user&_embed=comments');
-  const postsData = await res.json();
+  const queryParams = location.search;
+  const urlParams = new URLSearchParams(queryParams);
+  const id = urlParams.get('user_id');
 
+  let fetchUrl;
+
+  if (id) {
+    fetchUrl = `https://jsonplaceholder.typicode.com/posts?_limit=15&_expand=user&_embed=comments&userId=${id}`;
+  } else {
+    fetchUrl = 'https://jsonplaceholder.typicode.com/posts?_limit=50&_expand=user&_embed=comments';
+  }
+  
+  const res = await fetch(fetchUrl);
+  const postsData = await res.json();
+  
   const contentElement = document.querySelector('#content');
 
   const postsListElement = createPostsList(postsData);
