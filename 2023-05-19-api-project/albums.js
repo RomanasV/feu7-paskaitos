@@ -1,6 +1,9 @@
+import { ALBUMS_PER_PAGE, API_URL } from "./config.js";
+import { fetchData, firstLetterUpperCase, createHTMLElement } from "./functions.js";
+
 async function init() {
-  const res = await fetch('https://jsonplaceholder.typicode.com/albums?_limit=15&_expand=user&_embed=photos');
-  const albumsData = await res.json();
+  
+  const albumsData = await fetchData(`${API_URL}/albums?_limit=${ALBUMS_PER_PAGE}&_expand=user&_embed=photos`);
 
   const contentElement = document.querySelector('#content');
   const albumsListElement = createAlbumsList(albumsData);
@@ -30,8 +33,10 @@ function createAlbumsList(albums) {
 
     albumItem.append(albumLink);
 
-    const albumTitle = document.createElement('h2');
-    albumTitle.textContent = title;
+    // const albumTitle = document.createElement('h2');
+    // albumTitle.textContent = firstLetterUpperCase(title);
+
+    const albumTitle = createHTMLElement('h2', 'album-title', firstLetterUpperCase(title));
 
     const albumAuthor = document.createElement('span');
     albumAuthor.textContent = `Author: ${author}`;

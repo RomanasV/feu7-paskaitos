@@ -1,3 +1,6 @@
+import { fetchData, firstLetterUpperCase } from './functions.js';
+import { API_URL } from './config.js';
+
 async function init() {
   const queryParams = location.search;
   const urlParams = new URLSearchParams(queryParams);
@@ -11,8 +14,7 @@ async function init() {
     return;
   }
 
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}?_expand=user&_embed=comments`);
-  const postData = await res.json();
+  const postData = await fetchData(`${API_URL}/posts/${id}?_expand=user&_embed=comments`);
 
   const postWrapperElement = createPostElement(postData);
 
@@ -29,14 +31,14 @@ function createPostElement(post) {
   postContent.classList.add('post-content');
 
   const postTitle = document.createElement('h1');
-  postTitle.textContent = post.title;
+  postTitle.textContent = firstLetterUpperCase(post.title);
 
   const authorLink = document.createElement('a');
   authorLink.href = './user.html?user_id=' + post.user.id;
   authorLink.textContent = post.user.name;
 
   const postBody = document.createElement('p');
-  postBody.textContent = post.body;
+  postBody.textContent = firstLetterUpperCase(post.body);
 
   const otherAuthorsPosts = document.createElement('a');
   otherAuthorsPosts.href = './posts.html?user_id=' + post.user.id;
@@ -63,13 +65,13 @@ function createPostElement(post) {
       commentItem.classList.add('comment-item');
 
       const commentTitle = document.createElement('h3');
-      commentTitle.textContent = comment.name;
+      commentTitle.textContent = firstLetterUpperCase(comment.name);
 
       const commentAuthor = document.createElement('span');
       commentAuthor.textContent = `Commented by: ${comment.email}`;
 
       const commentBody = document.createElement('p');
-      commentBody.textContent = comment.body;
+      commentBody.textContent = firstLetterUpperCase(comment.body);
 
       commentItem.append(commentTitle, commentAuthor, commentBody);
       commentsList.append(commentItem);

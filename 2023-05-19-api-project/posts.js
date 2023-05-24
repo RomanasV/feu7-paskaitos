@@ -1,3 +1,6 @@
+import { POSTS_PER_PAGE } from './config.js';
+import { firstLetterUpperCase } from './functions.js';
+
 async function init() {
   const queryParams = location.search;
   const urlParams = new URLSearchParams(queryParams);
@@ -6,9 +9,9 @@ async function init() {
   let fetchUrl;
 
   if (id) {
-    fetchUrl = `https://jsonplaceholder.typicode.com/posts?_limit=15&_expand=user&_embed=comments&userId=${id}`;
+    fetchUrl = `https://jsonplaceholder.typicode.com/posts?_limit=${POSTS_PER_PAGE}&_expand=user&_embed=comments&userId=${id}`;
   } else {
-    fetchUrl = 'https://jsonplaceholder.typicode.com/posts?_limit=50&_expand=user&_embed=comments';
+    fetchUrl = `https://jsonplaceholder.typicode.com/posts?_limit=${POSTS_PER_PAGE}&_expand=user&_embed=comments`;
   }
   
   const res = await fetch(fetchUrl);
@@ -36,7 +39,7 @@ function createPostsList(posts) {
     const postLinkElement = document.createElement('a');
 
     postLinkElement.href = './post.html?post_id=' + post.id;
-    postLinkElement.textContent = `${postTitle} (${postCommentsNumber})`;
+    postLinkElement.textContent = `${firstLetterUpperCase(postTitle)} (${postCommentsNumber})`;
 
     const userLinkElement = document.createElement('a');
 
