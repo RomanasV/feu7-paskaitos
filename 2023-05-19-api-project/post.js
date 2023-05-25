@@ -1,10 +1,8 @@
-import { fetchData, firstLetterUpperCase } from './functions.js';
+import { fetchData, firstLetterUpperCase, getUrlParams } from './functions.js';
 import { API_URL } from './config.js';
 
 async function init() {
-  const queryParams = location.search;
-  const urlParams = new URLSearchParams(queryParams);
-  const id = urlParams.get('post_id');
+  const id = getUrlParams('post_id');
 
   const contentElement = document.querySelector('#content');
 

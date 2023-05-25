@@ -61,3 +61,8 @@ API nuoroda: https://jsonplaceholder.typicode.com
 9.2. Formos submit metu, naudojant action atributą, nukreipti į naują puslapį (search.html).
 9.3. Šiame puslapyje atvaizduoti paieškos rezultatą.
 9.3.1. Jeigu nėra tinkamų rezultatų, tai parašyti jog rezultatų pagal užklausą nerasta.
+
+Papildoma: 
+9.4. Search puslapyje turi būti paieškos forma, kuri veikia neperkraunant puslapio.
+9.5. Search puslapyje sukurtoje paieškos formoje pridėti galimybė ieškoti pagal pasirinktą kategoriją: posts, users, comments, albums, photos.
+

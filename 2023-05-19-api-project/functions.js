@@ -12,7 +12,7 @@ export async function fetchData(url) {
   return data;
 }
 
-export function createHTMLElement(type, className, text) {
+export function createHTMLElement(type, className, text, href) {
   const element = document.createElement(type);
 
   if (className) {
@@ -23,5 +23,17 @@ export function createHTMLElement(type, className, text) {
     element.textContent = text;
   }
 
+  if (type === 'a') {
+    element.href = href;
+  }
+
   return element;
+}
+
+export function getUrlParams(param) {
+  const queryParams = location.search;
+  const urlParams = new URLSearchParams(queryParams);
+  const paramValue = urlParams.get(param);
+
+  return paramValue;
 }

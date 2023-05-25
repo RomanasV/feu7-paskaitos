@@ -1,13 +1,33 @@
 function init() {
   const headerElement = document.createElement('header');
+
+  const pageTitle = document.createElement('a');
+  pageTitle.textContent = 'API Project';
+  pageTitle.href = './';
+
+  const searchForm = document.createElement('form');
+  searchForm.action = './search.html';
+
+  const searchInput = document.createElement('input');
+  searchInput.type = 'text';
+  searchInput.name = 'search';
+  searchInput.id = 'search';
+
+  const searchButton = document.createElement('button');
+  searchButton.type = 'submit';
+  searchButton.textContent = 'Search';
+
+  searchForm.append(searchInput, searchButton);
+
   const navigationElement = document.createElement('nav');
   navigationElement.classList.add('main-navigation');
-  headerElement.append(navigationElement);
+
+  headerElement.append(pageTitle, navigationElement);
 
   const menuList = document.createElement('ul');
   menuList.classList.add('menu', 'main-menu');
 
-  navigationElement.append(menuList);
+  navigationElement.append(searchForm, menuList);
 
   const menuItems = [
     {

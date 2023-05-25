@@ -1,10 +1,7 @@
-async function init() {
-  // const urlParams = new URLSearchParams(location.search);
-  // const id = urlParams.get('user_id');
+import { getUrlParams } from "./functions.js";
 
-  const queryParams = location.search;
-  const urlParams = new URLSearchParams(queryParams);
-  const id = urlParams.get('user_id');
+async function init() {
+  const id = getUrlParams('user_id');
 
   const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}?_embed=posts&_embed=albums`);
   const userData = await res.json();

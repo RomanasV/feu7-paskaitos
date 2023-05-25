@@ -1,5 +1,5 @@
 import { POSTS_PER_PAGE } from './config.js';
-import { firstLetterUpperCase } from './functions.js';
+import { createHTMLElement, firstLetterUpperCase } from './functions.js';
 
 async function init() {
   const queryParams = location.search;
@@ -50,6 +50,16 @@ function createPostsList(posts) {
     postsList.append(postElement);
   })
 
-
   return postsList;
 }
+
+
+const firstElement = createHTMLElement('h2', 'klase');
+const secondElement = createHTMLElement('a', 'bet-kokia-klase', 'turinys', 'user.html');
+
+console.log(firstElement)
+console.log(secondElement)
+
+firstElement.append(secondElement)
+
+document.body.prepend(firstElement)
