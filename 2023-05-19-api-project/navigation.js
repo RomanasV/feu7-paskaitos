@@ -1,4 +1,6 @@
-function init() {
+import { MAIN_MENU_ITEMS } from "./config.js";
+
+export default function header() {
   const headerElement = document.createElement('header');
 
   const pageTitle = document.createElement('a');
@@ -29,26 +31,7 @@ function init() {
 
   navigationElement.append(searchForm, menuList);
 
-  const menuItems = [
-    {
-      title: 'Home',
-      path: ''
-    },
-    {
-      title: 'Users',
-      path: 'users.html'
-    },
-    {
-      title: 'Posts',
-      path: 'posts.html'
-    },
-    {
-      title: 'Albums',
-      path: 'albums.html'
-    }
-  ];
-
-  menuItems.forEach(item => {
+  MAIN_MENU_ITEMS.forEach(item => {
     let { title, path } = item;
 
     const menuItem = document.createElement('li');
@@ -66,7 +49,5 @@ function init() {
     menuLink.href = './' + path;
   })
 
-  document.body.prepend(headerElement);
+  return headerElement;
 }
-
-init();

@@ -1,10 +1,9 @@
 import { POSTS_PER_PAGE } from './config.js';
-import { createHTMLElement, firstLetterUpperCase } from './functions.js';
+import { fetchData, firstLetterUpperCase, getUrlParams } from './functions.js';
+import header from './navigation.js';
 
 async function init() {
-  const queryParams = location.search;
-  const urlParams = new URLSearchParams(queryParams);
-  const id = urlParams.get('user_id');
+  const id = getUrlParams('user_id');
 
   let fetchUrl;
 
@@ -14,16 +13,16 @@ async function init() {
     fetchUrl = `https://jsonplaceholder.typicode.com/posts?_limit=${POSTS_PER_PAGE}&_expand=user&_embed=comments`;
   }
   
-  const res = await fetch(fetchUrl);
-  const postsData = await res.json();
+  const postsData = await fetchData(fetchUrl);
   
   const contentElement = document.querySelector('#content');
 
   const postsListElement = createPostsList(postsData);
   contentElement.append(postsListElement);
-}
 
-init();
+  const headerElement = header();
+  contentElement.before(headerElement);
+}
 
 function createPostsList(posts) {
   const postsList = document.createElement('ul');
@@ -53,13 +52,4 @@ function createPostsList(posts) {
   return postsList;
 }
 
-
-const firstElement = createHTMLElement('h2', 'klase');
-const secondElement = createHTMLElement('a', 'bet-kokia-klase', 'turinys', 'user.html');
-
-console.log(firstElement)
-console.log(secondElement)
-
-firstElement.append(secondElement)
-
-document.body.prepend(firstElement)
+init();

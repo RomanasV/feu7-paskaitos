@@ -1,13 +1,15 @@
 import { ALBUMS_PER_PAGE, API_URL } from "./config.js";
 import { fetchData, firstLetterUpperCase, createHTMLElement } from "./functions.js";
+import header from './navigation.js';
 
 async function init() {
-  
   const albumsData = await fetchData(`${API_URL}/albums?_limit=${ALBUMS_PER_PAGE}&_expand=user&_embed=photos`);
 
   const contentElement = document.querySelector('#content');
   const albumsListElement = createAlbumsList(albumsData);
   contentElement.append(albumsListElement);
+
+  contentElement.before(header());
 }
 
 init();
@@ -16,6 +18,7 @@ function createAlbumsList(albums) {
   const albumsList = document.createElement('div');
   albumsList.classList.add('albums-list');
 
+  
   albums.forEach(album => {
     const title = album.title;
     const author = album.user.name;
@@ -29,7 +32,7 @@ function createAlbumsList(albums) {
     albumItem.classList.add('album-item');
 
     const albumLink = document.createElement('a');
-    albumLink.href = './album.html';
+    albumLink.href = './album.html?album_id=' + album.id;
 
     albumItem.append(albumLink);
 
