@@ -66,3 +66,7 @@ Papildoma:
 9.4. Search puslapyje turi būti paieškos forma, kuri veikia neperkraunant puslapio.
 9.5. Search puslapyje sukurtoje paieškos formoje pridėti galimybė ieškoti pagal pasirinktą kategoriją: posts, users, comments, albums, photos.
 
+10. Sukurti pagrindinį puslapį (index.html). Jame laisva forma turi būti atvaizduoti:
+  1.1. Įrašai (post).
+  1.2. Albumai.
+  1.3. Vartotojai.

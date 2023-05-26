@@ -1,4 +1,4 @@
-import { MAIN_MENU_ITEMS } from "./config.js";
+import { API_URL, MAIN_MENU_ITEMS } from "./config.js";
 
 export default function header() {
   const headerElement = document.createElement('header');
