@@ -72,6 +72,19 @@ function task1(start = 1, end = 100, nth = 1) {
 
 // task1();
 
+function task1while(start = 1, end = 100, nth = 1) {
+  let i = start;
+
+  while (i <= end) {
+    let answer = i * 2;
+    let output = `${i} * 2 = ${answer}`;
+    console.log(output);
+    i += nth
+  }
+}
+
+// task1while();
+
 function task11(start = 100, end = 1, nth = 1) {
   for (let i = start; i >= end; i -= nth) {
     let answer = i * 2;
@@ -81,6 +94,20 @@ function task11(start = 100, end = 1, nth = 1) {
 }
 
 // task11();
+
+function task11while(start = 100, end = 1, nth = 1) {
+  let i = start;
+
+  while (i >= end) {
+    let answer = i * 2;
+    let output = `${i} * 2 = ${answer}`;
+    console.log(output);
+
+    i -= nth;
+  }
+}
+
+task11while();
 
 // 2. Padaugina skaičių iš 5.
 function task2(start = 1, end = 100, nth = 1) {

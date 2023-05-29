@@ -149,4 +149,27 @@ function fizzBuzz4() {
   }
 }
 
-fizzBuzz4();
+// fizzBuzz4();
+
+
+function fizzBuzz4while() {
+  let i = 1;
+
+  while (i <= 200) {
+    let output = '';
+
+    if (i % 3 === 0) output += 'Fizz';
+    if (i % 5 === 0) output += 'Buzz';
+    if (i % 7 === 0) output += 'Biff';
+    if (i % 9 === 0) output += 'Fuzz';
+    if (i % 11 === 0) output += 'Bizz';
+    if (i % 13 === 0) output += 'Muzz';
+    if (!output) output = i;
+
+    console.log(output);
+
+    i++;
+  }
+}
+
+fizzBuzz4while();
